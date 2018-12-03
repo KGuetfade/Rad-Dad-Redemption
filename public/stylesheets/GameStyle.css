@@ -3,6 +3,10 @@ table, th, td{
     border-collapse: collapse;
 }
 
+body {
+    overflow: hidden;
+}
+
 th, td{
     height: 45px;
     width: 45px;
@@ -48,4 +52,5 @@ th, td{
 
 td.board-item:hover {
     background-color: #00008B;
+    cursor: pointer;
 }
