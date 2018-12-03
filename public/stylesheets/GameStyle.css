@@ -45,3 +45,7 @@ th, td{
 .board-table{
     margin: 0 auto;
 }
+
+td.board-item:hover {
+    background-color: #00008B;
+}
