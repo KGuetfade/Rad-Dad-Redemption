@@ -1,0 +1,47 @@
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td{
+    height: 45px;
+    width: 45px;
+}
+
+.main-body .heading{
+    width: 100%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.heading{
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.center-side{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.center-side > h3 {
+    margin: 0;
+}
+
+.player-side{
+    display: inline-block;
+    width: 49.5%;
+    text-align: center;
+    line-height: 0;
+}
+
+.player-board{
+    text-align: center;
+    display: inline-block;
+    width: 49.5%;
+    line-height: 0;
+}
+
+.board-table{
+    margin: 0 auto;
+}
