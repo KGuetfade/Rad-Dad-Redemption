@@ -1,7 +1,6 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  width: 1920px; height: 1080px;
 }
 
 a {
@@ -13,3 +12,37 @@ h1 {
   font-family: Impact, Charcoal, sans-serif;
   font-size: 50px;
 }
+
+h2 {
+  text-align: center;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 30px;
+  transform: translate(0%, -90%);
+}
+
+button {
+  width: 300px;
+  height: 80px;
+  background-color: gray;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 12px;
+  display: block;
+  margin: 40px;
+}
+
+button:hover {
+  background-color: #404040
+}
+
+button:active {
+  background-color: #404040;
+  box-shadow: 0 5px #666;
+  transform: translate(0px, 4px);
+}
+
