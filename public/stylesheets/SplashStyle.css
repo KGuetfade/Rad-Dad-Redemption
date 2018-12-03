@@ -29,6 +29,7 @@ button {
   display: block;
   margin: 40px;
   font-family: 'Courier New', Courier, monospace;
+  outline: 0;
 }
 
 button:hover {
@@ -42,21 +43,21 @@ button:active {
 }
 
 .par1 {
-  transform: translate(20px, -350px);
+  transform: translate(50px, -360px);
   font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
   color: white;
 }
 
 .par2 {
-  transform: translate(20px, -250px);
+  transform: translate(50px, -260px);
   font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
   color: white;
 }
 
 .par3 {
-  transform: translate(20px, -150px);
+  transform: translate(50px, -160px);
   font-size: 20px;
   font-family: 'Courier New', Courier, monospace;
   color: white;
