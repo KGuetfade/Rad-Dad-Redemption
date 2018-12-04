@@ -10,21 +10,21 @@ $(function(){
 
 
 $(function(){
-    var seconds = 60;
-    var minutes = 4;
+    var seconds = 0;
+    var minutes = 0;
 
-   function decMin(){   
-       minutes--;
-       document.getElementById("time").innerHTML = minutes + ":" + seconds;
+   function incMin(){   
+       minutes++;
+       document.getElementById("time").innerHTML = minutes + ":0" + seconds;
    }
 
-   function decSec(){
-    if(seconds === 0) { 
+   function incSec(){
+    if(seconds === 59) { 
+        seconds = 0;
         document.getElementById("time").innerHTML = minutes + ":0" + seconds;
-        seconds = 59;
     }
     else {
-        seconds = seconds - 1;
+        seconds++;
         if(seconds < 10){
             document.getElementById("time").innerHTML = minutes + ":0" + seconds;
         }
@@ -34,7 +34,7 @@ $(function(){
     }
    }
 
-   var x = setInterval(decSec, 1000);
-   var y = setInterval(decMin, 61000);
+   var x = setInterval(incSec, 1000);
+   var y = setInterval(incMin, 60000);
 
 });
