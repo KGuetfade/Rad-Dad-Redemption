@@ -6,20 +6,17 @@ $(function(){
             cell.css("background-color", "gray");
         }
     });
-});
 
-
-$(function(){
     var seconds = 0;
     var minutes = 0;
 
-   function incMin(){   
+    function incMin(){
        minutes++;
        document.getElementById("time").innerHTML = minutes + ":0" + seconds;
-   }
+    }
 
-   function incSec(){
-    if(seconds === 59) { 
+    function incSec(){
+    if(seconds === 59) {
         seconds = 0;
         document.getElementById("time").innerHTML = minutes + ":0" + seconds;
     }
@@ -32,14 +29,12 @@ $(function(){
             document.getElementById("time").innerHTML = minutes + ":" + seconds;
         }
     }
-   }
+    }
 
-   var x = setInterval(incSec, 1000);
-   var y = setInterval(incMin, 60000);
+    var x = setInterval(incSec, 1000);
+    var y = setInterval(incMin, 60000);
 
-});
 
-$(function(){
     var i = 1;
     var array = [4, 3, 2, 1];
     document.getElementById("trr").onclick = function(){
@@ -65,4 +60,4 @@ $(function(){
             i++;
         }
     }
-})
+});
