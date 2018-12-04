@@ -44,6 +44,7 @@ th, td{
     display: inline-block;
     width: 49.5%;
     line-height: 0;
+    transform: translateY(-40px);
 }
 
 .board-table{
@@ -53,4 +54,17 @@ th, td{
 td.board-item:hover {
     background-color: #00008B;
     cursor: pointer;
+}
+
+i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: translateY(-500px);
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
 }
