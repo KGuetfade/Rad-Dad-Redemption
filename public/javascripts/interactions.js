@@ -1,15 +1,25 @@
-
+<<<<<<< HEAD
+=======
 $(function(){
+    $(".board-item").on("click", function(){
+        var cell = $(this);
+        if (!(cell.prop("tagName") === "TH"))
+        {
+            cell.css("background-color", "gray");
+        }
+    });
+>>>>>>> 13221eefb54ce0e5186e62fbd7a6f0257a6ea25f
+
     var seconds = 0;
     var minutes = 0;
 
-   function incMin(){   
+    function incMin(){
        minutes++;
        document.getElementById("time").innerHTML = minutes + ":0" + seconds;
-   }
+    }
 
-   function incSec(){
-    if(seconds === 59) { 
+    function incSec(){
+    if(seconds === 59) {
         seconds = 0;
         document.getElementById("time").innerHTML = minutes + ":0" + seconds;
     }
@@ -22,12 +32,12 @@ $(function(){
             document.getElementById("time").innerHTML = minutes + ":" + seconds;
         }
     }
-   }
+    }
 
-   var x = setInterval(incSec, 1000);
-   var y = setInterval(incMin, 60000);
+    var x = setInterval(incSec, 1000);
+    var y = setInterval(incMin, 60000);
 
-});
+    var i = 1;
 
 $(function(){
     var i = 0;
@@ -103,10 +113,10 @@ $(function(){
                 document.getElementById("b1").style.display = "table-cell";
             }
             break;
-    
+
             case 38: // up
             break;
-    
+
             case 39: i--;
             if(i<0){
                 i = 3;
@@ -136,12 +146,19 @@ $(function(){
                 document.getElementById("b1").style.display = "table-cell";
             }
             break;
-    
+
             case 40: // down
             break;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 13221eefb54ce0e5186e62fbd7a6f0257a6ea25f
             default: return; // exit this handler for other keys
         }
+
+    }
+});
         e.preventDefault(); // prevent the default action (scroll / move caret)
     });
 });
