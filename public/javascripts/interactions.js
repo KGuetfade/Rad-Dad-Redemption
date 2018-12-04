@@ -38,3 +38,31 @@ $(function(){
    var y = setInterval(incMin, 60000);
 
 });
+
+$(function(){
+    var i = 1;
+    var array = [4, 3, 2, 1];
+    document.getElementById("trr").onclick = function(){
+        if(i>3){
+            i = 0;
+        }
+        if(array[i] === 3){
+            document.getElementById("b4").style.display = "none";
+            i++;
+        }
+        else if(array[i] === 2){
+            document.getElementById("b3").style.display = "none";
+            i++;
+        }
+        else if(array[i] === 1){
+            document.getElementById("b2").style.display = "none";
+            i++;
+        }
+        else if(array[i] === 4){
+            document.getElementById("b4").style.display = "table-cell";
+            document.getElementById("b3").style.display = "table-cell";
+            document.getElementById("b2").style.display = "table-cell";
+            i++;
+        }
+    }
+})

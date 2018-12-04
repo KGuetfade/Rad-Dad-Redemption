@@ -3,7 +3,9 @@ table, th, td{
     border-collapse: collapse;
 }
 
-
+body {
+    overflow: hidden;
+}
 
 th, td{
     height: 45px;
@@ -96,5 +98,5 @@ td.board-item:hover {
 
 .boat {
     background-color: gray;
-    transform: translateY(-370px);
+    transform: translateY(-400px);
 }
