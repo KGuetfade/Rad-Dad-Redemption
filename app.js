@@ -15,6 +15,7 @@ app.get("/", function(req, res) {
       res.sendFile("splash.html", {root: "./public"});
 })
 
- app.listen(port, function(){
-    console.log("Server Started on Port " + port);
+http.createServer(app).listen(port, "127.0.0.1", () =>{
+      console.log("Server Started on Port " + port);
 });
+
