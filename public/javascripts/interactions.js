@@ -35,29 +35,92 @@ $(function(){
     var y = setInterval(incMin, 60000);
 
 
+<<<<<<< HEAD
     var i = 1;
+=======
+$(function(){
+    var i = 0;
+>>>>>>> a460955e585e1fa1d2cfd83909b3e7041d63574b
     var array = [4, 3, 2, 1];
-    document.getElementById("trr").onclick = function(){
-        if(i>3){
-            i = 0;
+
+    $(document).keydown(function(e) {
+        switch(e.which) {
+            case 37: i++;
+            if(i>3){
+                i = 0;
+            }
+            if(array[i] === 3){
+                document.getElementById("b4").style.display = "none";
+                document.getElementById("b3").style.display = "none";
+                document.getElementById("b2").style.display = "none";
+                document.getElementById("b1").style.display = "table-cell";
+            }
+            else if(array[i] === 2){
+                document.getElementById("b4").style.display = "none";
+                document.getElementById("b3").style.display = "none";
+                document.getElementById("b2").style.display = "table-cell";
+                document.getElementById("b1").style.display = "table-cell";
+            }
+            else if(array[i] === 1){
+                document.getElementById("b4").style.display = "none";
+                document.getElementById("b3").style.display = "table-cell";
+                document.getElementById("b2").style.display = "table-cell";
+                document.getElementById("b1").style.display = "table-cell";
+            }
+            else if(array[i] === 4){
+                document.getElementById("b4").style.display = "table-cell";
+                document.getElementById("b3").style.display = "table-cell";
+                document.getElementById("b2").style.display = "table-cell";
+                document.getElementById("b1").style.display = "table-cell";
+            }
+            break;
+    
+            case 38: // up
+            break;
+    
+            case 39: i--;
+            if(i<0){
+                i = 3;
+            }
+            if(array[i] === 3){
+                document.getElementById("b4").style.display = "none";
+                document.getElementById("b3").style.display = "none";
+                document.getElementById("b2").style.display = "none";
+                document.getElementById("b1").style.display = "table-cell";
+            }
+            else if(array[i] === 2){
+                document.getElementById("b4").style.display = "none";
+                document.getElementById("b3").style.display = "none";
+                document.getElementById("b2").style.display = "table-cell";
+                document.getElementById("b1").style.display = "table-cell";
+            }
+            else if(array[i] === 1){
+                document.getElementById("b4").style.display = "none";
+                document.getElementById("b3").style.display = "table-cell";
+                document.getElementById("b2").style.display = "table-cell";
+                document.getElementById("b1").style.display = "table-cell";
+            }
+            else if(array[i] === 4){
+                document.getElementById("b4").style.display = "table-cell";
+                document.getElementById("b3").style.display = "table-cell";
+                document.getElementById("b2").style.display = "table-cell";
+                document.getElementById("b1").style.display = "table-cell";
+            }
+            break;
+    
+            case 40: // down
+            break;
+    
+            defa
+            ult: return; // exit this handler for other keys
         }
-        if(array[i] === 3){
-            document.getElementById("b4").style.display = "none";
-            i++;
-        }
-        else if(array[i] === 2){
-            document.getElementById("b3").style.display = "none";
-            i++;
-        }
-        else if(array[i] === 1){
-            document.getElementById("b2").style.display = "none";
-            i++;
-        }
-        else if(array[i] === 4){
-            document.getElementById("b4").style.display = "table-cell";
-            document.getElementById("b3").style.display = "table-cell";
-            document.getElementById("b2").style.display = "table-cell";
-            i++;
-        }
+<<<<<<< HEAD
     }
 });
+=======
+        e.preventDefault(); // prevent the default action (scroll / move caret)
+    });
+});
+
+
+>>>>>>> a460955e585e1fa1d2cfd83909b3e7041d63574b

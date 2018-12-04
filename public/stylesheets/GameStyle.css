@@ -54,46 +54,7 @@ th, td{
 td.board-item:hover {
     background-color: #00008B;
     cursor: pointer;
-}
-
-.triangle-right {
-	width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-left: 50px solid #555;
-    border-bottom: 25px solid transparent;
-    transform: translate(720px, -350px);
-    size: 1px;
-}
-
-.triangle-left {
-	width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-right: 50px solid #555;
-    border-bottom: 25px solid transparent;
-    transform: translate(630px, -400px);
-    size: 1px;
-}
-
-.triangle-left:hover {
-    width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-right: 50px solid #696969;
-    border-bottom: 25px solid transparent;
-    transform: translate(630px, -400px);
-    size: 1px;
-}
-
-.triangle-right:hover {
-    width: 0;
-	height: 0;
-	border-top: 25px solid transparent;
-	border-left: 50px solid #696969;
-    border-bottom: 25px solid transparent;
-    transform: translate(720px, -350px);
-    size: 1px;
+    
 }
 
 .boat {
