@@ -34,13 +34,10 @@ $(function(){
     var x = setInterval(incSec, 1000);
     var y = setInterval(incMin, 60000);
 
-
-<<<<<<< HEAD
     var i = 1;
-=======
+
 $(function(){
     var i = 0;
->>>>>>> a460955e585e1fa1d2cfd83909b3e7041d63574b
     var array = [4, 3, 2, 1];
 
     $(document).keydown(function(e) {
@@ -74,10 +71,10 @@ $(function(){
                 document.getElementById("b1").style.display = "table-cell";
             }
             break;
-    
+
             case 38: // up
             break;
-    
+
             case 39: i--;
             if(i<0){
                 i = 3;
@@ -107,20 +104,15 @@ $(function(){
                 document.getElementById("b1").style.display = "table-cell";
             }
             break;
-    
+
             case 40: // down
             break;
-    
-            defa
-            ult: return; // exit this handler for other keys
+
+            default: return; // exit this handler for other keys
         }
-<<<<<<< HEAD
+
     }
 });
-=======
         e.preventDefault(); // prevent the default action (scroll / move caret)
     });
 });
-
-
->>>>>>> a460955e585e1fa1d2cfd83909b3e7041d63574b
