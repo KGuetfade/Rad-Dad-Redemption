@@ -20,5 +20,3 @@ var player = function(playerID){
 player.prototype.Shoot = function(){
     //shoot on other board and then send the coordinates to server
 }
-
-module.exports = player;
