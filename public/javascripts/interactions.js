@@ -1,5 +1,5 @@
 $(function(){
-    
+
     var player1 = new player("sem");
 
     var seconds = 0;
@@ -34,9 +34,9 @@ $(function(){
         var j = 0;
         var i = 0;
         var array = [4, 3, 2, 1];
-    
+
         $(".board-item").on("click", function(){
-    
+
             var cell = $(this);
             var cell2 = $(this).next('td');
             var cell3 = cell2.next('td');
@@ -71,7 +71,7 @@ $(function(){
                 player1.board[index2][index - 1] = 1;
                 player1.board[index2 + 1][index - 1] = 1;
                 player1.board[index2 + 2][index - 1] = 1;
-                alert(player1.board[index2-1] + "\n" + player1.board[index2] + "\n" + player1.board[index2 + 1] + "\n" + player1.board[index2 + 2]); 
+                alert(player1.board[index2-1] + "\n" + player1.board[index2] + "\n" + player1.board[index2 + 1] + "\n" + player1.board[index2 + 2]);
                 }
             }
             }
@@ -126,7 +126,7 @@ $(function(){
                 }
                 }
         });
-    
+
         $(document).keydown(function(event) {
             switch(event.which) {
                 case 37:
@@ -159,7 +159,7 @@ $(function(){
                     document.getElementById("b1").style.display = "table-cell";
                 }
                 break;
-    
+
                 case 38:
                 if(j === 0){
                     j = 1;
@@ -212,12 +212,12 @@ $(function(){
                     document.getElementById("h4").innerHTML = "Horizontal";
                 }
                 break;
-    
-                default: return; 
+
+                default: return;
             }
-    
+
         });
-    
-            e.preventDefault();
+
+            event.preventDefault();
     });
 });
