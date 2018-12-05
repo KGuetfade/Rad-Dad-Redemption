@@ -29,6 +29,7 @@ $(function(){
 
     $(function(){
 
+        var j = 0;
         var i = 0;
         var array = [4, 3, 2, 1];
     
@@ -38,29 +39,55 @@ $(function(){
             var cell2 = $(this).next('td');
             var cell3 = cell2.next('td');
             var cell4 = cell3.next('td');
+
+            var index = $(this).prevAll().length
+            var cellBelow = $(this).parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+            var cellBelow2 = cellBelow.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+            var cellBelow3 = cellBelow2.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
     
             if(array[i] === 4){
             if (!(cell.prop("tagName") === "TH"))
             {
+                if(j === 0){
                 cell.css("background-color", "gray");
                 cell2.css("background-color", "gray");
                 cell3.css("background-color", "gray");
                 cell4.css("background-color", "gray");
+                }
+                else if(j === 1){
+                cell.css("background-color", "gray");
+                cellBelow.css("background-color", "gray");
+                cellBelow2.css("background-color", "gray");
+                cellBelow3.css("background-color", "gray"); 
+                }
             }
             }
             else if(array[i] === 3){
                 if (!(cell.prop("tagName") === "TH"))
                 {
-                    cell.css("background-color", "gray");
-                    cell2.css("background-color", "gray");
-                    cell3.css("background-color", "gray");
+                    if(j === 0){
+                        cell.css("background-color", "gray");
+                        cell2.css("background-color", "gray");
+                        cell3.css("background-color", "gray");
+                        }
+                        else if(j === 1){
+                        cell.css("background-color", "gray");
+                        cellBelow.css("background-color", "gray");
+                        cellBelow2.css("background-color", "gray");
+                        }
                 }
                 }
             else if(array[i] === 2){
                 if (!(cell.prop("tagName") === "TH"))
                 {
-                    cell.css("background-color", "gray");
-                    cell2.css("background-color", "gray");
+                    if(j === 0){
+                        cell.css("background-color", "gray");
+                        cell2.css("background-color", "gray");
+                        }
+                        else if(j === 1){
+                        cell.css("background-color", "gray");
+                        cellBelow.css("background-color", "gray");
+                        }
                 }
                 }
             else if(array[i] === 1){
@@ -71,8 +98,8 @@ $(function(){
                 }
         });
     
-        $(document).keydown(function(e) {
-            switch(e.which) {
+        $(document).keydown(function(event) {
+            switch(event.which) {
                 case 37:
                 i++;
                 if(i>3){
@@ -104,7 +131,18 @@ $(function(){
                 }
                 break;
     
-                case 39: 
+                case 38:
+                if(j === 0){
+                    j = 1;
+                    document.getElementById("h4").innerHTML = "Vertical";
+                }
+                else if(j === 1){
+                    j = 0;
+                    document.getElementById("h4").innerHTML = "Horizontal";
+                }
+                break;
+
+                case 39:
                 i--;
                 if(i<0){
                     i = 3;
@@ -132,6 +170,17 @@ $(function(){
                     document.getElementById("b3").style.display = "table-cell";
                     document.getElementById("b2").style.display = "table-cell";
                     document.getElementById("b1").style.display = "table-cell";
+                }
+                break;
+
+                case 40:
+                if(j === 0){
+                    j = 1;
+                    document.getElementById("h4").innerHTML = "Vertical";
+                }
+                else if(j === 1){
+                    j = 0;
+                    document.getElementById("h4").innerHTML = "Horizontal";
                 }
                 break;
     

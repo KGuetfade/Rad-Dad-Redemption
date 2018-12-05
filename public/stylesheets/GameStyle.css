@@ -61,3 +61,10 @@ td.board-item:hover {
     background-color: gray;
     transform: translateY(-400px);
 }
+
+h4 {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    transform: translateY(-150px);
+    font-size: 16px;
+}
