@@ -1,6 +1,6 @@
-var game = function(player_A, player_B){
-    this.playerA = player_A;
-    this.playerB = player_B;
+var game = function(){
+    this.playerA = null;
+    this.playerB = null;
     this.state = 0;
 }
 
@@ -14,3 +14,14 @@ game.prototype.addPlayer = function(player){
         this.playerB = player;
     }
 }
+
+game.prototype.hasTwoPlayers = function(){
+    if (this.playerA != null && this.playerB != null)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+module.exports = game;
