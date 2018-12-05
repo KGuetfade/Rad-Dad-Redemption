@@ -66,7 +66,12 @@ $(function(){
                 cell.css("background-color", "gray");
                 cellBelow.css("background-color", "gray");
                 cellBelow2.css("background-color", "gray");
-                cellBelow3.css("background-color", "gray"); 
+                cellBelow3.css("background-color", "gray");
+                player1.board[index2-1][index - 1] = 1;
+                player1.board[index2][index - 1] = 1;
+                player1.board[index2 + 1][index - 1] = 1;
+                player1.board[index2 + 2][index - 1] = 1;
+                alert(player1.board[index2-1] + "\n" + player1.board[index2] + "\n" + player1.board[index2 + 1] + "\n" + player1.board[index2 + 2]); 
                 }
             }
             }
@@ -86,6 +91,10 @@ $(function(){
                         cell.css("background-color", "gray");
                         cellBelow.css("background-color", "gray");
                         cellBelow2.css("background-color", "gray");
+                        player1.board[index2-1][index - 1] = 1;
+                        player1.board[index2][index - 1] = 1;
+                        player1.board[index2 + 1][index - 1] = 1;
+                        alert(player1.board[index2-1] + "\n" + player1.board[index2] + "\n" + player1.board[index2 + 1]);
                         }
                 }
                 }
@@ -102,6 +111,9 @@ $(function(){
                         else if(j === 1){
                         cell.css("background-color", "gray");
                         cellBelow.css("background-color", "gray");
+                        player1.board[index2-1][index - 1] = 1;
+                        player1.board[index2][index - 1] = 1;
+                        alert(player1.board[index2-1] + "\n" + player1.board[index2]);
                         }
                 }
                 }
