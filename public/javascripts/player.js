@@ -2,7 +2,6 @@
 var player = function(){
     this.board = []
     this.ships = 0;
-    this.gamestate = 0;
 
     //make board 10x10 with 0's
     for (var i = 0; i < 10; i++)
@@ -19,4 +18,8 @@ var player = function(){
 
 player.prototype.Shoot = function(){
     //shoot on other board and then send the coordinates to server
+}
+
+player.prototype.setBoats = function(){
+    //set boats at beginning of game
 }

@@ -61,7 +61,6 @@ wss.on("connection", function(ws){
         let current_game = game_at_id[client.id];
         let data = JSON.parse(raw_data);
 
-
     });
 
     client.on("close", function(code){
