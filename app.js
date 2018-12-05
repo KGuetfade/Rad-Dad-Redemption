@@ -35,6 +35,7 @@ wss.on("connection", function(ws){
         game.addPlayer(client);
 
         if (game.hasOnePlayer()){
+            //player 1 has to wait for player 2 and can't make a move untill then
             let message = {
                 type:"string",
                 message:"Waiting for player 2"
@@ -43,6 +44,7 @@ wss.on("connection", function(ws){
             client.send(JSON.stringify(message));
         }
         else{
+            //2 players have connected, now both players have to put their boats?
             let message = {
                 type:"string",
                 message:"2 Players in game, game will start"
@@ -55,8 +57,11 @@ wss.on("connection", function(ws){
         }
     }
 
-    ws.on("message", function(data){
+    ws.on("message", function(raw_data){
+        let game = game_at_id[client.id];
+        let data = JSON.parse(raw_data);
 
+        
     });
 
 });
