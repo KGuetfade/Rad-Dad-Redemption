@@ -24,4 +24,12 @@ game.prototype.hasTwoPlayers = function(){
     return false;
 }
 
+game.prototype.hasOnePlayer = function(){
+    if ((this.playerA != null && this.playerB === null) || (this.playerA === null && this.playerB != null)){
+        return true;
+    }
+
+    return false;
+}
+
 module.exports = game;

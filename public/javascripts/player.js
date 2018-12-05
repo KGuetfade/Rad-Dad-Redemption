@@ -1,13 +1,3 @@
-var socket = new WebSocket("ws://localhost:3000")
-
-socket.onopen = function(event){
-    socket.send("hello from client");
-}
-
-socket.onmessage = function(event){
-    alert(event.data);
-}
-
 var player = function(playerID){
     this.ID = playerID;
     this.board = []
