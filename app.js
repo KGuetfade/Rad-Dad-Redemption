@@ -57,11 +57,21 @@ wss.on("connection", function(ws){
         }
     }
 
-    ws.on("message", function(raw_data){
-        let game = game_at_id[client.id];
+    client.on("message", function(raw_data){
+        let current_game = game_at_id[client.id];
         let data = JSON.parse(raw_data);
 
 
+    });
+
+    client.on("close", function(code){
+        let current_game = game_at_id[client.id];
+        if (current_game.playerA === client){
+            current_game.playerA = null;
+        }
+        else if (current_game.playerB === client){
+            current_game.playerB = null;
+        }
     });
 
 });
