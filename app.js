@@ -26,6 +26,7 @@ var game_at_id = {};
 wss.on("connection", function(ws){
     console.log("Socket connection made");
 
+    /* Initialize client and game*/
     let client = ws;
     client.id = id_counter++;
     game_at_id[client.id] = game;
@@ -49,14 +50,14 @@ wss.on("connection", function(ws){
 
             game.playerA.send(JSON.stringify(message));
             game.playerB.send(JSON.stringify(message));
+
             game = new Game();
         }
     }
 
     ws.on("message", function(data){
-    });
 
-    //ws.send("hello from server");
+    });
 
 });
 
