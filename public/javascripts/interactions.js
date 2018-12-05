@@ -31,7 +31,7 @@ $(function(){
 
     $(function(){
 
-        var j = 0;
+        var j = 1;
         var i = 0;
         var array = [4, 3, 2, 1];
 
@@ -48,10 +48,10 @@ $(function(){
             var cellBelow2 = cellBelow.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
             var cellBelow3 = cellBelow2.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
 
-            if(array[i] === 4){
+            if(array[i] === 4 && player1.board[index2-1][index-1] !== 1){
             if (!(cell.prop("tagName") === "TH"))
             {
-                if(j === 0){
+                if(j === 0 && cell4.prevAll().length !== 0 && player1.board[index2-1][index] !== 1 && player1.board[index2-1][index+1] !== 1 && player1.board[index2-1][index+2] !== 1){
                 cell.css("background-color", "gray");
                 cell2.css("background-color", "gray");
                 cell3.css("background-color", "gray");
@@ -60,9 +60,8 @@ $(function(){
                 player1.board[index2-1][index] = 1;
                 player1.board[index2-1][index + 1] = 1;
                 player1.board[index2-1][index + 2] = 1;
-                alert(player1.board[index2-1]);
                 }
-                else if(j === 1){
+                else if(j === 1 && cellBelow3.prevAll().length !== 0 && player1.board[index2][index-1] !== 1 && player1.board[index2+1][index-1] !== 1 && player1.board[index2+2][index-1] !== 1){
                 cell.css("background-color", "gray");
                 cellBelow.css("background-color", "gray");
                 cellBelow2.css("background-color", "gray");
@@ -70,60 +69,55 @@ $(function(){
                 player1.board[index2-1][index - 1] = 1;
                 player1.board[index2][index - 1] = 1;
                 player1.board[index2 + 1][index - 1] = 1;
+
                 player1.board[index2 + 2][index - 1] = 1;
                 alert(player1.board[index2-1] + "\n" + player1.board[index2] + "\n" + player1.board[index2 + 1] + "\n" + player1.board[index2 + 2]);
+
+                player1.board[index2 + 2][index - 1] = 1;
+
                 }
             }
             }
-            else if(array[i] === 3){
+            else if(array[i] === 3 && player1.board[index2-1][index-1] !== 1){
                 if (!(cell.prop("tagName") === "TH"))
                 {
-                    if(j === 0){
+                    if(j === 0 && cell3.prevAll().length !== 0 && player1.board[index2-1][index] !== 1 && player1.board[index2-1][index+1] !== 1){
                         cell.css("background-color", "gray");
                         cell2.css("background-color", "gray");
                         cell3.css("background-color", "gray");
                         player1.board[index2-1][index - 1] = 1;
                         player1.board[index2-1][index] = 1;
                         player1.board[index2-1][index + 1] = 1;
-                        alert(player1.board[index2-1]);
                         }
-                        else if(j === 1){
+                        else if(j === 1 && cellBelow2.prevAll().length !== 0 && player1.board[index2][index-1] !== 1 && player1.board[index2+1][index-1] !== 1){
                         cell.css("background-color", "gray");
                         cellBelow.css("background-color", "gray");
                         cellBelow2.css("background-color", "gray");
                         player1.board[index2-1][index - 1] = 1;
                         player1.board[index2][index - 1] = 1;
-                        player1.board[index2 + 1][index - 1] = 1;
-                        alert(player1.board[index2-1] + "\n" + player1.board[index2] + "\n" + player1.board[index2 + 1]);
-                        }
+                        player1.board[index2 + 1][index - 1] = 1;                        }
                 }
                 }
-            else if(array[i] === 2){
+            else if(array[i] === 2 && player1.board[index2-1][index-1] !== 1){
                 if (!(cell.prop("tagName") === "TH"))
                 {
-                    if(j === 0){
+                    if(j === 0 && cell2.prevAll().length !== 0 && player1.board[index2-1][index] !== 1){
                         cell.css("background-color", "gray");
                         cell2.css("background-color", "gray");
                         player1.board[index2-1][index - 1] = 1;
-                        player1.board[index2-1][index] = 1;
-                        alert(player1.board[index2-1]);
-                        }
-                        else if(j === 1){
+                        player1.board[index2-1][index] = 1;                        }
+                        else if(j === 1 && cellBelow.prevAll().length !== 0 && player1.board[index2][index-1] !== 1){
                         cell.css("background-color", "gray");
                         cellBelow.css("background-color", "gray");
                         player1.board[index2-1][index - 1] = 1;
-                        player1.board[index2][index - 1] = 1;
-                        alert(player1.board[index2-1] + "\n" + player1.board[index2]);
-                        }
+                        player1.board[index2][index - 1] = 1;                        }
                 }
                 }
-            else if(array[i] === 1){
+            else if(array[i] === 1 && player1.board[index2-1][index-1] !== 1){
                 if (!(cell.prop("tagName") === "TH"))
                 {
                     cell.css("background-color", "gray");
-                    player1.board[index2-1][index - 1] = 1;
-                    alert(player1.board[index2-1]);
-                }
+                    player1.board[index2-1][index - 1] = 1;                }
                 }
         });
 
