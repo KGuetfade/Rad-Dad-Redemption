@@ -34,35 +34,6 @@ $(function(){
         var i = 0;
         var array = [4, 3, 2, 1];
 
-
-        $(".board-item").hover(function(){
-            var cell = $(this).next('td');
-            var cell2 = cell.next('td');
-            var cell3 = cell2.next('td');
-            var index = $(this).prevAll().length
-            var index2 = $(this).parent().prevAll().length;
-            if(j === 0 && array[i] === 4 && player1.board[index2-1][index-1] !== 1 && player1.board[index2-1][index] !== 1 && player1.board[index2-1][index+1] !== 1 && player1.board[index2-1][index+2] !== 1){
-            cell.css("background-color","#00008B");
-            cell2.css("background-color","#00008B");
-            cell3.css("background-color","#00008B");
-            $(this).css("background-color","#00008B");
-            }
-        });
-
-        $(".board-item").mouseleave(function(){
-            var cell = $(this).next('td');
-            var cell2 = cell.next('td');
-            var cell3 = cell2.next('td');
-            var index = $(this).prevAll().length
-            var index2 = $(this).parent().prevAll().length;
-            if(j === 0 && array[i] === 4 && player1.board[index2-1][index-1] !== 1 && player1.board[index2-1][index] !== 1 && player1.board[index2-1][index+1] !== 1 && player1.board[index2-1][index+2] !== 1){
-            cell.css("background-color","transparent");
-            cell2.css("background-color","transparent");
-            cell3.css("background-color","transparent");
-            $(this).css("background-color","transparent");
-            }
-        });
-
         $(".board-item").on("click", function(){
 
             var cell = $(this);
@@ -97,10 +68,6 @@ $(function(){
                 player1.board[index2-1][index - 1] = 1;
                 player1.board[index2][index - 1] = 1;
                 player1.board[index2 + 1][index - 1] = 1;
-
-                player1.board[index2 + 2][index - 1] = 1;
-                alert(player1.board[index2-1] + "\n" + player1.board[index2] + "\n" + player1.board[index2 + 1] + "\n" + player1.board[index2 + 2]);
-
                 player1.board[index2 + 2][index - 1] = 1;
 
                 }
