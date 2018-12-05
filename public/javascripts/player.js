@@ -1,5 +1,5 @@
-var player = function(playerID){
-    this.ID = playerID;
+
+var player = function(){
     this.board = []
     this.ships = 0;
     this.gamestate = 0;
@@ -20,5 +20,3 @@ var player = function(playerID){
 player.prototype.Shoot = function(){
     //shoot on other board and then send the coordinates to server
 }
-
-module.exports = player;

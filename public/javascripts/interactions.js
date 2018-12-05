@@ -1,6 +1,5 @@
+var player1 = new player();
 $(function(){
-
-    var player1 = new player("sem");
 
     var seconds = 0;
     var minutes = 0;
@@ -34,7 +33,7 @@ $(function(){
         var j = 1;
         var i = 0;
         var array = [4, 3, 2, 1];
-        
+
         $(".board-item").hover(function(){
             var cell = $(this).next('td');
             var cell2 = cell.next('td');
@@ -48,7 +47,7 @@ $(function(){
             $(this).css("background-color","#00008B");
             }
         });
-    
+
         $(".board-item").mouseleave(function(){
             var cell = $(this).next('td');
             var cell2 = cell.next('td');
@@ -62,7 +61,7 @@ $(function(){
             $(this).css("background-color","transparent");
             }
         });
-    
+
 
         $(".board-item").on("click", function(){
 

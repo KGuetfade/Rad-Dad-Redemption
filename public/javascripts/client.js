@@ -1,5 +1,5 @@
 var socket = new WebSocket("ws://localhost:3000")
-var player = new player("karim");
+var player = new player();
 
 socket.onopen = function(event){
 
