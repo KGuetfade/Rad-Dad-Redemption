@@ -14,7 +14,7 @@ socket.onmessage = function(event){
 
 var player = function(playerID){
     this.ID = playerID;
-    this.board = [[],[]]; //10x10
+    this.board = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]; //10x10
     this.ships = 0;
     this.gamestate = 0;
 }
@@ -22,3 +22,4 @@ var player = function(playerID){
 player.prototype.Shoot = function(){
     //shoot on other board and then send the coordinates to server
 }
+

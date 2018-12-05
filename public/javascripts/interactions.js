@@ -1,4 +1,6 @@
 $(function(){
+    
+    var player1 = new player("sem");
 
     var seconds = 0;
     var minutes = 0;
@@ -41,10 +43,11 @@ $(function(){
             var cell4 = cell3.next('td');
 
             var index = $(this).prevAll().length
+            var index2 = $(this).parent().prevAll().length;
             var cellBelow = $(this).parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
             var cellBelow2 = cellBelow.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
             var cellBelow3 = cellBelow2.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
-    
+
             if(array[i] === 4){
             if (!(cell.prop("tagName") === "TH"))
             {
@@ -53,6 +56,11 @@ $(function(){
                 cell2.css("background-color", "gray");
                 cell3.css("background-color", "gray");
                 cell4.css("background-color", "gray");
+                player1.board[index2-1][index - 1] = 1;
+                player1.board[index2-1][index] = 1;
+                player1.board[index2-1][index + 1] = 1;
+                player1.board[index2-1][index + 2] = 1;
+                alert(player1.board[index2-1]);
                 }
                 else if(j === 1){
                 cell.css("background-color", "gray");
@@ -69,6 +77,10 @@ $(function(){
                         cell.css("background-color", "gray");
                         cell2.css("background-color", "gray");
                         cell3.css("background-color", "gray");
+                        player1.board[index2-1][index - 1] = 1;
+                        player1.board[index2-1][index] = 1;
+                        player1.board[index2-1][index + 1] = 1;
+                        alert(player1.board[index2-1]);
                         }
                         else if(j === 1){
                         cell.css("background-color", "gray");
@@ -83,6 +95,9 @@ $(function(){
                     if(j === 0){
                         cell.css("background-color", "gray");
                         cell2.css("background-color", "gray");
+                        player1.board[index2-1][index - 1] = 1;
+                        player1.board[index2-1][index] = 1;
+                        alert(player1.board[index2-1]);
                         }
                         else if(j === 1){
                         cell.css("background-color", "gray");
@@ -94,6 +109,8 @@ $(function(){
                 if (!(cell.prop("tagName") === "TH"))
                 {
                     cell.css("background-color", "gray");
+                    player1.board[index2-1][index - 1] = 1;
+                    alert(player1.board[index2-1]);
                 }
                 }
         });
