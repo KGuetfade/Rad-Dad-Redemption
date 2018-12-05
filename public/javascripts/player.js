@@ -1,5 +1,5 @@
-var player = function(playerID){
-    this.ID = playerID;
+
+var player = function(){
     this.board = []
     this.ships = 0;
     this.gamestate = 0;
