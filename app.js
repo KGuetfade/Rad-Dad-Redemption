@@ -14,7 +14,20 @@ app.get("/", function(req, res) {
       res.sendFile("splash.html", {root: "./public"});
 })
 
-http.createServer(app).listen(port, () =>{
-      console.log("Server Started on Port " + port);
+var server = http.createServer(app);
+const wss = new websocket.Server({ server });
+
+wss.on("connection", function(ws){
+    console.log("Socket connection made");
+
+    ws.on("message", function(data){
+        console.log(data);
+    });
+
+    ws.send("hello from server");
+
 });
 
+server.listen(port, () =>{
+      console.log("Server Started on Port " + port);
+});
