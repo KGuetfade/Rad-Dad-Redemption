@@ -37,8 +37,8 @@ wss.on("connection", function(ws){
         if (game.hasOnePlayer()){
             //player 1 has to wait for player 2 and can't make a move untill then
             let message = {
-                type:"string",
-                message:"Waiting for player 2"
+                type:"status",
+                message:0
             };
 
             client.send(JSON.stringify(message));
@@ -46,9 +46,15 @@ wss.on("connection", function(ws){
         else{
             //2 players have connected, now both players have to put their boats?
             let message = {
-                type:"string",
-                message:"2 Players in game, game will start"
+                type:"status",
+                message:1
             };
+
+            game.playerA.send(JSON.stringify(message));
+            game.playerB.send(JSON.stringify(message));
+
+            message.type = "gamestate";
+            message.message = 0;
 
             game.playerA.send(JSON.stringify(message));
             game.playerB.send(JSON.stringify(message));
@@ -60,7 +66,34 @@ wss.on("connection", function(ws){
     client.on("message", function(raw_data){
         let current_game = game_at_id[client.id];
         let data = JSON.parse(raw_data);
+        let message = {
+            type:null,
+            message:null
+        };
 
+        if (data.type === "playerstatus")
+        {
+            console.log("playerstatus")
+            if (data.message === 0)
+            {
+                console.log("0")
+                if (client === game.playerA){
+                    game.playerA.ready = true;
+                }
+                else if (client === game.playerB){
+                    game.playerB.ready = true;
+                }
+
+                if (game.bothPlayersReady())
+                {
+                    message.type = "gamestate";
+                    message.message = 1;
+
+                    game.playerA.send(JSON.stringify(message));
+                //    game.playerB.send(JSON.stringify(message));
+                }
+            }
+        }
     });
 
     client.on("close", function(code){
@@ -78,3 +111,13 @@ wss.on("connection", function(ws){
 server.listen(port, () =>{
       console.log("Server Started on Port " + port);
 });
+
+/*
+status 0 : wait for player
+status 1 : start the game
+
+gamestate 0 : place Boats
+gamestate 1 : shoot (play the game)
+
+playerstatus 0 : boats placed
+*/

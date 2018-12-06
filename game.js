@@ -9,10 +9,12 @@ game.prototype.addPlayer = function(player){
     if (this.playerA === null)
     {
         this.playerA = player;
+        this.playerA.ready = false;
     }
     else if (this.playerB === null)
     {
         this.playerB = player;
+        this.playerB.ready = false;
     }
 }
 
@@ -32,5 +34,14 @@ game.prototype.hasOnePlayer = function(){
 
     return false;
 }
+
+game.prototype.bothPlayersReady = function(){
+    if (this.playerA.ready && this.playerB.ready){
+        return true;
+    }
+
+    return false;
+}
+
 
 module.exports = game;

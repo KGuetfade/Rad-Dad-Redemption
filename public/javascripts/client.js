@@ -6,22 +6,41 @@ socket.onopen = function(event){
     socket.onmessage = function(event){
         data = JSON.parse(event.data);
 
-        if (data.type === "string")
+        if (data.type === "status")
         {
-            alert(data.message);
-            //waitPlayer2(data);
+            waitPlayer2(data);
+        }
 
+        if (data.type === "gamestate")
+        {
+            if (data.message === 0)
+            {
+                $("#state").html("You can now place your boats");
+
+                //place boats
+
+                let message = {
+                    type: "playerstatus",
+                    message: 0
+                };
+                socket.send(JSON.stringify(message));
+            }
+            else if (data.message === 1)
+            {
+                $("#state").html("You can now shoot the other player!");
+                //shoot
+            }
         }
     }
 }
 
 var waitPlayer2 = function(data){
-    if (data.message === "Waiting for player 2")
+    if (data.message === 0)
     {
         $('#myModal').css("display", "block");
     }
 
-    if (data.message === "2 Players in game, game will start")
+    if (data.message === 1)
     {
         $('#myModal').css("display", "none");
     }

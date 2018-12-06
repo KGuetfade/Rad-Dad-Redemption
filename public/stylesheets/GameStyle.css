@@ -54,7 +54,7 @@ th, td{
 td.board-item:hover {
     background-color: #00008B;
     cursor: pointer;
-    
+
 }
 
 .boat {
@@ -67,4 +67,12 @@ h4 {
     text-align: center;
     transform: translateY(-150px);
     font-size: 16px;
+}
+
+#state{
+    margin-top: 20px;
+    text-transform: uppercase;
+    color:#ffffff;
+    font: 20px Courier;
+    display: block;
 }
