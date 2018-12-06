@@ -16,10 +16,14 @@ var player = function(){
     }
 }
 
-player.prototype.Shoot = function(){
-    //shoot on other board and then send the coordinates to server
+player.prototype.Shoot = function(box){
+        var index = box.prevAll().length
+        var index2 = box.parent().prevAll().length;
+        var array = [index2, index];
+        return array;
 }
 
 player.prototype.setBoats = function(){
     //set boats at beginning of game
 }
+

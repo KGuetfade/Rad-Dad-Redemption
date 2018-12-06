@@ -6,67 +6,22 @@ socket.onopen = function(event){
     socket.onmessage = function(event){
         data = JSON.parse(event.data);
 
-        if (data.type === "status")
+        if (data.type === "string")
         {
+            //alert(data.message);
             waitPlayer2(data);
-        }
 
-        if (data.type === "gamestate")
-        {
-            if (data.message === 0)
-            {
-                $("#state").html("You can now place your boats");
-
-                //place boats
-                let message = {
-                    type: "playerstatus",
-                    message: 0
-                };
-                socket.send(JSON.stringify(message));
-            }
-            else if (data.message === 1)
-            {
-                $("#state").html("You can now shoot the other player!");
-                //shoot
-            }
         }
     }
-    
-    var seconds = 0;
-    var minutes = 0;
-
-    function incMin(){
-       minutes++;
-       document.getElementById("time").innerHTML = minutes + ":0" + seconds;
-    }
-
-    function incSec(){
-    if(seconds === 59) {
-        seconds = 0;
-        document.getElementById("time").innerHTML = minutes + ":0" + seconds;
-    }
-    else {
-        seconds++;
-        if(seconds < 10){
-            document.getElementById("time").innerHTML = minutes + ":0" + seconds;
-        }
-        else{
-            document.getElementById("time").innerHTML = minutes + ":" + seconds;
-        }
-    }
-    }
-    
-    var x = setInterval(incSec, 1000);
-    var y = setInterval(incMin, 60000);
 }
 
 var waitPlayer2 = function(data){
-    if (data.message === 0)
+    if (data.message === "Waiting for player 2")
     {
         $('#myModal').css("display", "block");
     }
 
-    if (data.message === 1)
+    if (data.message === "2 Players in game, game will start")
     {
         $('#myModal').css("display", "none");
     }

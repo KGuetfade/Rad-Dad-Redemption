@@ -57,6 +57,12 @@ td.board-item:hover {
 
 }
 
+td.board-itemE:hover {
+    background-color: #8B0000;
+    cursor: pointer;
+
+}
+
 .boat {
     background-color: gray;
     transform: translateY(-400px);

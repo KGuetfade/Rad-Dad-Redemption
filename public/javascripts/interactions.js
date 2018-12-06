@@ -1,6 +1,7 @@
 var player1 = new player();
-$(function(){
 
+$(function(){
+    
     var seconds = 0;
     var minutes = 0;
 
@@ -30,7 +31,7 @@ $(function(){
         var j = 1;
         var i = 0;
         var array = [4, 3, 2, 1];
-
+        
         /*
         $(".board-item").hover(function(){
             var cell = $(this).next('td');
