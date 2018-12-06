@@ -24,18 +24,18 @@ var id_counter = 0;
 var game_at_id = {};
 
 wss.on("connection", function(ws){
-    console.log("Socket connection made");
 
     /* Initialize client and game*/
     let client = ws;
     client.id = id_counter++;
     game_at_id[client.id] = game;
+    console.log("Socket connection made with ID: " + client.id);
 
     if(!game.hasTwoPlayers()){
         game.addPlayer(client);
 
         if (game.hasOnePlayer()){
-            //player 1 has to wait for player 2 and can't make a move untill then
+            //player 1 has to wait for player 2 and can't make a move until then
             let message = {
                 type:"status",
                 message:0
@@ -44,21 +44,18 @@ wss.on("connection", function(ws){
             client.send(JSON.stringify(message));
         }
         else{
-            //2 players have connected, now both players have to put their boats?
+            //2 players have connected, now both players have to put their boats
             let message = {
                 type:"status",
                 message:1
             };
 
-            game.playerA.send(JSON.stringify(message));
-            game.playerB.send(JSON.stringify(message));
+            game.sendBothPlayers(message);
 
             message.type = "gamestate";
             message.message = 0;
 
-            game.playerA.send(JSON.stringify(message));
-            console.log()
-            game.playerB.send(JSON.stringify(message));
+            game.sendBothPlayers(message);
 
             game = new Game();
         }
@@ -66,6 +63,7 @@ wss.on("connection", function(ws){
 
     client.on("message", function(raw_data){
         let current_game = game_at_id[client.id];
+
         let data = JSON.parse(raw_data);
         let message = {
             type:null,
@@ -74,24 +72,24 @@ wss.on("connection", function(ws){
 
         if (data.type === "playerstatus")
         {
-            console.log("playerstatus")
+            //player is done placing boats
             if (data.message === 0)
             {
-                console.log("0")
-                if (client === game.playerA){
-                    game.playerA.ready = true;
+                if (client === current_game.playerA){
+                    current_game.playerA.ready = true;
                 }
-                else if (client === game.playerB){
-                    game.playerB.ready = true;
+                else if (client === current_game.playerB){
+                    current_game.playerB.ready = true;
                 }
 
-                if (game.bothPlayersReady())
+                //tell both players that game beginss
+                if (current_game.bothPlayersReady())
                 {
                     message.type = "gamestate";
                     message.message = 1;
 
-                    game.playerA.send(JSON.stringify(message));
-                //    game.playerB.send(JSON.stringify(message));
+                    current_game.sendBothPlayers(message);
+
                 }
             }
         }
@@ -114,11 +112,16 @@ server.listen(port, () =>{
 });
 
 /*
+::SOCKET CODES::
+
+--SEND TO PLAYER--
 status 0 : wait for player
 status 1 : start the game
 
-gamestate 0 : place Boats
-gamestate 1 : shoot (play the game)
+gamestate 0 : place boats
+gamestate 1 : Shoot
+gamestate 2 : wait for turn
 
+--SEND TO SERVER--
 playerstatus 0 : boats placed
 */
