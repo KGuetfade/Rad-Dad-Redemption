@@ -24,12 +24,12 @@ var id_counter = 0;
 var game_at_id = {};
 
 wss.on("connection", function(ws){
-    console.log("Socket connection made");
 
     /* Initialize client and game*/
     let client = ws;
     client.id = id_counter++;
     game_at_id[client.id] = game;
+    console.log("Socket connection made with ID: " + client.id);
 
     if(!game.hasTwoPlayers()){
         game.addPlayer(client);

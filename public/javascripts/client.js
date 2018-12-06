@@ -19,6 +19,7 @@ socket.onopen = function(event){
                 $("#state").html("You can now place your boats");
 
                 //place boats
+
                 let message = {
                     type: "playerstatus",
                     message: 0
@@ -28,7 +29,9 @@ socket.onopen = function(event){
             else if (data.message === 1)
             {
                 $("#state").html("You can now shoot the other player!");
+
                 //shoot
+                
             }
         }
     }
