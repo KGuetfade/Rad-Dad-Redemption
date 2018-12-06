@@ -8,8 +8,8 @@ socket.onopen = function(event){
 
         if (data.type === "string")
         {
-            alert(data.message);
-            //waitPlayer2(data);
+            //alert(data.message);
+            waitPlayer2(data);
 
         }
     }
