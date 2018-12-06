@@ -35,7 +35,7 @@ wss.on("connection", function(ws){
         game.addPlayer(client);
 
         if (game.hasOnePlayer()){
-            //player 1 has to wait for player 2 and can't make a move untill then
+            //player 1 has to wait for player 2 and can't make a move until then
             let message = {
                 type:"status",
                 message:0
@@ -44,21 +44,18 @@ wss.on("connection", function(ws){
             client.send(JSON.stringify(message));
         }
         else{
-            //2 players have connected, now both players have to put their boats?
+            //2 players have connected, now both players have to put their boats
             let message = {
                 type:"status",
                 message:1
             };
 
-            game.playerA.send(JSON.stringify(message));
-            game.playerB.send(JSON.stringify(message));
+            game.sendBothPlayers(message);
 
             message.type = "gamestate";
             message.message = 0;
 
-            game.playerA.send(JSON.stringify(message));
-            console.log()
-            game.playerB.send(JSON.stringify(message));
+            game.sendBothPlayers(message);
 
             game = new Game();
         }
@@ -75,6 +72,7 @@ wss.on("connection", function(ws){
 
         if (data.type === "playerstatus")
         {
+            //player is done placing boats
             if (data.message === 0)
             {
                 if (client === current_game.playerA){
@@ -84,13 +82,13 @@ wss.on("connection", function(ws){
                     current_game.playerB.ready = true;
                 }
 
+                //tell both players that game beginss
                 if (current_game.bothPlayersReady())
                 {
                     message.type = "gamestate";
                     message.message = 1;
 
-                    current_game.playerA.send(JSON.stringify(message));
-                    current_game.playerB.send(JSON.stringify(message));
+                    current_game.sendBothPlayers(message);
                 }
             }
         }
@@ -113,6 +111,8 @@ server.listen(port, () =>{
 });
 
 /*
+::SOCKET CODES::
+
 status 0 : wait for player
 status 1 : start the game
 

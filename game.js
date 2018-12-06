@@ -43,5 +43,10 @@ game.prototype.bothPlayersReady = function(){
     return false;
 }
 
+game.prototype.sendBothPlayers = function(message){
+    this.playerA.send(JSON.stringify(message));
+    this.playerB.send(JSON.stringify(message));
+}
+
 
 module.exports = game;
