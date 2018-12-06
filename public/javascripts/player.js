@@ -1,4 +1,3 @@
-
 var player = function(){
     this.board = []
     this.ships = 0;
@@ -26,4 +25,3 @@ player.prototype.Shoot = function(box){
 player.prototype.setBoats = function(){
     //set boats at beginning of game
 }
-

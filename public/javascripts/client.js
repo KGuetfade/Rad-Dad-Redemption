@@ -8,27 +8,6 @@ socket.onopen = function(event){
 
         if (data.type === "string")
         {
-<<<<<<< HEAD
-            //alert(data.message);
-            waitPlayer2(data);
-
-        }
-    }
-}
-
-var waitPlayer2 = function(data){
-    if (data.message === "Waiting for player 2")
-    {
-        $('#myModal').css("display", "block");
-    }
-
-    if (data.message === "2 Players in game, game will start")
-    {
-        $('#myModal').css("display", "none");
-    }
-}
-
-=======
             //waitPlayer2(data);
         }
 
@@ -104,4 +83,3 @@ var startTimer = function(){
     var x = setInterval(incSec, 1000);
     var y = setInterval(incMin, 60000);
 }
->>>>>>> f98e28b3d29e682cd9462cc76ea19698f1a63069
