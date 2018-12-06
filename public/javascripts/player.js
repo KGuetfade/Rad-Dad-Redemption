@@ -16,8 +16,8 @@ var player = function(){
 }
 
 player.prototype.Shoot = function(box){
-        var index = box.prevAll().length
-        var index2 = box.parent().prevAll().length;
+        var index = box.prevAll().length - 1;
+        var index2 = box.parent().prevAll().length - 1;
         var array = [index2, index];
         return array;
 }
