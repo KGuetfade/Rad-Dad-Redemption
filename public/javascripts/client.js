@@ -30,14 +30,12 @@ socket.onopen = function(event){
             {
                 $("#state").html("You can now shoot the other player!");
 
-                //see if enemy hit or missed
                 //shoot
                 //send to server
 
             }
             else if (data.message === 2)
             {
-                //see if you hit or missed
                 //disable board click?
                 //wait for player 1 to shoot
             }
