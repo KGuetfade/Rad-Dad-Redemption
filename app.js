@@ -57,6 +57,7 @@ wss.on("connection", function(ws){
             message.message = 0;
 
             game.playerA.send(JSON.stringify(message));
+            console.log()
             game.playerB.send(JSON.stringify(message));
 
             game = new Game();

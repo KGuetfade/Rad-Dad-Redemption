@@ -18,7 +18,6 @@ socket.onopen = function(event){
                 $("#state").html("You can now place your boats");
 
                 //place boats
-
                 let message = {
                     type: "playerstatus",
                     message: 0
