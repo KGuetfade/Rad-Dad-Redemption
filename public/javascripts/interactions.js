@@ -54,8 +54,6 @@ $(".board-item").hover(function(){
     }
     }
 
-<<<<<<< HEAD
-    $(function(){
 
         var j = 1;
         var i = 0;
@@ -106,9 +104,6 @@ $(".board-item").hover(function(){
                 $(this).css("background-color","#00008B");
             }
             }
-=======
-});
->>>>>>> f98e28b3d29e682cd9462cc76ea19698f1a63069
 
 $(".board-item").mouseleave(function(){
     var cell = $(this).next('td');
@@ -161,6 +156,9 @@ $(".board-item").mouseleave(function(){
 }
 });
 */
+$(".board-itemE").on("click", function(){
+    alert(player1.Shoot($(this)));
+});
 
 $(".board-item").on("click", function(){
 
@@ -334,4 +332,4 @@ $(document).keydown(function(event) {
 
 });
 
-    event.preventDefault();
+    //event.preventDefault();
