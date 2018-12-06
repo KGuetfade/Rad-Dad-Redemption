@@ -40,12 +40,30 @@ $(function(){
             var cell3 = cell2.next('td');
             var index = $(this).prevAll().length
             var index2 = $(this).parent().prevAll().length;
-            if(j === 0 && array[i] === 4 && player1.board[index2-1][index-1] !== 1 && player1.board[index2-1][index] !== 1 && player1.board[index2-1][index+1] !== 1 && player1.board[index2-1][index+2] !== 1){
+            var cellBelow = $(this).parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+            var cellBelow2 = cellBelow.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+            var cellBelow3 = cellBelow2.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+            if(player1.board[index2-1][index-1] !== 1){
+            if(j === 0 && array[i] === 4 && player1.board[index2-1][index] !== 1 && player1.board[index2-1][index+1] !== 1 && player1.board[index2-1][index+2] !== 1){
             cell.css("background-color","#00008B");
             cell2.css("background-color","#00008B");
             cell3.css("background-color","#00008B");
             $(this).css("background-color","#00008B");
             }
+            else if(j === 0 && array[i] === 3 && player1.board[index2-1][index] !== 1 && player1.board[index2-1][index+1] !== 1){
+                cell.css("background-color","#00008B");
+                cell2.css("background-color","#00008B");
+                $(this).css("background-color","#00008B"); 
+            }
+            else if(j === 0 && array[i] === 2 && player1.board[index2-1][index] !== 1){
+                cell.css("background-color","#00008B");
+                $(this).css("background-color","#00008B"); 
+            }
+            else if(j===0 && array[i]===1){
+                $(this).css("background-color", "#00008B");
+            }
+            }
+
         });
     
         $(".board-item").mouseleave(function(){
@@ -54,12 +72,24 @@ $(function(){
             var cell3 = cell2.next('td');
             var index = $(this).prevAll().length
             var index2 = $(this).parent().prevAll().length;
-            if(j === 0 && array[i] === 4 && player1.board[index2-1][index-1] !== 1 && player1.board[index2-1][index] !== 1 && player1.board[index2-1][index+1] !== 1 && player1.board[index2-1][index+2] !== 1){
+            if(player1.board[index2-1][index-1] !== 1 && player1.board[index2-1][index] !== 1 && player1.board[index2-1][index+1] !== 1 && player1.board[index2-1][index+2] !== 1){
             cell.css("background-color","transparent");
             cell2.css("background-color","transparent");
             cell3.css("background-color","transparent");
             $(this).css("background-color","transparent");
             }
+            else if(player1.board[index2-1][index+2] === 1 && player1.board[index2-1][index+1] !== 1 && player1.board[index2-1][index] !== 1){
+                cell.css("background-color","transparent");
+                cell2.css("background-color","transparent");
+                $(this).css("background-color","transparent"); 
+            }
+            else if(player1.board[index2-1][index+1] === 1 && player1.board[index2-1][index] !== 1){
+                cell.css("background-color","transparent");
+                $(this).css("background-color","transparent"); 
+            }
+            else if(player1.board[index2-1][index-1] !== 1){
+                $(this).css("background-color","transparent"); 
+        }
         });
 
         $(".board-item").on("click", function(){
