@@ -1,7 +1,5 @@
 var player1 = new player();
 
-$(function(){
-    
     var seconds = 0;
     var minutes = 0;
 $(function(){
@@ -65,7 +63,7 @@ $(".board-item").hover(function(){
         var j = 1;
         var i = 0;
         var array = [4, 3, 2, 1];
-        
+
         /*
         $(".board-item").hover(function(){
             var cell = $(this).next('td');
@@ -86,11 +84,11 @@ $(".board-item").hover(function(){
             else if(j === 0 && array[i] === 3 && player1.board[index2-1][index] !== 1 && player1.board[index2-1][index+1] !== 1){
                 cell.css("background-color","#00008B");
                 cell2.css("background-color","#00008B");
-                $(this).css("background-color","#00008B"); 
+                $(this).css("background-color","#00008B");
             }
             else if(j === 0 && array[i] === 2 && player1.board[index2-1][index] !== 1){
                 cell.css("background-color","#00008B");
-                $(this).css("background-color","#00008B"); 
+                $(this).css("background-color","#00008B");
             }
             else if(array[i]===1){
                 $(this).css("background-color", "#00008B");
@@ -164,6 +162,10 @@ $(".board-item").mouseleave(function(){
 }
 });
 */
+
+$(".board-itemE").on("click", function(){
+    alert(player1.Shoot($(this)));
+});
 
 $(".board-item").on("click", function(){
 
@@ -334,8 +336,5 @@ $(document).keydown(function(event) {
 
         default: return;
     }
-
-});
-
     event.preventDefault();
 });
