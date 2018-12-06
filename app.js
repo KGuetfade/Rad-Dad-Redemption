@@ -52,7 +52,7 @@ wss.on("connection", function(ws){
 
             game.playerA.send(JSON.stringify(message));
             game.playerB.send(JSON.stringify(message));
-
+            console.log(game.playerA);
             message.type = "gamestate";
             message.message = 0;
 
