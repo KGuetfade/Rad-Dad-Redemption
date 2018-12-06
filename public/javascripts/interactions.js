@@ -1,7 +1,3 @@
-var player1 = new player();
-
-    var seconds = 0;
-    var minutes = 0;
 $(function(){
 
 });

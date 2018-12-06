@@ -6,7 +6,7 @@ socket.onopen = function(event){
     socket.onmessage = function(event){
         data = JSON.parse(event.data);
 
-        if (data.type === "string")
+        if (data.type === "status")
         {
             //waitPlayer2(data);
         }
