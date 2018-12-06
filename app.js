@@ -113,11 +113,13 @@ server.listen(port, () =>{
 /*
 ::SOCKET CODES::
 
+--SEND TO PLAYER--
 status 0 : wait for player
 status 1 : start the game
 
 gamestate 0 : place Boats
 gamestate 1 : shoot (play the game)
 
+--SEND TO SERVER--
 playerstatus 0 : boats placed
 */
