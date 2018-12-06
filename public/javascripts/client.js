@@ -13,6 +13,33 @@ socket.onopen = function(event){
 
         }
     }
+    
+    var seconds = 0;
+    var minutes = 0;
+
+    function incMin(){
+       minutes++;
+       document.getElementById("time").innerHTML = minutes + ":0" + seconds;
+    }
+
+    function incSec(){
+    if(seconds === 59) {
+        seconds = 0;
+        document.getElementById("time").innerHTML = minutes + ":0" + seconds;
+    }
+    else {
+        seconds++;
+        if(seconds < 10){
+            document.getElementById("time").innerHTML = minutes + ":0" + seconds;
+        }
+        else{
+            document.getElementById("time").innerHTML = minutes + ":" + seconds;
+        }
+    }
+    }
+    
+    var x = setInterval(incSec, 1000);
+    var y = setInterval(incMin, 60000);
 }
 
 var waitPlayer2 = function(data){
@@ -26,3 +53,4 @@ var waitPlayer2 = function(data){
         $('#myModal').css("display", "none");
     }
 }
+
