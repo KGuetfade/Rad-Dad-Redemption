@@ -89,6 +89,7 @@ wss.on("connection", function(ws){
                     message.message = 1;
 
                     current_game.sendBothPlayers(message);
+
                 }
             }
         }
@@ -118,7 +119,8 @@ status 0 : wait for player
 status 1 : start the game
 
 gamestate 0 : place Boats
-gamestate 1 : shoot (play the game)
+gamestate 1 : Shoot
+gamestate 2 : wait for turn
 
 --SEND TO SERVER--
 playerstatus 0 : boats placed
