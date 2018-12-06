@@ -118,7 +118,7 @@ server.listen(port, () =>{
 status 0 : wait for player
 status 1 : start the game
 
-gamestate 0 : place Boats
+gamestate 0 : place boats
 gamestate 1 : Shoot
 gamestate 2 : wait for turn
 
