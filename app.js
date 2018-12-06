@@ -52,7 +52,7 @@ wss.on("connection", function(ws){
 
             game.playerA.send(JSON.stringify(message));
             game.playerB.send(JSON.stringify(message));
-            console.log(game.playerA);
+
             message.type = "gamestate";
             message.message = 0;
 
@@ -66,6 +66,7 @@ wss.on("connection", function(ws){
 
     client.on("message", function(raw_data){
         let current_game = game_at_id[client.id];
+
         let data = JSON.parse(raw_data);
         let message = {
             type:null,
@@ -74,24 +75,22 @@ wss.on("connection", function(ws){
 
         if (data.type === "playerstatus")
         {
-            console.log("playerstatus")
             if (data.message === 0)
             {
-                console.log("0")
-                if (client === game.playerA){
-                    game.playerA.ready = true;
+                if (client === current_game.playerA){
+                    current_game.playerA.ready = true;
                 }
-                else if (client === game.playerB){
-                    game.playerB.ready = true;
+                else if (client === current_game.playerB){
+                    current_game.playerB.ready = true;
                 }
 
-                if (game.bothPlayersReady())
+                if (current_game.bothPlayersReady())
                 {
                     message.type = "gamestate";
                     message.message = 1;
 
-                    game.playerA.send(JSON.stringify(message));
-                //    game.playerB.send(JSON.stringify(message));
+                    current_game.playerA.send(JSON.stringify(message));
+                    current_game.playerB.send(JSON.stringify(message));
                 }
             }
         }

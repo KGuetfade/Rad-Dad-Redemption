@@ -15,6 +15,7 @@ socket.onopen = function(event){
         {
             if (data.message === 0)
             {
+                startTimer();
                 $("#state").html("You can now place your boats");
 
                 //place boats
@@ -31,7 +32,21 @@ socket.onopen = function(event){
             }
         }
     }
-    
+}
+
+var waitPlayer2 = function(data){
+    if (data.message === 0)
+    {
+        $('#myModal').css("display", "block");
+    }
+
+    if (data.message === 1)
+    {
+        $('#myModal').css("display", "none");
+    }
+}
+
+var startTimer = function(){
     var seconds = 0;
     var minutes = 0;
 
@@ -55,20 +70,7 @@ socket.onopen = function(event){
         }
     }
     }
-    
+
     var x = setInterval(incSec, 1000);
     var y = setInterval(incMin, 60000);
 }
-
-var waitPlayer2 = function(data){
-    if (data.message === 0)
-    {
-        $('#myModal').css("display", "block");
-    }
-
-    if (data.message === 1)
-    {
-        $('#myModal').css("display", "none");
-    }
-}
-
