@@ -35,12 +35,15 @@ socket.onopen = function(event){
             else if (data.message === 1)
             {
                 $("#state").html("Your turn to shoot");
+                $("#buttonReady").off("click");
                 shoot();
             }
             /*wait for turn*/
             else if (data.message === 2)
             {
                 $("#state").html("Opponent's turn to shoot");
+                $("#buttonReady").off("click");
+                $(".board-itemE").off("click")
                 //disable board click?
                 //wait for player 1 to shoot
             }
