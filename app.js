@@ -35,7 +35,7 @@ wss.on("connection", function(ws){
         game.addPlayer(client);
 
         if (game.hasOnePlayer()){
-            //player 1 has to wait for player 2 and can't make a move until then
+            /*player 1 has to wait for player 2 and can't make a move until then*/
             let message = {
                 type:"status",
                 message:0
@@ -44,7 +44,7 @@ wss.on("connection", function(ws){
             client.send(JSON.stringify(message));
         }
         else{
-            //2 players have connected, now both players have to put their boats
+            /*2 players have connected, now both players have to put their boats*/
             let message = {
                 type:"status",
                 message:1
@@ -52,9 +52,15 @@ wss.on("connection", function(ws){
 
             game.sendBothPlayers(message);
 
+            /*send playerB nickname of playerA*/
+            message.type = "serverdata";
+            message.message = 0;
+            message.data = game.playerA.nickname;
+            game.playerB.send(JSON.stringify(message));
+
+            /*send both players that they can place boats*/
             message.type = "gamestate";
             message.message = 0;
-
             game.sendBothPlayers(message);
 
             game = new Game();
@@ -93,7 +99,6 @@ wss.on("connection", function(ws){
 
                     message.message = 2;
                     current_game.playerB.send(JSON.stringify(message));
-
                 }
             }
         }
@@ -101,8 +106,28 @@ wss.on("connection", function(ws){
         /*playerdata*/
         if (data.type === "playerdata")
         {
-            /*array*/
+            /*nickname*/
             if (data.message === 0)
+            {
+                if (client === current_game.playerA){
+                    current_game.playerA.nickname = data.data;
+                    console.log("player A nickname: " + current_game.playerA.nickname);
+                }
+                else if (client === current_game.playerB){
+                    current_game.playerB.nickname = data.data;
+                    console.log("player B nickname: " + current_game.playerB.nickname);
+
+                    /*send playerA nickname of playerB*/
+                    let message = {
+                        type:"serverdata",
+                        message:0,
+                        data:current_game.playerB.nickname
+                    };
+                    current_game.playerA.send(JSON.stringify(message));
+                }
+            }
+            /*array*/
+            if (data.message === 1)
             {
                 if (client === current_game.playerA){
                     current_game.playerA.board = data.data;
@@ -114,7 +139,7 @@ wss.on("connection", function(ws){
                 }
             }
             /*shoot coordinates*/
-            else if (data.message === 1)
+            else if (data.message === 2)
             {
                 if (client === current_game.playerA){
                     current_game.playerA.shootCoords = data.data;
@@ -155,9 +180,12 @@ gamestate 0 : place boats
 gamestate 1 : Shoot
 gamestate 2 : wait for turn
 
+serverdata 0 : nickname
+
 --SEND TO SERVER--
 playerstatus 0 : boats placed
 
-playerdata 0 : array
-playerdata 1 : shoot coordinates
+playerdata 0 : nickname
+playerdata 1 : array
+playerdata 2 : shoot coordinates
 */

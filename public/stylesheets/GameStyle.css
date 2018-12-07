@@ -3,9 +3,10 @@ table, th, td{
     border-collapse: collapse;
 }
 
+/*
 body {
     overflow: hidden;
-}
+}*/
 
 th, td{
     height: 45px;
@@ -117,4 +118,10 @@ h4 {
 
 #buttonReadyWrapper{
     display: none;
+}
+
+#your_name, #other_name{
+    color:#ffffff;
+    font: 20px Courier;
+    display: block;
 }

@@ -4,14 +4,24 @@ var nickname = localStorage.getItem("user_nickname");
 
 socket.onopen = function(event){
 
+    //send nickname to server
+    let message = {
+        type:"playerdata",
+        message:0,
+        data:nickname
+    };
+    socket.send(JSON.stringify(message));
+
     socket.onmessage = function(event){
         data = JSON.parse(event.data);
 
+        /*status*/
         if (data.type === "status")
         {
             waitPlayer2(data);
         }
 
+        /*gamestate*/
         if (data.type === "gamestate")
         {
             /*place boats*/
@@ -36,6 +46,18 @@ socket.onopen = function(event){
                 //wait for player 1 to shoot
             }
         }
+
+        /*serverdata*/
+        if (data.type === "serverdata")
+        {
+            /*nickname*/
+            if (data.message === 0)
+            {
+                /*set nicknames*/
+                $("#other_name").html(data.data);
+                $("#your_name").html(nickname);
+            }
+        }
     }
 }
 
@@ -47,7 +69,7 @@ var placeBoats = function(){
 
         let message = {
             type: "playerdata",
-            message:0,
+            message:1,
             data:player.board
         };
         socket.send(JSON.stringify(message));
@@ -65,7 +87,7 @@ var shoot = function(){
         let cell = $(this);
         let message = {
             type: "playerdata",
-            message: 1,
+            message: 2,
             data: player.Shoot(cell)
         };
 

@@ -8,6 +8,7 @@ Game.prototype.addPlayer = function(player){
     if (this.playerA === null)
     {
         this.playerA = player;
+        this.playerA.nickname = "";
         this.playerA.ready = false;
         this.playerA.board = [];
         this.playerA.shootCoords = [-1,-1];
@@ -15,6 +16,7 @@ Game.prototype.addPlayer = function(player){
     else if (this.playerB === null)
     {
         this.playerB = player;
+        this.playerB.nickname = "";
         this.playerB.ready = false;
         this.playerB.board = [];
         this.playerB.shootCoords = [-1,-1];
