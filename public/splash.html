@@ -47,12 +47,14 @@
 
             document.getElementById("nickname-submit").addEventListener("click", function()
             {
-                if (document.getElementById("nickname-input").value === "")
+                var nickname = document.getElementById("nickname-input").value;
+                if (nickname === "")
                 {
-                    alert("ENTER A FUCKING NICKNAME");
+                    alert("ENTER A NICKNAME");
                 }
                 else
                 {
+                    localStorage.setItem("user_nickname", nickname);
                     document.getElementById("gameLink").click();
                 }
             });

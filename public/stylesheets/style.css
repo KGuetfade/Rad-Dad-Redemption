@@ -65,7 +65,7 @@ a {
     border-color: #ffcccc;
     border-width: 2px;
     border-style: solid;
-    width: 50%;
+    width: 48%;
     padding: 10px;
 }
 
@@ -84,7 +84,7 @@ textarea:focus{
     margin: 10px auto;
     font-family: 'Courier New', Courier, monospace !important;
     font-size: 30px !important;
-    width:40%;
+    width:55%;
     height: 50px;
     margin-top: 20px !important;
     border: 2px solid gray;

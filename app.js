@@ -70,6 +70,7 @@ wss.on("connection", function(ws){
             message:null
         };
 
+        /*playerstatus*/
         if (data.type === "playerstatus")
         {
             //player is done placing boats
@@ -93,6 +94,23 @@ wss.on("connection", function(ws){
                     message.message = 2;
                     current_game.playerB.send(JSON.stringify(message));
 
+                }
+            }
+        }
+
+        /*playerdata*/
+        if (data.type === "playerdata")
+        {
+            /*array*/
+            if (data.message === 0)
+            {
+                if (client === current_game.playerA){
+                    current_game.playerA.board = data.data;
+                    console.log(current_game.playerA.board);
+                }
+                else if (client === current_game.playerB){
+                    current_game.playerB.board = data.data;
+                    console.log(current_game.playerB.board);
                 }
             }
         }
@@ -127,4 +145,7 @@ gamestate 2 : wait for turn
 
 --SEND TO SERVER--
 playerstatus 0 : boats placed
+
+playerdata 0 : array
+playerdata 1 : shoot coordinates
 */

@@ -1,24 +1,25 @@
-
-var game = function(){
+var Game = function(){
     this.playerA = null;
     this.playerB = null;
     this.state = 0;
 }
 
-game.prototype.addPlayer = function(player){
+Game.prototype.addPlayer = function(player){
     if (this.playerA === null)
     {
         this.playerA = player;
         this.playerA.ready = false;
+        this.playerA.board = [];
     }
     else if (this.playerB === null)
     {
         this.playerB = player;
         this.playerB.ready = false;
+        this.playerB.board = [];
     }
 }
 
-game.prototype.hasTwoPlayers = function(){
+Game.prototype.hasTwoPlayers = function(){
     if (this.playerA != null && this.playerB != null)
     {
         return true;
@@ -27,7 +28,7 @@ game.prototype.hasTwoPlayers = function(){
     return false;
 }
 
-game.prototype.hasOnePlayer = function(){
+Game.prototype.hasOnePlayer = function(){
     if ((this.playerA != null && this.playerB === null) || (this.playerA === null && this.playerB != null)){
         return true;
     }
@@ -35,7 +36,7 @@ game.prototype.hasOnePlayer = function(){
     return false;
 }
 
-game.prototype.bothPlayersReady = function(){
+Game.prototype.bothPlayersReady = function(){
     if (this.playerA.ready && this.playerB.ready){
         return true;
     }
@@ -43,7 +44,7 @@ game.prototype.bothPlayersReady = function(){
     return false;
 }
 
-game.prototype.sendBothPlayers = function(message){
+Game.prototype.sendBothPlayers = function(message){
     this.playerA.send(JSON.stringify(message));
     this.playerB.send(JSON.stringify(message));
 }

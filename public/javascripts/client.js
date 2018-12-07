@@ -1,5 +1,6 @@
 var socket = new WebSocket("ws://localhost:3000")
-var player = new player();
+var player1 = new Player();
+var nickname = localStorage.getItem("user_nickname");
 
 socket.onopen = function(event){
 
@@ -13,34 +14,52 @@ socket.onopen = function(event){
 
         if (data.type === "gamestate")
         {
+            /*place boats*/
             if (data.message === 0)
             {
                 startTimer();
                 $("#state").html("You can now place your boats");
-
-                //place boats
-
-                let message = {
-                    type: "playerstatus",
-                    message: 0
-                };
-                socket.send(JSON.stringify(message));
+                placeBoats();
             }
+            /*shoot*/
             else if (data.message === 1)
             {
-                $("#state").html("You can now shoot the other player!");
+                $("#state").html("Your turn to shoot");
 
                 //shoot
                 //send to server
 
             }
+            /*wait for turn*/
             else if (data.message === 2)
             {
+                $("#state").html("Opponent's turn to shoot");
                 //disable board click?
                 //wait for player 1 to shoot
             }
         }
     }
+}
+
+var placeBoats = function(){
+    $("#buttonReady").on("click", function(){
+        //check if all boats are placed
+        $('#buttonReadyWrapper').css("display", "none");
+        $("#state").html("Waiting for other player to be ready");
+
+        let message = {
+            type: "playerdata",
+            message:0,
+            data:player.board
+        };
+        socket.send(JSON.stringify(message));
+
+        message.type = "playerstatus";
+        message.message = 0;
+        message.data = 0;
+
+        socket.send(JSON.stringify(message));
+    });
 }
 
 var waitPlayer2 = function(data){
@@ -52,6 +71,7 @@ var waitPlayer2 = function(data){
     if (data.message === 1)
     {
         $('#myModal').css("display", "none");
+        $('#buttonReadyWrapper').css("display", "block");
     }
 }
 
