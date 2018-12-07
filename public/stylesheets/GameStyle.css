@@ -26,6 +26,7 @@ th, td{
 .center-side{
     margin-bottom: 20px;
     text-align: center;
+    transform: translateY(-20px);
 }
 
 .center-side > h3 {
@@ -87,3 +88,29 @@ h4 {
     transform: translateY(-650px);
     position: static;
 }
+
+button {
+    width: 150px;
+    height: 50px;
+    background-color: #696969;
+    border: none;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 12px;
+    display: block;
+    margin: -20px;
+    font-family: 'Courier New', Courier, monospace;
+    outline: 0;
+    position: relative;
+  }
+
+  #ready:hover {
+    background-color: #696969;
+  }
+  
+  #ready:active {
+    background-color: #696969;
+    box-shadow: 0 5px #666;
+    transform: translate(0px, 4px);
+  }

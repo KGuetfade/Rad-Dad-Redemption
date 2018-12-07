@@ -310,6 +310,11 @@ $(".board-item").on("click", function(){
         else if(array[i] === 1){
             document.getElementById("number").innerHTML = "(" + one + ")";
         }
+
+        if(four ===0 && three === 0 && two === 0 && one === 0){
+            $("ready").css("background-color", "gray");
+            $("ready").addId("ready");
+        }
 });
 
 $(document).keydown(function(event) {
