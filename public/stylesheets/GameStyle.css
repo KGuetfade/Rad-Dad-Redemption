@@ -83,7 +83,7 @@ h4 {
     display: block;
 }
 
-p{
+#number{
     transform: translateY(-650px);
     position: static;
 }

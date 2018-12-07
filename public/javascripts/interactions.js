@@ -1,16 +1,5 @@
 $(function(){
-    if(array[i] === 4){
-        document.getElementById("number").innerHTML = "(" + four + ")";
-    }
-    else if(array[i] === 3){
-        document.getElementById("number").innerHTML = "(" + three + ")";
-    }
-    else if(array[i] === 2){
-        document.getElementById("number").innerHTML = "(" + two + ")";
-    }
-    else if(array[i] === 1){
-        document.getElementById("number").innerHTML = "(" + one + ")";
-    }
+
 });
 
 var player1 = new player();
@@ -23,6 +12,10 @@ var four = 1;
 var three = 2;
 var two = 3;
 var one = 4;
+
+i.onChange = function(){
+    alert("sdfsdf");
+}
 
 /*
 $(".board-item").hover(function(){
