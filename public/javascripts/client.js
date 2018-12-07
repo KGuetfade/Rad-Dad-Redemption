@@ -25,9 +25,7 @@ socket.onopen = function(event){
             else if (data.message === 1)
             {
                 $("#state").html("Your turn to shoot");
-
-                //shoot
-                //send to server
+                shoot();
 
             }
             /*wait for turn*/
@@ -57,6 +55,19 @@ var placeBoats = function(){
         message.type = "playerstatus";
         message.message = 0;
         message.data = 0;
+
+        socket.send(JSON.stringify(message));
+    });
+}
+
+var shoot = function(){
+    $(".board-itemE").on("click", function(){
+        let cell = $(this);
+        let message = {
+            type: "playerdata",
+            message: 1,
+            data: player.Shoot(cell)
+        };
 
         socket.send(JSON.stringify(message));
     });

@@ -164,11 +164,6 @@ $(".board-item").mouseleave(function(){
 });
 */
 
-
-$(".board-itemE").on("click", function(){
-    alert(player.Shoot($(this)));
-});
-
 $(".board-item").on("click", function(){
 
     var cell = $(this);

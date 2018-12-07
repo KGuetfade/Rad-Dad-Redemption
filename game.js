@@ -10,12 +10,14 @@ Game.prototype.addPlayer = function(player){
         this.playerA = player;
         this.playerA.ready = false;
         this.playerA.board = [];
+        this.playerA.shootCoords = [-1,-1];
     }
     else if (this.playerB === null)
     {
         this.playerB = player;
         this.playerB.ready = false;
         this.playerB.board = [];
+        this.playerB.shootCoords = [-1,-1];
     }
 }
 

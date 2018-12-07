@@ -73,7 +73,7 @@ wss.on("connection", function(ws){
         /*playerstatus*/
         if (data.type === "playerstatus")
         {
-            //player is done placing boats
+            /*player is done placing boats*/
             if (data.message === 0)
             {
                 if (client === current_game.playerA){
@@ -83,7 +83,7 @@ wss.on("connection", function(ws){
                     current_game.playerB.ready = true;
                 }
 
-                //tell both players that game begins
+                /*tell both players that game begins*/
                 if (current_game.bothPlayersReady())
                 {
                     message.type = "gamestate";
@@ -111,6 +111,18 @@ wss.on("connection", function(ws){
                 else if (client === current_game.playerB){
                     current_game.playerB.board = data.data;
                     console.log(current_game.playerB.board);
+                }
+            }
+            /*shoot coordinates*/
+            else if (data.message === 1)
+            {
+                if (client === current_game.playerA){
+                    current_game.playerA.shootCoords = data.data;
+                    console.log(current_game.playerA.shootCoords);
+                }
+                else if (client === current_game.playerB){
+                    current_game.playerB.shootCoords = data.data;
+                    console.log(current_game.playerB.shootCoords);
                 }
             }
         }
