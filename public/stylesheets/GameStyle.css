@@ -82,3 +82,8 @@ h4 {
     font: 20px Courier;
     display: block;
 }
+
+p{
+    transform: translateY(-650px);
+    position: static;
+}
