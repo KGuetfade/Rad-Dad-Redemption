@@ -22,6 +22,15 @@ player.prototype.Shoot = function(box){
         return array;
 }
 
+player.prototype.HitorMis = function(array){
+    if(board[array[0]][array[1]] === 1){
+        return true;
+    }
+    else if(board[array[0]][array[1]] === 0){
+        return false;
+    }
+}
+
 player.prototype.setBoats = function(){
     //set boats at beginning of game
 }
