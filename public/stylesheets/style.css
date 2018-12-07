@@ -39,12 +39,10 @@ a {
 }
 
 /*NICKNAME*/
-
 .nickname-container {
     font-family: 'Courier New', Courier, monospace !important;
     font-size: 50px !important;
     background-color: gray;
-    /*background-image: url("../images/peter.png");*/
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;

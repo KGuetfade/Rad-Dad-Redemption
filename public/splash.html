@@ -47,7 +47,14 @@
 
             document.getElementById("nickname-submit").addEventListener("click", function()
             {
-                document.getElementById("gameLink").click();
+                if (document.getElementById("nickname-input").value === "")
+                {
+                    alert("ENTER A FUCKING NICKNAME");
+                }
+                else
+                {
+                    document.getElementById("gameLink").click();
+                }
             });
         </script>
 
