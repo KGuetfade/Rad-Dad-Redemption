@@ -16,9 +16,9 @@
         </h2>
 
             <center>
-        <a href="/game">
-        <button class="buttonA">Start</button>
-        </a>
+        <!--<a href="/game">-->
+        <button class="buttonA" id="buttonStart">Start</button>
+        <!--</a>-->
 
         <a href="HowToPlay.html">
         <button class="buttonB">How to play</button>
@@ -30,6 +30,26 @@
         <p class="par1">People playing:</p>
         <p class="par2">Amount of games:</p>
         <p class="par3">Highscore:</p>
+
+        <div class="modal" id="nicknameModal">
+            <div class="nickname-container">
+                    <label for="nickname" id="nickname-label">Nickname</label>
+                    <input type="text" id="nickname-input" placeholder="E.g. Jeff" required>
+                    <input type="submit" id="nickname-submit" value="Play!">
+                    <a href="/game" style="display:none;" id="gameLink"></a>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById("buttonStart").addEventListener("click", function(){
+                document.getElementById("nicknameModal").style.display = "block";
+            });
+
+            document.getElementById("nickname-submit").addEventListener("click", function()
+            {
+                document.getElementById("gameLink").click();
+            });
+        </script>
 
     </body>
 </html>

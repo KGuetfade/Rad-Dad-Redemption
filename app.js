@@ -82,7 +82,7 @@ wss.on("connection", function(ws){
                     current_game.playerB.ready = true;
                 }
 
-                //tell both players that game beginss
+                //tell both players that game begins
                 if (current_game.bothPlayersReady())
                 {
                     message.type = "gamestate";
