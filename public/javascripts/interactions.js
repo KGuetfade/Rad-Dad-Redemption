@@ -177,7 +177,7 @@ $(".board-item").on("click", function(){
     var cellBelow2 = cellBelow.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
     var cellBelow3 = cellBelow2.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
 
-    if(array[i] === 4 && player.board[index2-1][index-1] !== 1){
+    if(array[i] === 4 && player.board[index2-1][index-1] !== 1 && four !== 0){
     if (!(cell.prop("tagName") === "TH"))
     {
         if(j === 0 && cell4.prevAll().length !== 0 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1 && player.board[index2-1][index+2] !== 1){
@@ -220,7 +220,7 @@ $(".board-item").on("click", function(){
         }
     }
     }
-    else if(array[i] === 3 && player.board[index2-1][index-1] !== 1){
+    else if(array[i] === 3 && player.board[index2-1][index-1] !== 1 && three !== 0){
         if (!(cell.prop("tagName") === "TH"))
         {
             if(j === 0 && cell3.prevAll().length !== 0 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1){
@@ -255,7 +255,7 @@ $(".board-item").on("click", function(){
                 three--;                     }
         }
         }
-    else if(array[i] === 2 && player.board[index2-1][index-1] !== 1){
+    else if(array[i] === 2 && player.board[index2-1][index-1] !== 1 && two !== 0){
         if (!(cell.prop("tagName") === "TH"))
         {
             if(j === 0 && cell2.prevAll().length !== 0 && player.board[index2-1][index] !== 1){
@@ -282,7 +282,7 @@ $(".board-item").on("click", function(){
                 }
         }
         }
-    else if(array[i] === 1 && player.board[index2-1][index-1] !== 1){
+    else if(array[i] === 1 && player.board[index2-1][index-1] !== 1 && one !== 0){
         if (!(cell.prop("tagName") === "TH"))
         {
             cell.css("background-color", "gray");
