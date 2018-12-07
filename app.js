@@ -172,11 +172,27 @@ wss.on("connection", function(ws){
             /*hit or miss*/
             else if (data.message === 3)
             {
+                let message = {
+                    type:"gamestate",
+                    message:1
+                };
+
+                /*if miss then other player can now shoot*/
                 if (client === current_game.playerA){
-                    //do something
+                    if (!data.data)
+                    {
+                        current_game.playerA.send(JSON.stringify(message));
+                        message.message = 2;
+                        current_game.playerB.send(JSON.stringify(message));
+                    }
                 }
                 else if (client === current_game.playerB){
-                    //do something
+                    if (!data.data)
+                    {
+                        current_game.playerB.send(JSON.stringify(message));
+                        message.message = 2;
+                        current_game.playerA.send(JSON.stringify(message));
+                    }
                 }
             }
         }
