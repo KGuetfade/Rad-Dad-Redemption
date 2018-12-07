@@ -50,4 +50,4 @@ Game.prototype.sendBothPlayers = function(message){
 }
 
 
-module.exports = game;
+module.exports = Game;
