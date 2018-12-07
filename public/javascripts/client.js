@@ -8,7 +8,7 @@ socket.onopen = function(event){
 
         if (data.type === "status")
         {
-            //waitPlayer2(data);
+            waitPlayer2(data);
         }
 
         if (data.type === "gamestate")

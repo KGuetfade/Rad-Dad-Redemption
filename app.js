@@ -6,15 +6,15 @@ const websocket = require("ws");
 const app = express();
 const port = process.argv[2];
 
-var Game = require("./game.js")
+var indexRouter = require("./routes/index.js");
+var Game = require("./game.js");
 
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname + '/public')));
 
-app.get("/", function(req, res) {
-      res.statusCode = 200;
-      res.sendFile("splash.html", {root: "./public"});
-})
+app.get("/", indexRouter);
+app.get("/splash", indexRouter);
+app.get("/game", indexRouter);
 
 var server = http.createServer(app);
 const wss = new websocket.Server({ server });
@@ -86,9 +86,12 @@ wss.on("connection", function(ws){
                 if (current_game.bothPlayersReady())
                 {
                     message.type = "gamestate";
-                    message.message = 1;
 
-                    current_game.sendBothPlayers(message);
+                    message.message = 1;
+                    current_game.playerA.send(JSON.stringify(message));
+
+                    message.message = 2;
+                    current_game.playerB.send(JSON.stringify(message));
 
                 }
             }
