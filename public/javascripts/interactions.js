@@ -8,6 +8,11 @@ var j = 1;
 var i = 0;
 var array = [4, 3, 2, 1];
 
+var four = 1;
+var three = 2;
+var two = 3;
+var one = 4;
+
 /*
 $(".board-item").hover(function(){
     var cell = $(this).next('td');
@@ -187,7 +192,16 @@ $(".board-item").on("click", function(){
         player1.board[index2-1][index - 1] = 1;
         player1.board[index2-1][index] = 1;
         player1.board[index2-1][index + 1] = 1;
-        player1.board[index2-1][index + 2] = 1;
+        player1.board[index2-1][index + 2] = 1;  
+        cell.removeClass("board-item");
+        cell2.removeClass("board-item");
+        cell3.removeClass("board-item");
+        cell4.removeClass("board-item");
+        cell.addClass("fourBoat");
+        cell2.addClass("fourBoat");
+        cell3.addClass("fourBoat");
+        cell4.addClass("fourBoat");
+        four--;
         }
         else if(j === 1 && cellBelow3.prevAll().length !== 0 && player1.board[index2][index-1] !== 1 && player1.board[index2+1][index-1] !== 1 && player1.board[index2+2][index-1] !== 1){
         cell.css("background-color", "gray");
@@ -198,6 +212,15 @@ $(".board-item").on("click", function(){
         player1.board[index2][index - 1] = 1;
         player1.board[index2 + 1][index - 1] = 1;
         player1.board[index2 + 2][index - 1] = 1;
+        cell.removeClass("board-item");
+        cellBelow.removeClass("board-item");
+        cellBelow2.removeClass("board-item");
+        cellBelow3.removeClass("board-item");
+        cell.addClass("fourBoat");
+        cellBelow.addClass("fourBoat");
+        cellBelow2.addClass("fourBoat");
+        cellBelow3.addClass("fourBoat");
+        four--;
         }
     }
     }
@@ -211,6 +234,13 @@ $(".board-item").on("click", function(){
                 player1.board[index2-1][index - 1] = 1;
                 player1.board[index2-1][index] = 1;
                 player1.board[index2-1][index + 1] = 1;
+                cell.removeClass("board-item");
+                cell2.removeClass("board-item");
+                cell3.removeClass("board-item");
+                cell.addClass("threeBoat" + three);
+                cell2.addClass("threeBoat" + three);
+                cell3.addClass("threeBoat" + three);
+                three--;
                 }
                 else if(j === 1 && cellBelow2.prevAll().length !== 0 && player1.board[index2][index-1] !== 1 && player1.board[index2+1][index-1] !== 1){
                 cell.css("background-color", "gray");
@@ -218,7 +248,15 @@ $(".board-item").on("click", function(){
                 cellBelow2.css("background-color", "gray");
                 player1.board[index2-1][index - 1] = 1;
                 player1.board[index2][index - 1] = 1;
-                player1.board[index2 + 1][index - 1] = 1;                        }
+                player1.board[index2 + 1][index - 1] = 1;
+                cell.removeClass("board-item");
+                cellBelow.removeClass("board-item");
+                cellBelow2.removeClass("board-item");
+                cellBelow3.removeClass("board-item");
+                cell.addClass("threeBoat" + three);
+                cellBelow.addClass("threeBoat" + three);
+                cellBelow2.addClass("threeBoat" + three);   
+                three--;                     }
         }
         }
     else if(array[i] === 2 && player1.board[index2-1][index-1] !== 1){
@@ -228,19 +266,35 @@ $(".board-item").on("click", function(){
                 cell.css("background-color", "gray");
                 cell2.css("background-color", "gray");
                 player1.board[index2-1][index - 1] = 1;
-                player1.board[index2-1][index] = 1;                        }
+                player1.board[index2-1][index] = 1;
+                cell.removeClass("board-item");
+                cell2.removeClass("board-item");
+                cell.addClass("twoBoat" + two);
+                cell2.addClass("twoBoat" + two);
+                two--;                       
+                }
                 else if(j === 1 && cellBelow.prevAll().length !== 0 && player1.board[index2][index-1] !== 1){
                 cell.css("background-color", "gray");
                 cellBelow.css("background-color", "gray");
                 player1.board[index2-1][index - 1] = 1;
-                player1.board[index2][index - 1] = 1;                        }
+                player1.board[index2][index - 1] = 1;
+                cell.removeClass("board-item");
+                cellBelow.removeClass("board-item");
+                cell.addClass("twoBoat" + two);
+                cellBelow.addClass("twoBoat" + two);  
+                two--;              
+                }
         }
         }
     else if(array[i] === 1 && player1.board[index2-1][index-1] !== 1){
         if (!(cell.prop("tagName") === "TH"))
         {
             cell.css("background-color", "gray");
-            player1.board[index2-1][index - 1] = 1;                }
+            player1.board[index2-1][index - 1] = 1; 
+            cell.removeClass("board-item");
+            cell.addClass("oneBoat" + one);
+            one--;
+            }
         }
 });
 
