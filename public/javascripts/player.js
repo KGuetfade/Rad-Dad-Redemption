@@ -22,11 +22,13 @@ Player.prototype.Shoot = function(box){
         return array;
 }
 
-Player.prototype.HitorMis = function(array){
-    if(board[array[0]][array[1]] === 1){
+Player.prototype.isHit = function(array){
+    if(this.board[array[0]][array[1]] === 1){
         return true;
     }
-    else if(board[array[0]][array[1]] === 0){
+    else if(this.board[array[0]][array[1]] === 0){
+        return false;
+    }else{
         return false;
     }
 }

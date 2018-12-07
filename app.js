@@ -101,6 +101,25 @@ wss.on("connection", function(ws){
                     current_game.playerB.send(JSON.stringify(message));
                 }
             }
+            /*player has shot*/
+            else if (data.message === 1)
+            {
+                /*send other player coordinates of shot*/
+                let message = {
+                    type:"serverdata",
+                    message:1,
+                    data:0
+                };
+
+                if (client === current_game.playerA){
+                    message.data = current_game.playerA.shootCoords;
+                    current_game.playerB.send(JSON.stringify(message));
+                }
+                else if (client === current_game.playerB){
+                    message.data = current_game.playerB.shootCoords;
+                    current_game.playerA.send(JSON.stringify(message));
+                }
+            }
         }
 
         /*playerdata*/
@@ -150,6 +169,16 @@ wss.on("connection", function(ws){
                     console.log(current_game.playerB.shootCoords);
                 }
             }
+            /*hit or miss*/
+            else if (data.message === 3)
+            {
+                if (client === current_game.playerA){
+                    //do something
+                }
+                else if (client === current_game.playerB){
+                    //do something
+                }
+            }
         }
     });
 
@@ -181,11 +210,14 @@ gamestate 1 : Shoot
 gamestate 2 : wait for turn
 
 serverdata 0 : nickname
+serverdata 1 : shot coordinates other player
 
 --SEND TO SERVER--
 playerstatus 0 : boats placed
+playerstatus 1 : shot opponent
 
 playerdata 0 : nickname
 playerdata 1 : array
 playerdata 2 : shoot coordinates
+playerdata 3 : hit or miss (true or false)
 */

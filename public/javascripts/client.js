@@ -36,7 +36,6 @@ socket.onopen = function(event){
             {
                 $("#state").html("Your turn to shoot");
                 shoot();
-
             }
             /*wait for turn*/
             else if (data.message === 2)
@@ -50,12 +49,33 @@ socket.onopen = function(event){
         /*serverdata*/
         if (data.type === "serverdata")
         {
+
             /*nickname*/
             if (data.message === 0)
             {
+                $("#your_name").html(nickname);
                 /*set nicknames*/
                 $("#other_name").html(data.data);
-                $("#your_name").html(nickname);
+            }
+
+            /*shot coordinates other player*/
+            if (data.message === 1)
+            {
+                let shootCoords = data.data;
+                let hit = player.isHit(shootCoords);
+
+                /*change board/array and send it*/
+                let message = {
+                    type:"playerdata",
+                    message:1,
+                    data:player.board
+                };
+                socket.send(JSON.stringify(message));
+
+                /*send hit or miss*/
+                message.message = 3;
+                message.data = hit;
+                socket.send(JSON.stringify(message));
             }
         }
     }
@@ -67,6 +87,7 @@ var placeBoats = function(){
         $('#buttonReadyWrapper').css("display", "none");
         $("#state").html("Waiting for other player to be ready");
 
+        /*send your board to server */
         let message = {
             type: "playerdata",
             message:1,
@@ -74,6 +95,7 @@ var placeBoats = function(){
         };
         socket.send(JSON.stringify(message));
 
+        /*send that boats are placed*/
         message.type = "playerstatus";
         message.message = 0;
         message.data = 0;
@@ -84,12 +106,20 @@ var placeBoats = function(){
 
 var shoot = function(){
     $(".board-itemE").on("click", function(){
+        /*send coordinates of shot*/
         let cell = $(this);
         let message = {
             type: "playerdata",
             message: 2,
             data: player.Shoot(cell)
         };
+
+        socket.send(JSON.stringify(message));
+
+        /*send that you shot*/
+        message.type = "playerstatus";
+        message.message = 1;
+        message.data = 0;
 
         socket.send(JSON.stringify(message));
     });
