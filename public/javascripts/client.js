@@ -43,9 +43,21 @@ socket.onopen = function(event){
             {
                 $("#state").html("Opponent's turn to shoot");
                 $("#buttonReady").off("click");
-                $(".board-itemE").off("click")
+                $(".board-itemE").off("click");
                 //disable board click?
                 //wait for player 1 to shoot
+            }
+            /*won*/
+            else if (data.message === 3)
+            {
+                $(".board-itemE").off("click");
+                showWinScreen();
+
+            }
+            /*lost*/
+            else if (data.message === 4)
+            {
+                showLossScreen();
             }
         }
 
@@ -67,7 +79,6 @@ socket.onopen = function(event){
                 let hit = player.isHit(shootCoords);
                 hitBoat(shootCoords, hit);
 
-                /*change board/array and send it*/
                 let message = {
                     type:"playerdata",
                     message:1,
@@ -148,6 +159,16 @@ var waitPlayer2 = function(data){
         $('#myModal').css("display", "none");
         $('#buttonReadyWrapper').css("display", "block");
     }
+}
+
+var showWinScreen = function(){
+    $('#myModal').css("display", "block");
+    $('#modal-text').html("You won!");
+}
+
+var showLossScreen = function(){
+    $('#myModal').css("display", "block");
+    $('#modal-text').html($("#other_name").text() + " won.");
 }
 
 var startTimer = function(){

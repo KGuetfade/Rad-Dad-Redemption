@@ -24,6 +24,7 @@ Player.prototype.Shoot = function(box){
 
 Player.prototype.isHit = function(array){
     if(this.board[array[0]][array[1]] === 1){
+        this.board[array[0]][array[1]] = 0;
         return true;
     }
     else if(this.board[array[0]][array[1]] === 0){

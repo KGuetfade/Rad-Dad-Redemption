@@ -162,7 +162,7 @@ wss.on("connection", function(ws){
             {
                 if (client === current_game.playerA){
                     current_game.playerA.shootCoords = data.data;
-                    
+
                     console.log(current_game.playerA.shootCoords);
                 }
                 else if (client === current_game.playerB){
@@ -177,7 +177,28 @@ wss.on("connection", function(ws){
                     type:"gamestate",
                     message:1
                 };
-                //check if game won
+
+                /*check if player lost*/
+                if (current_game.checkEmptyBoard(client))
+                {
+                    if (client === current_game.playerA)
+                    {
+                        message.message = 4;
+                        current_game.playerA.send(JSON.stringify(message));
+                        message.message = 3;
+                        current_game.playerB.send(JSON.stringify(message));
+                        console.log("player B won");
+                    }
+                    else if (client === current_game.playerB)
+                    {
+                        message.message = 4;
+                        current_game.playerB.send(JSON.stringify(message));
+                        message.message = 3;
+                        current_game.playerA.send(JSON.stringify(message));
+                        console.log("player A won");
+                    }
+                }
+
                 /*if miss then other player can now shoot*/
                 if (client === current_game.playerA){
                     if (!data.data)
@@ -225,6 +246,8 @@ status 1 : start the game
 gamestate 0 : place boats
 gamestate 1 : Shoot
 gamestate 2 : wait for turn
+gamestate 3 : won
+gamestate 4 : lost
 
 serverdata 0 : nickname
 serverdata 1 : shot coordinates other player

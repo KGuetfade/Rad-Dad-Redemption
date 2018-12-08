@@ -54,14 +54,18 @@ Game.prototype.sendBothPlayers = function(message){
 }
 
 Game.prototype.checkEmptyBoard = function(client){
-    if (client.id === this.playerA.id)
-    {
-        
-    }
-    else if (client.id === this.playerB.id)
-    {
+    var board = client.id === this.playerA.id ? this.playerA.board : this.playerB.board;
 
+    for (var i = 0; i < board.length; i++)
+    {
+        let row = board[i];
+        for (var j = 0; j < row.length; j++){
+            if (board[i][j] === 1){
+                return false;
+            }
+        }
     }
+    return true;
 }
 
 module.exports = Game;
