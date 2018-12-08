@@ -65,6 +65,7 @@ socket.onopen = function(event){
             {
                 let shootCoords = data.data;
                 let hit = player.isHit(shootCoords);
+                hitBoat(shootCoords, hit);
 
                 /*change board/array and send it*/
                 let message = {
@@ -87,6 +88,10 @@ var placeBoats = function(){
     $("#buttonReady").on("click", function(){
         //check if all boats are placed
         $('#buttonReadyWrapper').css("display", "none");
+        $('.board-item').off('click');
+        document.getElementById('boat').style.display = "none";
+        document.getElementById('number').style.display = "none";
+        document.getElementById('h4').style.display = "none";
         $("#state").html("Waiting for other player to be ready");
 
         /*send your board to server */
@@ -124,6 +129,9 @@ var shoot = function(){
         message.data = 0;
 
         socket.send(JSON.stringify(message));
+
+        $(this).removeClass("board-itemE");
+        $(this).addClass("shot");
     });
 }
 

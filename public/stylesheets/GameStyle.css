@@ -53,6 +53,10 @@ th, td{
     margin: 0 auto;
 }
 
+.board-item{
+    background-color: transparent;
+}
+
 td.board-item:hover {
     background-color: #00008B;
     cursor: pointer;
@@ -124,4 +128,8 @@ h4 {
     color:#ffffff;
     font: 20px Courier;
     display: block;
+}
+
+.destroyed{
+    background-color: #990000;
 }

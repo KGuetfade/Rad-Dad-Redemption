@@ -13,6 +13,98 @@ var three = 2;
 var two = 3;
 var one = 4;
 
+var fourboat = 4;
+var threeboatA = 3;
+var threeboatB = 3;
+var twoboatA = 2;
+var twoboatB = 2;
+var twoboatC = 2;
+var oneboatA = 1;
+var oneboatB = 1;
+var oneboatC = 1;
+var oneboatD = 1;
+
+var hitBoat = function(coords, hit){
+
+    var board = document.getElementsByTagName("td");
+    var i = (coords[1] + (coords[0]*10));
+    var classname = board[i].className;
+
+    if(hit){
+        if(classname == "fourBoat"){
+            fourboat--;
+        }
+        else if(classname == "threeBoat1"){
+            threeboatA--;
+        }
+        else if(classname == "threeBoat2"){
+            threeboatB--;
+        }
+        else if(classname == "twoBoat1"){
+            twoboatA--;
+        }
+        else if(classname == "twoBoat2"){
+            twoboatB--;
+        }
+        else if(classname == "twoBoat3"){
+            twoboatC--;
+        }
+        else if(classname == "oneBoat1"){
+            oneboatA--;
+        }
+        else if(classname == "oneBoat2"){
+            oneboatB--;
+        }
+        else if(classname == "oneBoat3"){
+            oneboatC--;
+        }
+        else if(classname == "oneBoat4"){
+            oneboatD--;
+        }
+
+        if(fourboat === 0){
+            alert("BOAT DESTROYED");
+            fourboat--;
+        }
+        if(threeboatA === 0){
+            alert("BOAT DESTROYED");
+            threeboatA--;
+        }
+        if(threeboatB === 0){
+            alert("BOAT DESTROYED");
+            threeboatB--;
+        }
+        if(twoboatA === 0){
+            alert("BOAT DESTROYED");
+            twoboatA--;
+        }
+        if(twoboatB === 0){
+            alert("BOAT DESTROYED");
+            twoboatB--;
+        }
+        if(twoboatC === 0){
+            alert("BOAT DESTROYED");
+            twoboatC--;
+        }
+        if(oneboatA === 0){
+            alert("BOAT DESTROYED");
+            oneboatA--;
+        }
+        if(oneboatB === 0){
+            alert("BOAT DESTROYED");
+            oneboatB--;
+        }
+        if(oneboatC === 0){
+            alert("BOAT DESTROYED");
+            oneboatC--;
+        }
+        if(oneboatD === 0){
+            alert("BOAT DESTROYED");
+            oneboatD--;
+        }
+    }
+}
+
 /*
 $(".board-item").hover(function(){
     var cell = $(this).next('td');
@@ -164,6 +256,11 @@ $(".board-item").mouseleave(function(){
 });
 */
 
+$("fourBoat").on("click", function(){
+    var boats = document.getElementsByClassName("fourBoat");
+    boats[0].class
+});
+
 $(".board-item").on("click", function(){
 
     var cell = $(this);
@@ -177,7 +274,7 @@ $(".board-item").on("click", function(){
     var cellBelow2 = cellBelow.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
     var cellBelow3 = cellBelow2.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
 
-    if(array[i] === 4 && player.board[index2-1][index-1] !== 1){
+    if(array[i] === 4 && player.board[index2-1][index-1] !== 1 && four !== 0){
     if (!(cell.prop("tagName") === "TH"))
     {
         if(j === 0 && cell4.prevAll().length !== 0 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1 && player.board[index2-1][index+2] !== 1 && four !== 0){
@@ -220,7 +317,7 @@ $(".board-item").on("click", function(){
         }
     }
     }
-    else if(array[i] === 3 && player.board[index2-1][index-1] !== 1){
+    else if(array[i] === 3 && player.board[index2-1][index-1] !== 1 && three !== 0){
         if (!(cell.prop("tagName") === "TH"))
         {
             if(j === 0 && cell3.prevAll().length !== 0 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1 && three !== 0){
