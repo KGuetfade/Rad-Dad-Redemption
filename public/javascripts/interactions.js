@@ -256,6 +256,11 @@ $(".board-item").mouseleave(function(){
 });
 */
 
+$("fourBoat").on("click", function(){
+    var boats = document.getElementsByClassName("fourBoat");
+    boats[0].class
+});
+
 $(".board-item").on("click", function(){
 
     var cell = $(this);
