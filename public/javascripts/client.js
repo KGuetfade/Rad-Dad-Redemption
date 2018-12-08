@@ -66,6 +66,7 @@ socket.onopen = function(event){
             {
                 let shootCoords = data.data;
                 let hit = player.isHit(shootCoords);
+                hitBoat(shootCoords, hit);
 
                 /*change board/array and send it*/
                 let message = {

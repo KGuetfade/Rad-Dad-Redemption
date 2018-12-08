@@ -24,6 +24,14 @@ var oneboatB = 1;
 var oneboatC = 1;
 var oneboatD = 1;
 
+var hitBoat = function(coords, hit){
+    if(hit){
+        var board = document.getElementById("player-board");
+        board.children('td:nth-child(' + 1 + ')');
+        alert("HIT ");
+    }
+}
+
 /*
 $(".board-item").hover(function(){
     var cell = $(this).next('td');
