@@ -150,12 +150,12 @@ var shoot = function(){
         $(".board-itemE").off("click");
         $(this).removeClass("board-itemE");
 
-        if(player.isHit(player.Shoot(cell))){
+        /*if(player.isHit(player.Shoot(cell))){
             $(this).addClass("destroyed");
         }
         else{
             $(this).addClass("missed");
-        }
+        }*/
     });
 }
 
