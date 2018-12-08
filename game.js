@@ -60,7 +60,7 @@ Game.prototype.checkEmptyBoard = function(client){
     }
     else if (client.id === this.playerB.id)
     {
-        
+        x
     }
 }
 

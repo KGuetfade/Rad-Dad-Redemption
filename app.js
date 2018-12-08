@@ -162,6 +162,7 @@ wss.on("connection", function(ws){
             {
                 if (client === current_game.playerA){
                     current_game.playerA.shootCoords = data.data;
+                    
                     console.log(current_game.playerA.shootCoords);
                 }
                 else if (client === current_game.playerB){

@@ -65,6 +65,7 @@ socket.onopen = function(event){
             {
                 let shootCoords = data.data;
                 let hit = player.isHit(shootCoords);
+                hitBoat(shootCoords, hit);
 
                 /*change board/array and send it*/
                 let message = {
@@ -88,6 +89,7 @@ var placeBoats = function(){
         //check if all boats are placed
         $('#buttonReadyWrapper').css("display", "none");
         $('.board-item').off('click');
+        
         document.getElementById("boat").style.display = "none";
         document.getElementById("number").style.display = "none";
         document.getElementById("h4").style.display = "none";
