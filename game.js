@@ -56,11 +56,11 @@ Game.prototype.sendBothPlayers = function(message){
 Game.prototype.checkEmptyBoard = function(client){
     if (client.id === this.playerA.id)
     {
-
+        
     }
     else if (client.id === this.playerB.id)
     {
-        x
+
     }
 }
 
