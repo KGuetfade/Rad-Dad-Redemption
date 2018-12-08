@@ -53,6 +53,10 @@ th, td{
     margin: 0 auto;
 }
 
+.board-item{
+    background-color: transparent;
+}
+
 td.board-item:hover {
     background-color: #00008B;
     cursor: pointer;
