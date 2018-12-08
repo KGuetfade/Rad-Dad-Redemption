@@ -24,45 +24,6 @@ var oneboatB = 1;
 var oneboatC = 1;
 var oneboatD = 1;
 
-$(document).on('click', function(){
-
-    var index = $(this).prevAll().length
-    var index2 = $(this).parent().prevAll().length;
-
-    for(var i = 1; i < 2; i++){
-        $(document).on('click', '.threeBoat' + i, function () {
-            var boats = document.getElementsByClassName("threeBoat" + i);
-
-            if($(this).attr('id') == "clicked"){
-
-                boats[0].removeAttribute('id');
-                boats[1].removeAttribute('id');
-                boats[2].removeAttribute('id');
-                boats[3].className = "board-item";
-                boats[2].className = "board-item";
-                boats[1].className = "board-item";
-                if(j === 0){
-                player.board[index2-1][index - 1] = 0;
-                player.board[index2-1][index] = 0;
-                player.board[index2-1][index + 1] = 0;
-                }
-                else{
-                player.board[index2-1][index - 1] = 0;
-                player.board[index2][index - 1] = 0;
-                player.board[index2 + 1][index - 1] = 0;
-                }
-                three++;
-                document.getElementById("number").innerHTML = "(" + three + ")";
-            }
-            else{
-            boats[0].setAttribute('id', 'clicked');
-            boats[1].setAttribute('id', 'clicked');
-            boats[2].setAttribute('id', 'clicked');
-            }
-        });
-    }
-});
-
 $(document).on('click', '.fourBoat', function () {
 
     var index = $(this).prevAll().length
@@ -93,7 +54,9 @@ $(document).on('click', '.fourBoat', function () {
         player.board[index2 + 2][index - 1] = 0;
         }
         four++;
+        if(array[i] === 4){
         document.getElementById("number").innerHTML = "(" + four + ")";
+        }
     }
     else{
     boats[0].setAttribute('id', 'clicked');
@@ -102,6 +65,287 @@ $(document).on('click', '.fourBoat', function () {
     boats[3].setAttribute('id', 'clicked');
     }
 });
+
+$(document).on('click', '.threeBoat1', function () {
+
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+
+    var boats = document.getElementsByClassName("threeBoat1");
+
+    if($(this).attr('id') == "clicked"){
+
+        boats[0].removeAttribute('id');
+        boats[1].removeAttribute('id');
+        boats[2].removeAttribute('id');
+        boats[2].className = "board-item";
+        boats[1].className = "board-item";
+        boats[0].className = "board-item";
+        if(j === 0){
+        player.board[index2-1][index - 1] = 0;
+        player.board[index2-1][index] = 0;
+        player.board[index2-1][index + 1] = 0;
+        }
+        else{
+        player.board[index2-1][index - 1] = 0;
+        player.board[index2][index - 1] = 0;
+        player.board[index2 + 1][index - 1] = 0;
+        }
+        three++;
+        if(array[i] === 3){
+        document.getElementById("number").innerHTML = "(" + three + ")";
+        }
+    }
+    else{
+    boats[0].setAttribute('id', 'clicked');
+    boats[1].setAttribute('id', 'clicked');
+    boats[2].setAttribute('id', 'clicked');
+    }
+});
+
+$(document).on('click', '.threeBoat2', function () {
+
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+
+    var boats = document.getElementsByClassName("threeBoat2");
+
+    if($(this).attr('id') == "clicked"){
+
+        boats[0].removeAttribute('id');
+        boats[1].removeAttribute('id');
+        boats[2].removeAttribute('id');
+        boats[2].className = "board-item";
+        boats[1].className = "board-item";
+        boats[0].className = "board-item";
+        if(j === 0){
+        player.board[index2-1][index - 1] = 0;
+        player.board[index2-1][index] = 0;
+        player.board[index2-1][index + 1] = 0;
+        }
+        else{
+        player.board[index2-1][index - 1] = 0;
+        player.board[index2][index - 1] = 0;
+        player.board[index2 + 1][index - 1] = 0;
+        }
+        three++;
+        if(array[i] === 3){
+        document.getElementById("number").innerHTML = "(" + three + ")";
+        }
+    }
+    else{
+    boats[0].setAttribute('id', 'clicked');
+    boats[1].setAttribute('id', 'clicked');
+    boats[2].setAttribute('id', 'clicked');
+    }
+});
+
+
+
+$(document).on('click', '.twoBoat2', function () {
+
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+
+    var boats = document.getElementsByClassName("twoBoat2");
+
+    if($(this).attr('id') == "clicked"){
+
+        boats[0].removeAttribute('id');
+        boats[1].removeAttribute('id');
+        boats[1].className = "board-item";
+        boats[0].className = "board-item";
+        if(j === 0){
+        player.board[index2-1][index - 1] = 0;
+        player.board[index2-1][index] = 0;
+        }
+        else{
+        player.board[index2-1][index - 1] = 0;
+        player.board[index2][index - 1] = 0;
+        }
+        two++;
+        if(array[i] === 2){
+        document.getElementById("number").innerHTML = "(" + two + ")";
+        }
+    }
+    else{
+    boats[0].setAttribute('id', 'clicked');
+    boats[1].setAttribute('id', 'clicked');
+    }
+});
+
+$(document).on('click', '.twoBoat3', function () {
+
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+
+    var boats = document.getElementsByClassName("twoBoat3");
+
+    if($(this).attr('id') == "clicked"){
+
+        boats[0].removeAttribute('id');
+        boats[1].removeAttribute('id');
+        boats[1].className = "board-item";
+        boats[0].className = "board-item";
+        if(j === 0){
+        player.board[index2-1][index - 1] = 0;
+        player.board[index2-1][index] = 0;
+        }
+        else{
+        player.board[index2-1][index - 1] = 0;
+        player.board[index2][index - 1] = 0;
+        }
+        two++;
+        if(array[i] === 2){
+        document.getElementById("number").innerHTML = "(" + two + ")";
+        }
+    }
+    else{
+    boats[0].setAttribute('id', 'clicked');
+    boats[1].setAttribute('id', 'clicked');
+    }
+});
+
+$(document).on('click', '.twoBoat1', function () {
+
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+
+    var boats = document.getElementsByClassName("twoBoat1");
+
+    if($(this).attr('id') == "clicked"){
+
+        boats[0].removeAttribute('id');
+        boats[1].removeAttribute('id');
+        boats[1].className = "board-item";
+        boats[0].className = "board-item";
+        if(j === 0){
+        player.board[index2-1][index - 1] = 0;
+        player.board[index2-1][index] = 0;
+        }
+        else{
+        player.board[index2-1][index - 1] = 0;
+        player.board[index2][index - 1] = 0;
+        }
+        two++;
+        if(array[i] === 2){
+        document.getElementById("number").innerHTML = "(" + two + ")";
+        }
+    }
+    else{
+    boats[0].setAttribute('id', 'clicked');
+    boats[1].setAttribute('id', 'clicked');
+    }
+});
+
+$(document).on('click', '.oneBoat1', function () {
+
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+
+    var boats = document.getElementsByClassName("oneBoat1");
+
+    if($(this).attr('id') == "clicked"){
+
+        boats[0].removeAttribute('id');
+        boats[0].className = "board-item";
+        if(j === 0){
+        player.board[index2-1][index - 1] = 0;
+        }
+        else{
+        player.board[index2-1][index - 1] = 0;
+        }
+        one++;
+        if(array[i] === 1){
+        document.getElementById("number").innerHTML = "(" + one + ")";
+        }
+    }
+    else{
+    boats[0].setAttribute('id', 'clicked');
+    }
+});
+
+$(document).on('click', '.oneBoat2', function () {
+
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+
+    var boats = document.getElementsByClassName("oneBoat2");
+
+    if($(this).attr('id') == "clicked"){
+
+        boats[0].removeAttribute('id');
+        boats[0].className = "board-item";
+        if(j === 0){
+        player.board[index2-1][index - 1] = 0;
+        }
+        else{
+        player.board[index2-1][index - 1] = 0;
+        }
+        one++;
+        if(array[i] === 1){
+        document.getElementById("number").innerHTML = "(" + one + ")";
+        }
+    }
+    else{
+    boats[0].setAttribute('id', 'clicked');
+    }
+});
+
+$(document).on('click', '.oneBoat3', function () {
+
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+
+    var boats = document.getElementsByClassName("oneBoat3");
+
+    if($(this).attr('id') == "clicked"){
+
+        boats[0].removeAttribute('id');
+        boats[0].className = "board-item";
+        if(j === 0){
+        player.board[index2-1][index - 1] = 0;
+        }
+        else{
+        player.board[index2-1][index - 1] = 0;
+        }
+        one++;
+        if(array[i] === 1){
+        document.getElementById("number").innerHTML = "(" + one + ")";
+        }
+    }
+    else{
+    boats[0].setAttribute('id', 'clicked');
+    }
+});
+
+$(document).on('click', '.oneBoat4', function () {
+
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+
+    var boats = document.getElementsByClassName("oneBoat4");
+
+    if($(this).attr('id') == "clicked"){
+
+        boats[0].removeAttribute('id');
+        boats[0].className = "board-item";
+        if(j === 0){
+        player.board[index2-1][index - 1] = 0;
+        }
+        else{
+        player.board[index2-1][index - 1] = 0;
+        }
+        one++;
+        if(array[i] === 1){
+        document.getElementById("number").innerHTML = "(" + one + ")";
+        }
+    }
+    else{
+    boats[0].setAttribute('id', 'clicked');
+    }
+});
+
 
 var hitBoat = function(coords, hit){
 
