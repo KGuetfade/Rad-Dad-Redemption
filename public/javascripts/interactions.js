@@ -24,6 +24,85 @@ var oneboatB = 1;
 var oneboatC = 1;
 var oneboatD = 1;
 
+$(document).on('click', function(){
+
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+
+    for(var i = 1; i < 2; i++){
+        $(document).on('click', '.threeBoat' + i, function () {
+            var boats = document.getElementsByClassName("threeBoat" + i);
+
+            if($(this).attr('id') == "clicked"){
+
+                boats[0].removeAttribute('id');
+                boats[1].removeAttribute('id');
+                boats[2].removeAttribute('id');
+                boats[3].className = "board-item";
+                boats[2].className = "board-item";
+                boats[1].className = "board-item";
+                if(j === 0){
+                player.board[index2-1][index - 1] = 0;
+                player.board[index2-1][index] = 0;
+                player.board[index2-1][index + 1] = 0;
+                }
+                else{
+                player.board[index2-1][index - 1] = 0;
+                player.board[index2][index - 1] = 0;
+                player.board[index2 + 1][index - 1] = 0;
+                }
+                three++;
+                document.getElementById("number").innerHTML = "(" + three + ")";
+            }
+            else{
+            boats[0].setAttribute('id', 'clicked');
+            boats[1].setAttribute('id', 'clicked');
+            boats[2].setAttribute('id', 'clicked');
+            }
+        });
+    }
+});
+
+$(document).on('click', '.fourBoat', function () {
+
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+
+    var boats = document.getElementsByClassName("fourBoat");
+
+    if($(this).attr('id') == "clicked"){
+
+        boats[0].removeAttribute('id');
+        boats[1].removeAttribute('id');
+        boats[2].removeAttribute('id');
+        boats[3].removeAttribute('id');
+        boats[3].className = "board-item";
+        boats[2].className = "board-item";
+        boats[1].className = "board-item";
+        boats[0].className = "board-item";
+        if(j === 0){
+        player.board[index2-1][index - 1] = 0;
+        player.board[index2-1][index] = 0;
+        player.board[index2-1][index + 1] = 0;
+        player.board[index2-1][index + 2] = 0;
+        }
+        else{
+        player.board[index2-1][index - 1] = 0;
+        player.board[index2][index - 1] = 0;
+        player.board[index2 + 1][index - 1] = 0;
+        player.board[index2 + 2][index - 1] = 0;
+        }
+        four++;
+        document.getElementById("number").innerHTML = "(" + four + ")";
+    }
+    else{
+    boats[0].setAttribute('id', 'clicked');
+    boats[1].setAttribute('id', 'clicked');
+    boats[2].setAttribute('id', 'clicked');
+    boats[3].setAttribute('id', 'clicked');
+    }
+});
+
 var hitBoat = function(coords, hit){
 
     var board = document.getElementsByTagName("td");
@@ -106,162 +185,10 @@ var hitBoat = function(coords, hit){
             oneboatD--;
         }
     }
-    else{
+    else if(!hit){
         board[i].setAttribute('id', 'missed');
     }
 }
-
-/*
-$(".board-item").hover(function(){
-    var cell = $(this).next('td');
-    var cell2 = cell.next('td');
-    var cell3 = cell2.next('td');
-    var index = $(this).prevAll().length
-    var index2 = $(this).parent().prevAll().length;
-    var cellBelow = $(this).parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
-    var cellBelow2 = cellBelow.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
-    var cellBelow3 = cellBelow2.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
-    if(player.board[index2-1][index-1] !== 1){
-    if(j === 0 && array[i] === 4 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1 && player.board[index2-1][index+2] !== 1){
-    cell.css("background-color","#00008B");
-    cell2.css("background-color","#00008B");
-    cell3.css("background-color","#00008B");
-    $(this).css("background-color","#00008B");
-    }
-    else if(j === 0 && array[i] === 3 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1){
-        cell.css("background-color","#00008B");
-        cell2.css("background-color","#00008B");
-        $(this).css("background-color","#00008B");
-    }
-    else if(j === 0 && array[i] === 2 && player.board[index2-1][index] !== 1){
-        cell.css("background-color","#00008B");
-        $(this).css("background-color","#00008B");
-    }
-    else if(array[i]===1){
-        $(this).css("background-color", "#00008B");
-    }
-    if(j === 1 && array[i] === 4 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1 && player.board[index2+2][index-1] !== 1){
-        cellBelow.css("background-color","#00008B");
-        cellBelow2.css("background-color","#00008B");
-        cellBelow3.css("background-color","#00008B");
-        $(this).css("background-color","#00008B");
-        }
-    else if(j === 1 && array[i] === 3 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1){
-        cellBelow.css("background-color","#00008B");
-        cellBelow2.css("background-color","#00008B");
-        $(this).css("background-color","#00008B");
-    }
-    else if(j === 1 && array[i] === 2 && player.board[index2][index-1] !== 1){
-        cellBelow.css("background-color","#00008B");
-        $(this).css("background-color","#00008B");
-    }
-    }
-
-    $(function(){
-
-        var j = 1;
-        var i = 0;
-        var array = [4, 3, 2, 1];
-
-        /*
-        $(".board-item").hover(function(){
-            var cell = $(this).next('td');
-            var cell2 = cell.next('td');
-            var cell3 = cell2.next('td');
-            var index = $(this).prevAll().length
-            var index2 = $(this).parent().prevAll().length;
-            var cellBelow = $(this).parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
-            var cellBelow2 = cellBelow.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
-            var cellBelow3 = cellBelow2.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
-            if(player.board[index2-1][index-1] !== 1){
-            if(j === 0 && array[i] === 4 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1 && player.board[index2-1][index+2] !== 1){
-            cell.css("background-color","#00008B");
-            cell2.css("background-color","#00008B");
-            cell3.css("background-color","#00008B");
-            $(this).css("background-color","#00008B");
-            }
-            else if(j === 0 && array[i] === 3 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1){
-                cell.css("background-color","#00008B");
-                cell2.css("background-color","#00008B");
-                $(this).css("background-color","#00008B");
-            }
-            else if(j === 0 && array[i] === 2 && player.board[index2-1][index] !== 1){
-                cell.css("background-color","#00008B");
-                $(this).css("background-color","#00008B");
-            }
-            else if(array[i]===1){
-                $(this).css("background-color", "#00008B");
-            }
-            if(j === 1 && array[i] === 4 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1 && player.board[index2+2][index-1] !== 1){
-                cellBelow.css("background-color","#00008B");
-                cellBelow2.css("background-color","#00008B");
-                cellBelow3.css("background-color","#00008B");
-                $(this).css("background-color","#00008B");
-                }
-            else if(j === 1 && array[i] === 3 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1){
-                cellBelow.css("background-color","#00008B");
-                cellBelow2.css("background-color","#00008B");
-                $(this).css("background-color","#00008B");
-            }
-            else if(j === 1 && array[i] === 2 && player.board[index2][index-1] !== 1){
-                cellBelow.css("background-color","#00008B");
-                $(this).css("background-color","#00008B");
-            }
-            }
-});
-
-$(".board-item").mouseleave(function(){
-    var cell = $(this).next('td');
-    var cell2 = cell.next('td');
-    var cell3 = cell2.next('td');
-    var index = $(this).prevAll().length
-    var index2 = $(this).parent().prevAll().length;
-    var cellBelow = $(this).parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
-    var cellBelow2 = cellBelow.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
-    var cellBelow3 = cellBelow2.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
-    if(j===0){
-    if(player.board[index2-1][index-1] !== 1 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1 && player.board[index2-1][index+2] !== 1){
-    cell.css("background-color","transparent");
-    cell2.css("background-color","transparent");
-    cell3.css("background-color","transparent");
-    $(this).css("background-color","transparent");
-    }
-    else if(player.board[index2-1][index+2] === 1 && player.board[index2-1][index+1] !== 1 && player.board[index2-1][index] !== 1){
-        cell.css("background-color","transparent");
-        cell2.css("background-color","transparent");
-        $(this).css("background-color","transparent");
-    }
-    else if(player.board[index2-1][index+1] === 1 && player.board[index2-1][index] !== 1){
-        cell.css("background-color","transparent");
-        $(this).css("background-color","transparent");
-    }
-    else if(player.board[index2-1][index-1] !== 1){
-        $(this).css("background-color","transparent");
-    }
-    }
-    if(j===1){
-    if(player.board[index2-1][index-1] !== 1 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1 && player.board[index2+2][index-1] !== 1){
-        cellBelow.css("background-color","transparent");
-        cellBelow2.css("background-color","transparent");
-        cellBelow3.css("background-color","transparent");
-        $(this).css("background-color","transparent");
-    }
-    else if(j === 1 && array[i] === 3 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1){
-        cellBelow.css("background-color","transparent");
-        cellBelow2.css("background-color","transparent");
-        $(this).css("background-color","transparent");
-    }
-    else if(j === 1 && array[i] === 2 && player.board[index2][index-1] !== 1){
-        cellBelow.css("background-color","transparent");
-        $(this).css("background-color","transparent");
-    }
-    else if(player.board[index2-1][index-1] !== 1){
-        $(this).css("background-color","transparent");
-    }
-}
-});
-*/
-
 
 $(".board-item").on("click", function(){
 
@@ -497,3 +424,154 @@ $(document).keydown(function(event) {
     }
     event.preventDefault();
 });
+
+/*
+$(".board-item").hover(function(){
+    var cell = $(this).next('td');
+    var cell2 = cell.next('td');
+    var cell3 = cell2.next('td');
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+    var cellBelow = $(this).parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+    var cellBelow2 = cellBelow.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+    var cellBelow3 = cellBelow2.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+    if(player.board[index2-1][index-1] !== 1){
+    if(j === 0 && array[i] === 4 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1 && player.board[index2-1][index+2] !== 1){
+    cell.css("background-color","#00008B");
+    cell2.css("background-color","#00008B");
+    cell3.css("background-color","#00008B");
+    $(this).css("background-color","#00008B");
+    }
+    else if(j === 0 && array[i] === 3 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1){
+        cell.css("background-color","#00008B");
+        cell2.css("background-color","#00008B");
+        $(this).css("background-color","#00008B");
+    }
+    else if(j === 0 && array[i] === 2 && player.board[index2-1][index] !== 1){
+        cell.css("background-color","#00008B");
+        $(this).css("background-color","#00008B");
+    }
+    else if(array[i]===1){
+        $(this).css("background-color", "#00008B");
+    }
+    if(j === 1 && array[i] === 4 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1 && player.board[index2+2][index-1] !== 1){
+        cellBelow.css("background-color","#00008B");
+        cellBelow2.css("background-color","#00008B");
+        cellBelow3.css("background-color","#00008B");
+        $(this).css("background-color","#00008B");
+        }
+    else if(j === 1 && array[i] === 3 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1){
+        cellBelow.css("background-color","#00008B");
+        cellBelow2.css("background-color","#00008B");
+        $(this).css("background-color","#00008B");
+    }
+    else if(j === 1 && array[i] === 2 && player.board[index2][index-1] !== 1){
+        cellBelow.css("background-color","#00008B");
+        $(this).css("background-color","#00008B");
+    }
+    }
+
+    $(function(){
+
+        var j = 1;
+        var i = 0;
+        var array = [4, 3, 2, 1];
+
+        /*
+        $(".board-item").hover(function(){
+            var cell = $(this).next('td');
+            var cell2 = cell.next('td');
+            var cell3 = cell2.next('td');
+            var index = $(this).prevAll().length
+            var index2 = $(this).parent().prevAll().length;
+            var cellBelow = $(this).parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+            var cellBelow2 = cellBelow.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+            var cellBelow3 = cellBelow2.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+            if(player.board[index2-1][index-1] !== 1){
+            if(j === 0 && array[i] === 4 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1 && player.board[index2-1][index+2] !== 1){
+            cell.css("background-color","#00008B");
+            cell2.css("background-color","#00008B");
+            cell3.css("background-color","#00008B");
+            $(this).css("background-color","#00008B");
+            }
+            else if(j === 0 && array[i] === 3 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1){
+                cell.css("background-color","#00008B");
+                cell2.css("background-color","#00008B");
+                $(this).css("background-color","#00008B");
+            }
+            else if(j === 0 && array[i] === 2 && player.board[index2-1][index] !== 1){
+                cell.css("background-color","#00008B");
+                $(this).css("background-color","#00008B");
+            }
+            else if(array[i]===1){
+                $(this).css("background-color", "#00008B");
+            }
+            if(j === 1 && array[i] === 4 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1 && player.board[index2+2][index-1] !== 1){
+                cellBelow.css("background-color","#00008B");
+                cellBelow2.css("background-color","#00008B");
+                cellBelow3.css("background-color","#00008B");
+                $(this).css("background-color","#00008B");
+                }
+            else if(j === 1 && array[i] === 3 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1){
+                cellBelow.css("background-color","#00008B");
+                cellBelow2.css("background-color","#00008B");
+                $(this).css("background-color","#00008B");
+            }
+            else if(j === 1 && array[i] === 2 && player.board[index2][index-1] !== 1){
+                cellBelow.css("background-color","#00008B");
+                $(this).css("background-color","#00008B");
+            }
+            }
+});
+
+$(".board-item").mouseleave(function(){
+    var cell = $(this).next('td');
+    var cell2 = cell.next('td');
+    var cell3 = cell2.next('td');
+    var index = $(this).prevAll().length
+    var index2 = $(this).parent().prevAll().length;
+    var cellBelow = $(this).parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+    var cellBelow2 = cellBelow.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+    var cellBelow3 = cellBelow2.parent().next('tr').children('td:nth-child(' + (index + 1) + ')');
+    if(j===0){
+    if(player.board[index2-1][index-1] !== 1 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1 && player.board[index2-1][index+2] !== 1){
+    cell.css("background-color","transparent");
+    cell2.css("background-color","transparent");
+    cell3.css("background-color","transparent");
+    $(this).css("background-color","transparent");
+    }
+    else if(player.board[index2-1][index+2] === 1 && player.board[index2-1][index+1] !== 1 && player.board[index2-1][index] !== 1){
+        cell.css("background-color","transparent");
+        cell2.css("background-color","transparent");
+        $(this).css("background-color","transparent");
+    }
+    else if(player.board[index2-1][index+1] === 1 && player.board[index2-1][index] !== 1){
+        cell.css("background-color","transparent");
+        $(this).css("background-color","transparent");
+    }
+    else if(player.board[index2-1][index-1] !== 1){
+        $(this).css("background-color","transparent");
+    }
+    }
+    if(j===1){
+    if(player.board[index2-1][index-1] !== 1 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1 && player.board[index2+2][index-1] !== 1){
+        cellBelow.css("background-color","transparent");
+        cellBelow2.css("background-color","transparent");
+        cellBelow3.css("background-color","transparent");
+        $(this).css("background-color","transparent");
+    }
+    else if(j === 1 && array[i] === 3 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1){
+        cellBelow.css("background-color","transparent");
+        cellBelow2.css("background-color","transparent");
+        $(this).css("background-color","transparent");
+    }
+    else if(j === 1 && array[i] === 2 && player.board[index2][index-1] !== 1){
+        cellBelow.css("background-color","transparent");
+        $(this).css("background-color","transparent");
+    }
+    else if(player.board[index2-1][index-1] !== 1){
+        $(this).css("background-color","transparent");
+    }
+}
+});
+*/
