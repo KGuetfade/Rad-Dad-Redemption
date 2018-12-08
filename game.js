@@ -53,5 +53,15 @@ Game.prototype.sendBothPlayers = function(message){
     this.playerB.send(JSON.stringify(message));
 }
 
+Game.prototype.checkEmptyBoard = function(client){
+    if (client.id === this.playerA.id)
+    {
+
+    }
+    else if (client.id === this.playerB.id)
+    {
+        
+    }
+}
 
 module.exports = Game;

@@ -32,7 +32,3 @@ Player.prototype.isHit = function(array){
         return false;
     }
 }
-
-Player.prototype.setBoats = function(){
-    //set boats at beginning of game
-}
