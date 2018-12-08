@@ -13,6 +13,17 @@ var three = 2;
 var two = 3;
 var one = 4;
 
+var fourboat = 4;
+var threeboatA = 3;
+var threeboatB = 3;
+var twoboatA = 2;
+var twoboatB = 2;
+var twoboatC = 2;
+var oneboatA = 1;
+var oneboatB = 1;
+var oneboatC = 1;
+var oneboatD = 1;
+
 /*
 $(".board-item").hover(function(){
     var cell = $(this).next('td');
