@@ -130,6 +130,22 @@ h4 {
     display: block;
 }
 
+#hit{
+    background-color: #990000;   
+}
+
+.destroyed{
+    background-color: #990000;
+}
+
+.missed{
+    background-color: #00008B;
+}
+
+#missed{
+    background-color: #00008B;
+}
+
 .fourBoat{
     background-color: gray;
 }

@@ -31,6 +31,9 @@ var hitBoat = function(coords, hit){
     var classname = board[i].className;
 
     if(hit){
+
+        board[i].setAttribute('id', 'hit');
+
         if(classname == "fourBoat"){
             fourboat--;
         }
@@ -102,6 +105,9 @@ var hitBoat = function(coords, hit){
             alert("BOAT DESTROYED");
             oneboatD--;
         }
+    }
+    else{
+        board[i].setAttribute('id', 'missed');
     }
 }
 
@@ -255,6 +261,7 @@ $(".board-item").mouseleave(function(){
 }
 });
 */
+
 
 $(".board-item").on("click", function(){
 

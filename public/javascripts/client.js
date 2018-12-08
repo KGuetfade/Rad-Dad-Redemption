@@ -34,6 +34,7 @@ socket.onopen = function(event){
             /*shoot*/
             else if (data.message === 1)
             {
+
                 $("#state").html("Your turn to shoot");
                 shoot();
             }
@@ -148,7 +149,13 @@ var shoot = function(){
 
         $(".board-itemE").off("click");
         $(this).removeClass("board-itemE");
-        $(this).addClass("shot");
+
+        if(player.isHit(player.Shoot(cell))){
+            $(this).addClass("destroyed");
+        }
+        else{
+            $(this).addClass("missed");
+        }
     });
 }
 
