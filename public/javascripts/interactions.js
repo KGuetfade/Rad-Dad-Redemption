@@ -256,11 +256,6 @@ $(".board-item").mouseleave(function(){
 });
 */
 
-$("fourBoat").on("click", function(){
-    var boats = document.getElementsByClassName("fourBoat");
-    boats[0].class
-});
-
 $(".board-item").on("click", function(){
 
     var cell = $(this);
@@ -278,10 +273,6 @@ $(".board-item").on("click", function(){
     if (!(cell.prop("tagName") === "TH"))
     {
         if(j === 0 && cell4.prevAll().length !== 0 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1 && player.board[index2-1][index+2] !== 1 && four !== 0){
-        cell.css("background-color", "gray");
-        cell2.css("background-color", "gray");
-        cell3.css("background-color", "gray");
-        cell4.css("background-color", "gray");
         player.board[index2-1][index - 1] = 1;
         player.board[index2-1][index] = 1;
         player.board[index2-1][index + 1] = 1;
@@ -297,10 +288,6 @@ $(".board-item").on("click", function(){
         four--;
         }
         else if(j === 1 && cellBelow3.prevAll().length !== 0 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1 && player.board[index2+2][index-1] !== 1 && four !== 0){
-        cell.css("background-color", "gray");
-        cellBelow.css("background-color", "gray");
-        cellBelow2.css("background-color", "gray");
-        cellBelow3.css("background-color", "gray");
         player.board[index2-1][index - 1] = 1;
         player.board[index2][index - 1] = 1;
         player.board[index2 + 1][index - 1] = 1;
@@ -321,9 +308,6 @@ $(".board-item").on("click", function(){
         if (!(cell.prop("tagName") === "TH"))
         {
             if(j === 0 && cell3.prevAll().length !== 0 && player.board[index2-1][index] !== 1 && player.board[index2-1][index+1] !== 1 && three !== 0){
-                cell.css("background-color", "gray");
-                cell2.css("background-color", "gray");
-                cell3.css("background-color", "gray");
                 player.board[index2-1][index - 1] = 1;
                 player.board[index2-1][index] = 1;
                 player.board[index2-1][index + 1] = 1;
@@ -336,9 +320,6 @@ $(".board-item").on("click", function(){
                 three--;
                 }
                 else if(j === 1 && cellBelow2.prevAll().length !== 0 && player.board[index2][index-1] !== 1 && player.board[index2+1][index-1] !== 1 && three !== 0){
-                cell.css("background-color", "gray");
-                cellBelow.css("background-color", "gray");
-                cellBelow2.css("background-color", "gray");
                 player.board[index2-1][index - 1] = 1;
                 player.board[index2][index - 1] = 1;
                 player.board[index2 + 1][index - 1] = 1;
@@ -356,8 +337,6 @@ $(".board-item").on("click", function(){
         if (!(cell.prop("tagName") === "TH"))
         {
             if(j === 0 && cell2.prevAll().length !== 0 && player.board[index2-1][index] !== 1){
-                cell.css("background-color", "gray");
-                cell2.css("background-color", "gray");
                 player.board[index2-1][index - 1] = 1;
                 player.board[index2-1][index] = 1;
                 cell.removeClass("board-item");
@@ -367,8 +346,6 @@ $(".board-item").on("click", function(){
                 two--;
                 }
                 else if(j === 1 && cellBelow.prevAll().length !== 0 && player.board[index2][index-1] !== 1){
-                cell.css("background-color", "gray");
-                cellBelow.css("background-color", "gray");
                 player.board[index2-1][index - 1] = 1;
                 player.board[index2][index - 1] = 1;
                 cell.removeClass("board-item");
@@ -382,7 +359,6 @@ $(".board-item").on("click", function(){
     else if(array[i] === 1 && player.board[index2-1][index-1] !== 1 && one !== 0){
         if (!(cell.prop("tagName") === "TH"))
         {
-            cell.css("background-color", "gray");
             player.board[index2-1][index - 1] = 1;
             cell.removeClass("board-item");
             cell.addClass("oneBoat" + one);

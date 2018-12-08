@@ -130,6 +130,44 @@ h4 {
     display: block;
 }
 
-.destroyed{
-    background-color: #990000;
+.fourBoat{
+    background-color: gray;
 }
+
+.threeBoat1{
+    background-color: gray;
+}
+
+.threeBoat2{
+    background-color: gray;
+}
+
+.twoBoat1{
+    background-color: gray;
+}
+
+.twoBoat2{
+    background-color: gray;
+}
+
+.twoBoat3{
+    background-color: gray;
+}
+
+.oneBoat1{
+    background-color: gray; 
+}
+
+.oneBoat2{
+    background-color: gray; 
+}
+
+.oneBoat3{
+    background-color: gray; 
+}
+
+.oneBoat4{
+    background-color: gray; 
+}
+
+
