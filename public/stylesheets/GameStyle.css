@@ -125,3 +125,7 @@ h4 {
     font: 20px Courier;
     display: block;
 }
+
+.destroyed{
+    background-color: #990000;
+}
