@@ -176,7 +176,7 @@ wss.on("connection", function(ws){
                     type:"gamestate",
                     message:1
                 };
-
+                //check if game won
                 /*if miss then other player can now shoot*/
                 if (client === current_game.playerA){
                     if (!data.data)

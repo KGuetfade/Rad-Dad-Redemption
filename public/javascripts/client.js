@@ -52,7 +52,6 @@ socket.onopen = function(event){
         /*serverdata*/
         if (data.type === "serverdata")
         {
-
             /*nickname*/
             if (data.message === 0)
             {
