@@ -35,17 +35,12 @@ socket.onopen = function(event){
             else if (data.message === 1)
             {
                 $("#state").html("Your turn to shoot");
-                $("#buttonReady").off("click");
                 shoot();
             }
             /*wait for turn*/
             else if (data.message === 2)
             {
                 $("#state").html("Opponent's turn to shoot");
-                $("#buttonReady").off("click");
-                $(".board-itemE").off("click");
-                //disable board click?
-                //wait for player 1 to shoot
             }
             /*won*/
             else if (data.message === 3)
@@ -97,7 +92,14 @@ socket.onopen = function(event){
 
 var placeBoats = function(){
     $("#buttonReady").on("click", function(){
-        //check if all boats are placed
+        /*check if all boats are placed*/
+        if (!(four === 0 && three === 0 && two === 0 && one === 0))
+        {
+            alert("You haven't placed all your boats")
+            return;
+        }
+
+        /*do some styling shit*/
         $('#buttonReadyWrapper').css("display", "none");
         $('.board-item').off('click');
 
@@ -121,6 +123,7 @@ var placeBoats = function(){
         message.data = 0;
 
         socket.send(JSON.stringify(message));
+        $("#buttonReady").off("click");
     });
 }
 
@@ -143,6 +146,7 @@ var shoot = function(){
 
         socket.send(JSON.stringify(message));
 
+        $(".board-itemE").off("click");
         $(this).removeClass("board-itemE");
         $(this).addClass("shot");
     });

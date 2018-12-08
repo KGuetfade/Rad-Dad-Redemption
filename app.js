@@ -207,6 +207,13 @@ wss.on("connection", function(ws){
                         message.message = 2;
                         current_game.playerB.send(JSON.stringify(message));
                     }
+                    /*else tell player he can shoot again*/
+                    else
+                    {
+                        current_game.playerB.send(JSON.stringify(message));
+                        message.message = 2;
+                        current_game.playerA.send(JSON.stringify(message));
+                    }
                 }
                 else if (client === current_game.playerB){
                     if (!data.data)
@@ -214,6 +221,12 @@ wss.on("connection", function(ws){
                         current_game.playerB.send(JSON.stringify(message));
                         message.message = 2;
                         current_game.playerA.send(JSON.stringify(message));
+                    }
+                    else
+                    {
+                        current_game.playerA.send(JSON.stringify(message));
+                        message.message = 2;
+                        current_game.playerB.send(JSON.stringify(message));
                     }
                 }
             }

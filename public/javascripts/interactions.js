@@ -403,10 +403,10 @@ $(".board-item").on("click", function(){
             document.getElementById("number").innerHTML = "(" + one + ")";
         }
 
-        if(four ===0 && three === 0 && two === 0 && one === 0){
+        /*if(four ===0 && three === 0 && two === 0 && one === 0){
             $("ready").css("background-color", "gray");
             $("ready").addId("ready");
-        }
+        }*/
 });
 
 $(document).keydown(function(event) {
