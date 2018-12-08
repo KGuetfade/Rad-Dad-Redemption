@@ -130,6 +130,9 @@ var shoot = function(){
         message.data = 0;
 
         socket.send(JSON.stringify(message));
+
+        $(this).removeClass("board-itemE");
+        $(this).addClass("destroyed");
     });
 }
 

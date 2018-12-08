@@ -25,10 +25,83 @@ var oneboatC = 1;
 var oneboatD = 1;
 
 var hitBoat = function(coords, hit){
+
+    var board = document.getElementsByTagName("td");
+    var i = (coords[1] + (coords[0]*10));
+    var classname = board[i].className;
+
     if(hit){
-        var board = document.getElementById("player-board");
-        board.children('td:nth-child(' + 1 + ')');
-        alert("HIT ");
+        if(classname == "fourBoat"){
+            fourboat--;
+        }
+        else if(classname == "threeBoat1"){
+            threeboatA--;
+        }
+        else if(classname == "threeBoat2"){
+            threeboatB--;
+        }
+        else if(classname == "twoBoat1"){
+            twoboatA--;
+        }
+        else if(classname == "twoBoat2"){
+            twoboatB--;
+        }
+        else if(classname == "twoBoat3"){
+            twoboatC--;
+        }
+        else if(classname == "oneBoat1"){
+            oneboatA--;
+        }
+        else if(classname == "oneBoat2"){
+            oneboatB--;
+        }
+        else if(classname == "oneBoat3"){
+            oneboatC--;
+        }
+        else if(classname == "oneBoat4"){
+            oneboatD--;
+        }
+
+        if(fourboat === 0){
+            alert("BOAT DESTROYED");
+            fourboat--;
+        }
+        if(threeboatA === 0){
+            alert("BOAT DESTROYED");
+            threeboatA--;
+        }
+        if(threeboatB === 0){
+            alert("BOAT DESTROYED");
+            threeboatB--;
+        }
+        if(twoboatA === 0){
+            alert("BOAT DESTROYED");
+            twoboatA--;
+        }
+        if(twoboatB === 0){
+            alert("BOAT DESTROYED");
+            twoboatB--;
+        }
+        if(twoboatC === 0){
+            alert("BOAT DESTROYED");
+            twoboatC--;
+        }
+        if(oneboatA === 0){
+            alert("BOAT DESTROYED");
+            oneboatA--;
+        }
+        if(oneboatB === 0){
+            alert("BOAT DESTROYED");
+            oneboatB--;
+        }
+        if(oneboatC === 0){
+            alert("BOAT DESTROYED");
+            oneboatC--;
+        }
+        if(oneboatD === 0){
+            alert("BOAT DESTROYED");
+            oneboatD--;
+        }
     }
 }
 
