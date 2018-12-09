@@ -250,11 +250,19 @@ wss.on("connection", function(ws){
 
     client.on("close", function(code){
         let current_game = game_at_id[client.id];
+
+        let message = {
+            type:"status",
+            message:2
+        };
+
         if (current_game.playerA === client){
             current_game.playerA = null;
+            current_game.playerB.send(JSON.stringify(message));
         }
         else if (current_game.playerB === client){
             current_game.playerB = null;
+            current_game.playerA.send(JSON.stringify(message));
         }
     });
 
@@ -270,6 +278,7 @@ server.listen(port, () =>{
 --SEND TO PLAYER--
 status 0 : wait for player
 status 1 : start the game
+status 2 : player left
 
 gamestate 0 : place boats
 gamestate 1 : Shoot

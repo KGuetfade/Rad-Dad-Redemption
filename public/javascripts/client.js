@@ -109,13 +109,13 @@ socket.onopen = function(event){
 
 var placeBoats = function(){
     $("#buttonReady").on("click", function(){
-        /*check if all boats are placed
+        /*check if all boats are placed*/
         if (!(four === 0 && three === 0 && two === 0 && one === 0))
         {
             alert("You haven't placed all your boats")
             return;
         }
-*/
+
         /*do some styling shit*/
         $('#buttonReadyWrapper').css("display", "none");
         $('.board-item').off('click');
@@ -180,11 +180,18 @@ var waitPlayer2 = function(data){
         $('#myModal').css("display", "block");
     }
 
-    if (data.message === 1)
+    else if (data.message === 1)
     {
         $('#myModal').css("display", "none");
         $('#buttonReadyWrapper').css("display", "block");
     }
+
+    else if (data.message === 2)
+    {
+        $('#myModal').css("display", "block");
+        $('#modal-text').html($("#other_name").text() + " disconnected, waiting for new player");
+    }
+
 }
 
 var showWinScreen = function(){
