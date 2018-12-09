@@ -91,15 +91,15 @@ socket.onopen = function(event){
             /*see if you hit or missed*/
             else if (data.message === 2)
             {
-                let board = document.getElementsByTagName("td");
+                let board = document.querySelectorAll('td.board-itemE');
                 let i = (player.shootCoords[1] + (player.shootCoords[0]*10));
                 let hit = data.data;
 
                 if (hit){
-                    board[i].setAttribute("class", "destroyed");
+                    board[i].setAttribute("class", "board-itemE destroyed");
                 }
                 else{
-                    board[i].setAttribute("class", "missed");
+                    board[i].setAttribute("class", "board-itemE missed");
                 }
             }
 
@@ -109,13 +109,13 @@ socket.onopen = function(event){
 
 var placeBoats = function(){
     $("#buttonReady").on("click", function(){
-        /*check if all boats are placed*/
+        /*check if all boats are placed
         if (!(four === 0 && three === 0 && two === 0 && one === 0))
         {
             alert("You haven't placed all your boats")
             return;
         }
-
+*/
         /*do some styling shit*/
         $('#buttonReadyWrapper').css("display", "none");
         $('.board-item').off('click');
@@ -164,7 +164,7 @@ var shoot = function(){
         socket.send(JSON.stringify(message));
 
         $(".board-itemE").off("click");
-        $(this).removeClass("board-itemE");
+        //$(this).removeClass("board-itemE");
 
     });
 }
