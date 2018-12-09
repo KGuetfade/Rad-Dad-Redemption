@@ -1,6 +1,7 @@
 var Player = function(){
     this.board = []
     this.ships = 0;
+    this.shootCoords = [-1,-1];
 
     //make board 10x10 with 0's
     for (var i = 0; i < 10; i++)
@@ -19,7 +20,8 @@ Player.prototype.Shoot = function(box){
         var index = box.prevAll().length - 1;
         var index2 = box.parent().prevAll().length - 1;
         var array = [index2, index];
-        return array;
+        this.shootCoords = array;
+        return this.shootCoords;
 }
 
 Player.prototype.isHit = function(array){

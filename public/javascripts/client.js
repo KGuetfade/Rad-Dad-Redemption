@@ -69,7 +69,7 @@ socket.onopen = function(event){
             }
 
             /*shot coordinates other player*/
-            if (data.message === 1)
+            else if (data.message === 1)
             {
                 let shootCoords = data.data;
                 let hit = player.isHit(shootCoords);
@@ -87,6 +87,22 @@ socket.onopen = function(event){
                 message.data = hit;
                 socket.send(JSON.stringify(message));
             }
+
+            /*see if you hit or missed*/
+            else if (data.message === 2)
+            {
+                let board = document.getElementsByTagName("td");
+                let i = (player.shootCoords[1] + (player.shootCoords[0]*10));
+                let hit = data.data;
+
+                if (hit){
+                    board[i].setAttribute("class", "destroyed");
+                }
+                else{
+                    board[i].setAttribute("class", "missed");
+                }
+            }
+
         }
     }
 }
@@ -150,12 +166,6 @@ var shoot = function(){
         $(".board-itemE").off("click");
         $(this).removeClass("board-itemE");
 
-        /*if(player.isHit(player.Shoot(cell))){
-            $(this).addClass("destroyed");
-        }
-        else{
-            $(this).addClass("missed");
-        }*/
     });
 }
 
