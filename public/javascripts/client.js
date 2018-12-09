@@ -146,6 +146,12 @@ var placeBoats = function(){
 
 var shoot = function(){
     $(".board-itemE").on("click", function(){
+        /*make already clicked items unclickable*/
+        if ($(this).hasClass("destroyed") || $(this).hasClass("missed"))
+        {
+            $(this).off("click");
+            return;
+        }
         /*send coordinates of shot*/
         let cell = $(this);
         let message = {
@@ -164,7 +170,6 @@ var shoot = function(){
         socket.send(JSON.stringify(message));
 
         $(".board-itemE").off("click");
-        //$(this).removeClass("board-itemE");
 
     });
 }
