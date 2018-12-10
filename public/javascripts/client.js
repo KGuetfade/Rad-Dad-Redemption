@@ -125,6 +125,8 @@ var placeBoats = function(){
 
         $("#state").html("Waiting for other player to be ready");
 
+        v++;
+
         /*send your board to server */
         let message = {
             type: "playerdata",
