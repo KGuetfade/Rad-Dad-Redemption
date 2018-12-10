@@ -189,6 +189,7 @@ var waitPlayer2 = function(data){
     {
         $('#myModal').css("display", "block");
         $('#modal-text').html($("#other_name").text() + " disconnected, waiting for new player");
+        player.clearBoard();
     }
 
 }

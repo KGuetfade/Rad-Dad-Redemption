@@ -71,11 +71,15 @@ Game.prototype.checkEmptyBoard = function(client){
 Game.prototype.resetPlayer = function(client){
     if (client.id === this.playerA.id)
     {
-        
+        this.playerA.ready = false;
+        this.playerA.board = [];
+        this.playerA.shootCoords = [-1,-1];
     }
     else if (client.id === this.playerB.id)
     {
-
+        this.playerB.ready = false;
+        this.playerB.board = [];
+        this.playerB.shootCoords = [-1,-1];
     }
 }
 module.exports = Game;

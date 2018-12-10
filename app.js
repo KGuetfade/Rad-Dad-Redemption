@@ -20,6 +20,7 @@ var server = http.createServer(app);
 const wss = new websocket.Server({ server });
 
 var game = new Game();
+var next_game = new Game();
 var id_counter = 0;
 var game_at_id = {};
 
@@ -63,7 +64,13 @@ wss.on("connection", function(ws){
             message.message = 0;
             game.sendBothPlayers(message);
 
-            game = new Game();
+            if (next_game.hasOnePlayer()){
+                game = next_game;
+                next_game = new Game();
+            }
+            else{
+                game = new Game();
+            }
         }
     }
 
@@ -256,6 +263,8 @@ wss.on("connection", function(ws){
             message:2
         };
 
+        current_game.resetPlayer(client);
+
         if (current_game.playerA === client){
             current_game.playerA = null;
             current_game.playerB.send(JSON.stringify(message));
@@ -263,6 +272,13 @@ wss.on("connection", function(ws){
         else if (current_game.playerB === client){
             current_game.playerB = null;
             current_game.playerA.send(JSON.stringify(message));
+        }
+
+        if (!game.hasOnePlayer()){
+            game = current_game;
+        }
+        else {
+            next_game = current_game;
         }
     });
 
