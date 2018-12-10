@@ -30,10 +30,19 @@ $(document).keydown(function(event){
 
         player.clearBoard();
         
-        cells = $("td");
-        for(var i = 0; i < cells.length; i++){
-            cells[i].className = "board-item";
-        }
+    }
+
+    if(array[i] === 4){
+        document.getElementById("number").innerHTML = "(" + four + ")";
+    }
+    else if(array[i] === 3){
+        document.getElementById("number").innerHTML = "(" + three + ")";
+    }
+    else if(array[i] === 2){
+        document.getElementById("number").innerHTML = "(" + two + ")";
+    }
+    else if(array[i] === 1){
+        document.getElementById("number").innerHTML = "(" + one + ")";
     }
 });
 
