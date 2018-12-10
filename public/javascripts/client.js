@@ -34,7 +34,6 @@ socket.onopen = function(event){
             /*shoot*/
             else if (data.message === 1)
             {
-
                 $("#state").html("Your turn to shoot");
                 shoot();
             }
