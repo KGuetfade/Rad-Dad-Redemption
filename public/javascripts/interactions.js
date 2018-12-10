@@ -44,8 +44,19 @@ $(document).keydown(function(event){
     boatAmount();
 
 }
-});
+if(event.which === 70){
 
+    let e = document.documentElement;
+  
+    if (!document.fullscreenElement) {
+      e.requestFullscreen()
+    } 
+    else {
+      document.exitFullscreen();
+    }
+
+}
+});
 
 var hitBoat = function(coords, hit){
 
