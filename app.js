@@ -24,6 +24,9 @@ var next_game = new Game();
 var id_counter = 0;
 var game_at_id = {};
 
+var amount_games = 0;
+var amount_players = 0;
+
 wss.on("connection", function(ws){
 
     /* Initialize client and game*/
@@ -34,6 +37,7 @@ wss.on("connection", function(ws){
 
     if(!game.hasTwoPlayers()){
         game.addPlayer(client);
+        amount_players++;
 
         if (game.hasOnePlayer()){
             /*player 1 has to wait for player 2 and can't make a move until then*/
@@ -51,6 +55,7 @@ wss.on("connection", function(ws){
                 message:1
             };
 
+            amount_games++;
             game.sendBothPlayers(message);
 
             /*send playerB nickname of playerA*/
@@ -282,12 +287,12 @@ wss.on("connection", function(ws){
             }
         }
 
-        if (!game.hasOnePlayer()){
+        /*if (!game.hasOnePlayer()){
             game = current_game;
         }
         else {
             next_game = current_game;
-        }
+        }*/
     });
 
 });
