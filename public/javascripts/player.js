@@ -51,7 +51,12 @@ Player.prototype.clearBoard = function(){
 
     cells = $("td");
         for(var i = 0; i < cells.length; i++){
+            if(cells[i].className !== "board-itemE"){
             cells[i].className = "board-item";
+            }
+            else{
+                cells[i].className = "board-itemE";
+            }
         }
 
     four = 1;

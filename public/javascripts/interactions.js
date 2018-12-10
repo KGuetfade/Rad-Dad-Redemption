@@ -24,8 +24,11 @@ var oneboatB = 1;
 var oneboatC = 1;
 var oneboatD = 1;
 
+var v = 0;
+
 
 $(document).keydown(function(event){
+    if(v === 0){
     if(event.which === 8){
 
         player.clearBoard();
@@ -44,6 +47,7 @@ $(document).keydown(function(event){
     else if(array[i] === 1){
         document.getElementById("number").innerHTML = "(" + one + ")";
     }
+}
 });
 
 
