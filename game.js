@@ -1,7 +1,6 @@
 var Game = function(){
     this.playerA = null;
     this.playerB = null;
-    this.state = 0;
 }
 
 Game.prototype.addPlayer = function(player){

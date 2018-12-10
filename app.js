@@ -263,15 +263,23 @@ wss.on("connection", function(ws){
             message:2
         };
 
-        current_game.resetPlayer(client);
+        if (!current_game.hasOnePlayer()){
+            current_game.resetPlayer(client);
+        }
 
         if (current_game.playerA === client){
+            console.log(current_game.playerA.nickname + " left");
             current_game.playerA = null;
-            current_game.playerB.send(JSON.stringify(message));
+            if (current_game.hasOnePlayer()){
+                current_game.playerB.send(JSON.stringify(message));
+            }
         }
         else if (current_game.playerB === client){
+            console.log(current_game.playerB.nickname + " left");
             current_game.playerB = null;
-            current_game.playerA.send(JSON.stringify(message));
+            if (current_game.hasOnePlayer()){
+                current_game.playerA.send(JSON.stringify(message));
+            }
         }
 
         if (!game.hasOnePlayer()){

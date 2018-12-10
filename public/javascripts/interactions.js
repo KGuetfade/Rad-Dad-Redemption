@@ -32,7 +32,7 @@ $(document).keydown(function(event){
     if(event.which === 8){
 
         player.clearBoard();
-        
+
     }
 
     if(array[i] === 4){
