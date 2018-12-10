@@ -1,22 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
 /*
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-*/
-
 router.get("/", function(req, res) {
-      res.statusCode = 200;
-      res.sendFile("splash.html", {root: "./public"});
+    res.render("splash.ejs", { amountGames: GameStats.amountGames, amountPlayers: GameStats.amountPlayers });
 })
 
-router.get("/splash", function(req, res) {
-      res.statusCode = 200;
-      res.sendFile("splash.html", {root: "./public"});
-})
+router.get("/splash", (req, res) => {
+    res.render("splash.ejs", { amountGames: GameStats.amountGames, amountPlayers: GameStats.amountPlayers });
+});*/
 
 router.get("/game", function(req, res) {
       res.statusCode = 200;

@@ -8,12 +8,19 @@ const port = process.argv[2];
 
 var indexRouter = require("./routes/index.js");
 var Game = require("./game.js");
+var GameStats = require("./stats.js");
 
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname + '/public')));
 
-app.get("/", indexRouter);
-app.get("/splash", indexRouter);
+app.get("/", function(req, res) {
+    res.render("splash.ejs", { amountGames: GameStats.amountGames, amountPlayers: GameStats.amountPlayers, highScore: GameStats.highScore });
+})
+
+app.get("/splash", (req, res) => {
+    res.render("splash.ejs", { amountGames: GameStats.amountGames, amountPlayers: GameStats.amountPlayers,  highScore: GameStats.highScore });
+});
+
 app.get("/game", indexRouter);
 
 var server = http.createServer(app);
@@ -24,20 +31,16 @@ var next_game = new Game();
 var id_counter = 0;
 var game_at_id = {};
 
-var amount_games = 0;
-var amount_players = 0;
-
 wss.on("connection", function(ws){
 
     /* Initialize client and game*/
     let client = ws;
     client.id = id_counter++;
     game_at_id[client.id] = game;
-    console.log("Socket connection made with ID: " + client.id);
 
     if(!game.hasTwoPlayers()){
         game.addPlayer(client);
-        amount_players++;
+        GameStats.amountPlayers++;
 
         if (game.hasOnePlayer()){
             /*player 1 has to wait for player 2 and can't make a move until then*/
@@ -55,7 +58,7 @@ wss.on("connection", function(ws){
                 message:1
             };
 
-            amount_games++;
+            GameStats.amountGames++;
             game.sendBothPlayers(message);
 
             /*send playerB nickname of playerA*/
@@ -142,11 +145,11 @@ wss.on("connection", function(ws){
             {
                 if (client === current_game.playerA){
                     current_game.playerA.nickname = data.data;
-                    console.log("player A nickname: " + current_game.playerA.nickname);
+                    console.log("player: " + current_game.playerA.nickname + " joined");
                 }
                 else if (client === current_game.playerB){
                     current_game.playerB.nickname = data.data;
-                    console.log("player B nickname: " + current_game.playerB.nickname);
+                    console.log("player: " + current_game.playerB.nickname + " joined");
 
                     /*send playerA nickname of playerB*/
                     let message = {
@@ -273,14 +276,14 @@ wss.on("connection", function(ws){
         }
 
         if (current_game.playerA === client){
-            console.log(current_game.playerA.nickname + " left");
+            console.log("player: " + current_game.playerA.nickname + " left");
             current_game.playerA = null;
             if (current_game.hasOnePlayer()){
                 current_game.playerB.send(JSON.stringify(message));
             }
         }
         else if (current_game.playerB === client){
-            console.log(current_game.playerB.nickname + " left");
+            console.log("player: " + current_game.playerB.nickname + " left");
             current_game.playerB = null;
             if (current_game.hasOnePlayer()){
                 current_game.playerA.send(JSON.stringify(message));

@@ -18,7 +18,26 @@ socket.onopen = function(event){
         /*status*/
         if (data.type === "status")
         {
-            waitPlayer2(data);
+            /*wait for player 2 */
+            if (data.message === 0)
+            {
+                $('#myModal').css("display", "block");
+            }
+
+            /*player 2 joined, remove modal*/
+            else if (data.message === 1)
+            {
+                $('#myModal').css("display", "none");
+                $('#buttonReadyWrapper').css("display", "block");
+            }
+
+            /*player 2 disconnected */
+            else if (data.message === 2)
+            {
+                $('#myModal').css("display", "block");
+                $('#modal-text').html($("#other_name").text() + " disconnected, waiting for new player");
+                player.clearBoard();
+            }
         }
 
         /*gamestate*/
@@ -173,27 +192,6 @@ var shoot = function(){
         $(".board-itemE").off("click");
 
     });
-}
-
-var waitPlayer2 = function(data){
-    if (data.message === 0)
-    {
-        $('#myModal').css("display", "block");
-    }
-
-    else if (data.message === 1)
-    {
-        $('#myModal').css("display", "none");
-        $('#buttonReadyWrapper').css("display", "block");
-    }
-
-    else if (data.message === 2)
-    {
-        $('#myModal').css("display", "block");
-        $('#modal-text').html($("#other_name").text() + " disconnected, waiting for new player");
-        player.clearBoard();
-    }
-
 }
 
 var showWinScreen = function(){
