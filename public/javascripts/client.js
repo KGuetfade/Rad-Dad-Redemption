@@ -13,7 +13,7 @@ socket.onopen = function(event){
     socket.send(JSON.stringify(message));
 
     socket.onmessage = function(event){
-        data = JSON.parse(event.data);
+        let data = JSON.parse(event.data);
 
         /*status*/
         if (data.type === "status")
