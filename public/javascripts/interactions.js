@@ -27,6 +27,9 @@ var oneboatD = 1;
 
 $(document).keydown(function(event){
     if(event.which === 8){
+
+        player.clearBoard();
+        
         cells = $("td");
         for(var i = 0; i < cells.length; i++){
             cells[i].className = "board-item";
