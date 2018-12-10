@@ -3,10 +3,10 @@ table, th, td{
     border-collapse: collapse;
 }
 
-/*
+
 body {
     overflow: hidden;
-}*/
+}
 
 th, td{
     height: 45px;
@@ -41,12 +41,16 @@ th, td{
     line-height: 0;
 }
 
+.boats_left{
+    transform: translateY(-60px);
+}
+
 .player-board{
     text-align: center;
     display: inline-block;
     width: 49.5%;
     line-height: 0;
-    transform: translateY(-40px);
+    transform: translateY(-120px);
 }
 
 .board-table{
@@ -71,13 +75,13 @@ td.board-itemE:hover {
 
 .boat {
     background-color: gray;
-    transform: translateY(-400px);
+    transform: translateY(-450px);
 }
 
 h4 {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    transform: translateY(-150px);
+    transform: translateY(-200px);
     font-size: 16px;
 }
 
@@ -90,7 +94,7 @@ h4 {
 }
 
 #number{
-    transform: translateY(-650px);
+    transform: translateY(-700px);
     position: static;
 }
 
@@ -128,6 +132,7 @@ h4 {
     color:#ffffff;
     font: 20px Courier;
     display: block;
+    transform: translateY(-60px);
 }
 
 #hit{
@@ -184,6 +189,28 @@ h4 {
 
 .oneBoat4{
     background-color: gray; 
+}
+
+@media only screen and (max-width: 900px){
+    .boat{
+        transform: translateY(-20px);
+    }
+
+    #h4{
+        transform: translateY(250px)
+    }
+
+    #number{
+        transform: translateY(-280px)
+    }
+
+    body{
+        overflow: visible;
+    }
+
+    .player-board{
+        transform: translateY(-70px);
+    }
 }
 
 
