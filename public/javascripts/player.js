@@ -48,4 +48,14 @@ Player.prototype.clearBoard = function(){
 
         this.board.push(row);
     }
+
+    cells = $("td");
+        for(var i = 0; i < cells.length; i++){
+            cells[i].className = "board-item";
+        }
+
+    four = 1;
+    three = 2;
+    two = 3;
+    one = 4;
 }
