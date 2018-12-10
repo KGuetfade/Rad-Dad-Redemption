@@ -68,4 +68,7 @@ Game.prototype.checkEmptyBoard = function(client){
     return true;
 }
 
+game.prototype.resetPlayer = function(client){
+    
+}
 module.exports = Game;

@@ -145,8 +145,9 @@ wss.on("connection", function(ws){
                     current_game.playerA.send(JSON.stringify(message));
                 }
             }
+
             /*array*/
-            if (data.message === 1)
+            else if (data.message === 1)
             {
                 if (client === current_game.playerA){
                     current_game.playerA.board = data.data;
@@ -157,12 +158,12 @@ wss.on("connection", function(ws){
                     console.log(current_game.playerB.board);
                 }
             }
+
             /*shoot coordinates*/
             else if (data.message === 2)
             {
                 if (client === current_game.playerA){
                     current_game.playerA.shootCoords = data.data;
-
                     console.log(current_game.playerA.shootCoords);
                 }
                 else if (client === current_game.playerB){
@@ -170,13 +171,27 @@ wss.on("connection", function(ws){
                     console.log(current_game.playerB.shootCoords);
                 }
             }
+
             /*hit or miss*/
             else if (data.message === 3)
             {
+                /*send player who shot if it hit or missed*/
                 let message = {
-                    type:"gamestate",
-                    message:1
+                    type:"serverdata",
+                    message:2,
+                    data: data.data
                 };
+
+                if (client === current_game.playerA){
+                    current_game.playerB.send(JSON.stringify(message));
+                }
+                else if (client === current_game.playerB){
+                    current_game.playerA.send(JSON.stringify(message));
+                }
+
+                message.type = "gamestate";
+                message.message = 1;
+                message.data = 0;
 
                 /*check if player lost*/
                 if (current_game.checkEmptyBoard(client))
@@ -235,11 +250,19 @@ wss.on("connection", function(ws){
 
     client.on("close", function(code){
         let current_game = game_at_id[client.id];
+
+        let message = {
+            type:"status",
+            message:2
+        };
+
         if (current_game.playerA === client){
             current_game.playerA = null;
+            current_game.playerB.send(JSON.stringify(message));
         }
         else if (current_game.playerB === client){
             current_game.playerB = null;
+            current_game.playerA.send(JSON.stringify(message));
         }
     });
 
@@ -255,6 +278,7 @@ server.listen(port, () =>{
 --SEND TO PLAYER--
 status 0 : wait for player
 status 1 : start the game
+status 2 : player left
 
 gamestate 0 : place boats
 gamestate 1 : Shoot
@@ -264,6 +288,7 @@ gamestate 4 : lost
 
 serverdata 0 : nickname
 serverdata 1 : shot coordinates other player
+serverdata 2 : hit or miss
 
 --SEND TO SERVER--
 playerstatus 0 : boats placed

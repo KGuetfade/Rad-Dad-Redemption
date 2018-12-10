@@ -34,7 +34,6 @@ socket.onopen = function(event){
             /*shoot*/
             else if (data.message === 1)
             {
-
                 $("#state").html("Your turn to shoot");
                 shoot();
             }
@@ -69,7 +68,7 @@ socket.onopen = function(event){
             }
 
             /*shot coordinates other player*/
-            if (data.message === 1)
+            else if (data.message === 1)
             {
                 let shootCoords = data.data;
                 let hit = player.isHit(shootCoords);
@@ -87,6 +86,22 @@ socket.onopen = function(event){
                 message.data = hit;
                 socket.send(JSON.stringify(message));
             }
+
+            /*see if you hit or missed*/
+            else if (data.message === 2)
+            {
+                let board = document.querySelectorAll('td.board-itemE');
+                let i = (player.shootCoords[1] + (player.shootCoords[0]*10));
+                let hit = data.data;
+
+                if (hit){
+                    board[i].setAttribute("class", "board-itemE destroyed");
+                }
+                else{
+                    board[i].setAttribute("class", "board-itemE missed");
+                }
+            }
+
         }
     }
 }
@@ -130,6 +145,12 @@ var placeBoats = function(){
 
 var shoot = function(){
     $(".board-itemE").on("click", function(){
+        /*make already clicked items unclickable*/
+        if ($(this).hasClass("destroyed") || $(this).hasClass("missed"))
+        {
+            $(this).off("click");
+            return;
+        }
         /*send coordinates of shot*/
         let cell = $(this);
         let message = {
@@ -148,14 +169,7 @@ var shoot = function(){
         socket.send(JSON.stringify(message));
 
         $(".board-itemE").off("click");
-        $(this).removeClass("board-itemE");
 
-        /*if(player.isHit(player.Shoot(cell))){
-            $(this).addClass("destroyed");
-        }
-        else{
-            $(this).addClass("missed");
-        }*/
     });
 }
 
@@ -165,11 +179,18 @@ var waitPlayer2 = function(data){
         $('#myModal').css("display", "block");
     }
 
-    if (data.message === 1)
+    else if (data.message === 1)
     {
         $('#myModal').css("display", "none");
         $('#buttonReadyWrapper').css("display", "block");
     }
+
+    else if (data.message === 2)
+    {
+        $('#myModal').css("display", "block");
+        $('#modal-text').html($("#other_name").text() + " disconnected, waiting for new player");
+    }
+
 }
 
 var showWinScreen = function(){
