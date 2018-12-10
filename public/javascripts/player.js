@@ -3,7 +3,16 @@ var Player = function(){
     this.ships = 0;
     this.shootCoords = [-1,-1];
 
-    this.clearBoard();
+    for (var i = 0; i < 10; i++)
+    {
+        var row = [];
+        for (var j = 0; j < 10; j ++)
+        {
+            row.push(0);
+        }
+
+        this.board.push(row);
+    }
 }
 
 Player.prototype.Shoot = function(box){
@@ -26,7 +35,7 @@ Player.prototype.isHit = function(array){
     }
 }
 
-player.prototype.clearBoard = function(){
+Player.prototype.clearBoard = function(){
     this.board = [];
 
     for (var i = 0; i < 10; i++)

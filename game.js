@@ -69,6 +69,13 @@ Game.prototype.checkEmptyBoard = function(client){
 }
 
 Game.prototype.resetPlayer = function(client){
+    if (client.id === this.playerA.id)
+    {
+        
+    }
+    else if (client.id === this.playerB.id)
+    {
 
+    }
 }
 module.exports = Game;
