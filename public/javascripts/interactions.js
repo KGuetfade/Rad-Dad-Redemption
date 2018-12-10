@@ -24,7 +24,13 @@ var oneboatB = 1;
 var oneboatC = 1;
 var oneboatD = 1;
 
+var total = 0;
+
 var v = 0;
+
+var updateTotal = function(){
+    document.getElementById("OwnTotal").innerHTML = total;
+}
 
 
 $(document).keydown(function(event){
@@ -35,18 +41,8 @@ $(document).keydown(function(event){
 
     }
 
-    if(array[i] === 4){
-        document.getElementById("number").innerHTML = "(" + four + ")";
-    }
-    else if(array[i] === 3){
-        document.getElementById("number").innerHTML = "(" + three + ")";
-    }
-    else if(array[i] === 2){
-        document.getElementById("number").innerHTML = "(" + two + ")";
-    }
-    else if(array[i] === 1){
-        document.getElementById("number").innerHTML = "(" + one + ")";
-    }
+    boatAmount();
+
 }
 });
 
@@ -95,46 +91,72 @@ var hitBoat = function(coords, hit){
         if(fourboat === 0){
             alert("BOAT DESTROYED");
             fourboat--;
+            total--;
         }
         if(threeboatA === 0){
             alert("BOAT DESTROYED");
             threeboatA--;
+            total--;
         }
         if(threeboatB === 0){
             alert("BOAT DESTROYED");
             threeboatB--;
+            total--;
         }
         if(twoboatA === 0){
             alert("BOAT DESTROYED");
             twoboatA--;
+            total--;
         }
         if(twoboatB === 0){
             alert("BOAT DESTROYED");
             twoboatB--;
+            total--;
         }
         if(twoboatC === 0){
             alert("BOAT DESTROYED");
             twoboatC--;
+            total--;
         }
         if(oneboatA === 0){
             alert("BOAT DESTROYED");
             oneboatA--;
+            total--;
         }
         if(oneboatB === 0){
             alert("BOAT DESTROYED");
             oneboatB--;
+            total--;
         }
         if(oneboatC === 0){
             alert("BOAT DESTROYED");
             oneboatC--;
+            total--;
         }
         if(oneboatD === 0){
             alert("BOAT DESTROYED");
             oneboatD--;
+            total--;
         }
+        updateTotal();
     }
     else if(!hit){
         board[i].setAttribute('id', 'missed');
+    }
+}
+
+var boatAmount = function(){
+    if(array[i] === 4){
+        document.getElementById("number").innerHTML = "(" + four + ")";
+    }
+    else if(array[i] === 3){
+        document.getElementById("number").innerHTML = "(" + three + ")";
+    }
+    else if(array[i] === 2){
+        document.getElementById("number").innerHTML = "(" + two + ")";
+    }
+    else if(array[i] === 1){
+        document.getElementById("number").innerHTML = "(" + one + ")";
     }
 }
 
@@ -184,6 +206,7 @@ $(".board-item").on("click", function(){
         cellBelow3.addClass("fourBoat");
         four--;
         }
+        total++;
     }
     }
     else if(array[i] === 3 && player.board[index2-1][index-1] !== 1 && three !== 0){
@@ -213,6 +236,7 @@ $(".board-item").on("click", function(){
                 cellBelow.addClass("threeBoat" + three);
                 cellBelow2.addClass("threeBoat" + three);
                 three--;                     }
+                total++;
         }
         }
     else if(array[i] === 2 && player.board[index2-1][index-1] !== 1 && two !== 0){
@@ -236,6 +260,7 @@ $(".board-item").on("click", function(){
                 cellBelow.addClass("twoBoat" + two);
                 two--;
                 }
+            total++;
         }
         }
     else if(array[i] === 1 && player.board[index2-1][index-1] !== 1 && one !== 0){
@@ -246,22 +271,58 @@ $(".board-item").on("click", function(){
             cell.addClass("oneBoat" + one);
             one--;
             }
+            total++;
         }
-
-        if(array[i] === 4){
-            document.getElementById("number").innerHTML = "(" + four + ")";
-        }
-        else if(array[i] === 3){
-            document.getElementById("number").innerHTML = "(" + three + ")";
-        }
-        else if(array[i] === 2){
-            document.getElementById("number").innerHTML = "(" + two + ")";
-        }
-        else if(array[i] === 1){
-            document.getElementById("number").innerHTML = "(" + one + ")";
-        }
+        boatAmount();
+        updateTotal();
 
 });
+
+var boatSize = function(){
+    
+    if(array[i] === 1){
+        document.getElementById("b4").style.display = "none";
+        document.getElementById("b3").style.display = "none";
+        document.getElementById("b2").style.display = "none";
+        document.getElementById("b1").style.display = "table-cell";
+        document.getElementById("number").innerHTML = "(" + one + ")";
+    }
+    else if(array[i] === 2){
+        document.getElementById("b4").style.display = "none";
+        document.getElementById("b3").style.display = "none";
+        document.getElementById("b2").style.display = "table-cell";
+        document.getElementById("b1").style.display = "table-cell";
+        document.getElementById("number").innerHTML = "(" + two + ")";
+
+    }
+    else if(array[i] === 3){
+        document.getElementById("b4").style.display = "none";
+        document.getElementById("b3").style.display = "table-cell";
+        document.getElementById("b2").style.display = "table-cell";
+        document.getElementById("b1").style.display = "table-cell";
+        document.getElementById("number").innerHTML = "(" + three + ")";
+
+    }
+    else if(array[i] === 4){
+        document.getElementById("b4").style.display = "table-cell";
+        document.getElementById("b3").style.display = "table-cell";
+        document.getElementById("b2").style.display = "table-cell";
+        document.getElementById("b1").style.display = "table-cell";
+        document.getElementById("number").innerHTML = "(" + four + ")";
+    }
+}
+
+var resetDirection = function(){
+
+    if(j === 0){
+        j = 1;
+        document.getElementById("h4").innerHTML = "Vertical";
+    }
+    else if(j === 1){
+        j = 0;
+        document.getElementById("h4").innerHTML = "Horizontal";
+    }
+}
 
 $(document).keydown(function(event) {
     switch(event.which) {
@@ -270,48 +331,15 @@ $(document).keydown(function(event) {
         if(i>3){
             i = 0;
         }
-        if(array[i] === 1){
-            document.getElementById("b4").style.display = "none";
-            document.getElementById("b3").style.display = "none";
-            document.getElementById("b2").style.display = "none";
-            document.getElementById("b1").style.display = "table-cell";
-            document.getElementById("number").innerHTML = "(" + one + ")";
-        }
-        else if(array[i] === 2){
-            document.getElementById("b4").style.display = "none";
-            document.getElementById("b3").style.display = "none";
-            document.getElementById("b2").style.display = "table-cell";
-            document.getElementById("b1").style.display = "table-cell";
-            document.getElementById("number").innerHTML = "(" + two + ")";
 
-        }
-        else if(array[i] === 3){
-            document.getElementById("b4").style.display = "none";
-            document.getElementById("b3").style.display = "table-cell";
-            document.getElementById("b2").style.display = "table-cell";
-            document.getElementById("b1").style.display = "table-cell";
-            document.getElementById("number").innerHTML = "(" + three + ")";
+        boatSize();
 
-        }
-        else if(array[i] === 4){
-            document.getElementById("b4").style.display = "table-cell";
-            document.getElementById("b3").style.display = "table-cell";
-            document.getElementById("b2").style.display = "table-cell";
-            document.getElementById("b1").style.display = "table-cell";
-            document.getElementById("number").innerHTML = "(" + four + ")";
-
-        }
         break;
 
         case 38:
-        if(j === 0){
-            j = 1;
-            document.getElementById("h4").innerHTML = "Vertical";
-        }
-        else if(j === 1){
-            j = 0;
-            document.getElementById("h4").innerHTML = "Horizontal";
-        }
+
+        resetDirection();
+
         break;
 
         case 39:
@@ -319,49 +347,15 @@ $(document).keydown(function(event) {
         if(i<0){
             i = 3;
         }
-        if(array[i] === 1){
-            document.getElementById("b4").style.display = "none";
-            document.getElementById("b3").style.display = "none";
-            document.getElementById("b2").style.display = "none";
-            document.getElementById("b1").style.display = "table-cell";
-            document.getElementById("number").innerHTML = "(" + one + ")";
 
-        }
-        else if(array[i] === 2){
-            document.getElementById("b4").style.display = "none";
-            document.getElementById("b3").style.display = "none";
-            document.getElementById("b2").style.display = "table-cell";
-            document.getElementById("b1").style.display = "table-cell";
-            document.getElementById("number").innerHTML = "(" + two + ")";
+        boatSize();
 
-        }
-        else if(array[i] === 3){
-            document.getElementById("b4").style.display = "none";
-            document.getElementById("b3").style.display = "table-cell";
-            document.getElementById("b2").style.display = "table-cell";
-            document.getElementById("b1").style.display = "table-cell";
-            document.getElementById("number").innerHTML = "(" + three + ")";
-
-        }
-        else if(array[i] === 4){
-            document.getElementById("b4").style.display = "table-cell";
-            document.getElementById("b3").style.display = "table-cell";
-            document.getElementById("b2").style.display = "table-cell";
-            document.getElementById("b1").style.display = "table-cell";
-            document.getElementById("number").innerHTML = "(" + four + ")";
-
-        }
         break;
 
         case 40:
-        if(j === 0){
-            j = 1;
-            document.getElementById("h4").innerHTML = "Vertical";
-        }
-        else if(j === 1){
-            j = 0;
-            document.getElementById("h4").innerHTML = "Horizontal";
-        }
+
+        resetDirection();
+        
         break;
 
         default: return;

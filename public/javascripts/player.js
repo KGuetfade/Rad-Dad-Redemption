@@ -51,11 +51,11 @@ Player.prototype.clearBoard = function(){
 
     cells = $("td");
         for(var i = 0; i < cells.length; i++){
-            if(cells[i].className !== "board-itemE"){
+            if(cells[i].className !== "board-itemE" && cells[i].className !== "boat-item1" && cells[i].className !== "boat-item2" && cells[i].className !== "boat-item3" && cells[i].className !== "boat-item4"){
             cells[i].removeAttribute("id");
             cells[i].className = "board-item";
             }
-            else{
+            else if(cells[i].className !== "boat"){
                 cells[i].className = "board-itemE";
             }
         }
