@@ -20,7 +20,7 @@ h2 {
 button {
   width: 300px;
   height: 80px;
-  background-color: gray;
+  background-color: rgb(98, 122, 238);
   border: none;
   font-size: 22px;
   text-align: center;
@@ -33,7 +33,7 @@ button {
 }
 
 button:hover {
-  background-color: #696969;
+  background-color: rgb(38, 51, 116);
 }
 
 button:active {
@@ -49,24 +49,24 @@ button:active {
 }
 
 .par1 {
-  transform: translate(50px, -360px);
-  font-size: 20px;
-  font-family: 'Courier New', Courier, monospace;
-  color: white;
+  transform: translate(50px, -340px);
+  font-size: 25px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: black;
 }
 
 .par2 {
-  transform: translate(50px, -260px);
-  font-size: 20px;
-  font-family: 'Courier New', Courier, monospace;
-  color: white;
+  transform: translate(50px, -280px);
+  font-size: 25px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: black;
 }
 
 .par3 {
-  transform: translate(50px, -160px);
-  font-size: 20px;
-  font-family: 'Courier New', Courier, monospace;
-  color: white;
+  transform: translate(50px, -220px);
+  font-size: 25px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: black;
 }
 
 @media only screen and (max-width: 900px){
@@ -87,4 +87,6 @@ button:active {
     overflow: visible;
   }
 }
+
+
 

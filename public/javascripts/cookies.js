@@ -1,7 +1,7 @@
 var setCookie = function(cookieType, cookieValue, expDate){
     var date = new Date();
     date.setTime(date.getTime() + (expDate*24*60*60*1000));
-    var expiration = "expiress=" + date.toUTCString();
+    var expiration = "expires=" + date.toUTCString();
     document.cookie = cookieType + "=" + cookieValue + ";" + expiration + ";path=/";
 }
 
