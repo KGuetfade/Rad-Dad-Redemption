@@ -99,7 +99,7 @@ socket.onopen = function(event){
             {
                 let shootCoords = data.data;
                 let hit = player.isHit(shootCoords);
-                hitBoat(shootCoords, hit);
+                let isDestroyed = hitBoat(shootCoords, hit);
 
                 let message = {
                     type:"playerdata",
@@ -136,7 +136,7 @@ socket.onopen = function(event){
 var placeBoats = function(){
     $("#buttonReady").on("click", function(){
         /*check if all boats are placed*/
-        if (!(four === 0 && three === 0 && two === 0 && one === 0)&&false)
+        if (!(four === 0 && three === 0 && two === 0 && one === 0))
         {
             alert("You haven't placed all your boats")
             return;

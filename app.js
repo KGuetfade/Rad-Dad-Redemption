@@ -166,11 +166,9 @@ wss.on("connection", function(ws){
             {
                 if (client === current_game.playerA){
                     current_game.playerA.board = data.data;
-                    console.log(current_game.playerA.board);
                 }
                 else if (client === current_game.playerB){
                     current_game.playerB.board = data.data;
-                    console.log(current_game.playerB.board);
                 }
             }
 
@@ -179,11 +177,9 @@ wss.on("connection", function(ws){
             {
                 if (client === current_game.playerA){
                     current_game.playerA.shootCoords = data.data;
-                    console.log(current_game.playerA.shootCoords);
                 }
                 else if (client === current_game.playerB){
                     current_game.playerB.shootCoords = data.data;
-                    console.log(current_game.playerB.shootCoords);
                 }
             }
 

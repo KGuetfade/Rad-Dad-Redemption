@@ -47,10 +47,10 @@ $(document).keydown(function(event){
 if(event.which === 70){
 
     let e = document.documentElement;
-  
+
     if (!document.fullscreenElement) {
       e.requestFullscreen()
-    } 
+    }
     else {
       document.exitFullscreen();
     }
@@ -63,6 +63,7 @@ var hitBoat = function(coords, hit){
     var board = document.getElementsByTagName("td");
     var i = (coords[1] + (coords[0]*10));
     var classname = board[i].className;
+    var isDestroyed = false;
 
     if(hit){
 
@@ -154,6 +155,8 @@ var hitBoat = function(coords, hit){
     else if(!hit){
         board[i].setAttribute('id', 'missed');
     }
+
+    return isDestroyed;
 }
 
 var boatAmount = function(){
@@ -290,7 +293,7 @@ $(".board-item").on("click", function(){
 });
 
 var boatSize = function(){
-    
+
     if(array[i] === 1){
         document.getElementById("b4").style.display = "none";
         document.getElementById("b3").style.display = "none";
@@ -366,7 +369,7 @@ $(document).keydown(function(event) {
         case 40:
 
         resetDirection();
-        
+
         break;
 
         default: return;
