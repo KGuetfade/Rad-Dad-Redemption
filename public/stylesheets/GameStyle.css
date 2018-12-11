@@ -213,4 +213,8 @@ h4 {
     }
 }
 
+.boat-item1:-webkit-full-screen{
+    background-color: #990000;
+}
+
 
