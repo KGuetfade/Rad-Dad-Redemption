@@ -1,7 +1,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: linear-gradient(to right top, #051937, #133861, #1d5b8e, #1f81bc, #12a9eb);
+  /*background-image: linear-gradient(to right top, #051937, #133861, #1d5b8e, #1f81bc, #12a9eb);*/
+  background-image: url("../images/bg-1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

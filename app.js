@@ -297,7 +297,9 @@ wss.on("connection", function(ws){
             current_game.resetPlayer(client);
         }
         else{
-            GameStats.amountGames--;
+            if (!(GameStats.amountGames === 0)){
+                GameStats.amountGames--;
+            }
         }
 
         if (current_game.playerA === client){

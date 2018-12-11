@@ -101,7 +101,7 @@ h4 {
 #buttonReady {
     width: 150px;
     height: 50px;
-    background-color: #668cff;
+    background-color: #4554A3;
     border: none;
     font-size: 18px;
     text-align: center;
@@ -136,7 +136,7 @@ h4 {
 }
 
 #hit{
-    background-color: #990000;   
+    background-color: #990000;
 }
 
 .destroyed{
@@ -176,19 +176,19 @@ h4 {
 }
 
 .oneBoat1{
-    background-color: gray; 
+    background-color: gray;
 }
 
 .oneBoat2{
-    background-color: gray; 
+    background-color: gray;
 }
 
 .oneBoat3{
-    background-color: gray; 
+    background-color: gray;
 }
 
 .oneBoat4{
-    background-color: gray; 
+    background-color: gray;
 }
 
 @media only screen and (max-width: 900px){
@@ -216,5 +216,3 @@ h4 {
 .boat-item1:-webkit-full-screen{
     background-color: #990000;
 }
-
-

@@ -239,5 +239,4 @@ var startTimer = function(){
 
     var x = setInterval(incSec, 1000);
     var y = setInterval(incMin, 60000);
-    
 }
