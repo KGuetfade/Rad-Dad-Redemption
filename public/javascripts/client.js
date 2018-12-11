@@ -31,7 +31,7 @@ socket.onopen = function(event){
                 $('#buttonReadyWrapper').css("display", "block");
             }
 
-            /*player 2 disconnected */
+            /*player 2 disconnected*/
             else if (data.message === 2)
             {
                 $('#myModal').css("display", "block");
@@ -67,6 +67,14 @@ socket.onopen = function(event){
                 $(".board-itemE").off("click");
                 showWinScreen();
 
+                /*get time of game and send it to server for highscore*/
+                let time = $("#time").text();
+                let message = {
+                    type:"playerdata",
+                    message:4,
+                    data:time
+                };
+                socket.send(JSON.stringify(message));
             }
             /*lost*/
             else if (data.message === 4)
@@ -128,7 +136,7 @@ socket.onopen = function(event){
 var placeBoats = function(){
     $("#buttonReady").on("click", function(){
         /*check if all boats are placed*/
-        if (!(four === 0 && three === 0 && two === 0 && one === 0))
+        if (!(four === 0 && three === 0 && two === 0 && one === 0)&&false)
         {
             alert("You haven't placed all your boats")
             return;
@@ -231,4 +239,5 @@ var startTimer = function(){
 
     var x = setInterval(incSec, 1000);
     var y = setInterval(incMin, 60000);
+    
 }

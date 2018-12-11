@@ -29,7 +29,7 @@
 
         <p class="par1">People playing: <%= amountPlayers %></p>
         <p class="par2">Amount of games: <%= amountGames %></p>
-        <p class="par3">Highscore: <%= highScore %></p>
+        <p class="par3">Fastest Time: <%= highScore.getMinutes().toString() + ":" + highScore.getSeconds().toString() %> Minutes</p>
 
         <div class="modal" id="nicknameModal">
             <div class="nickname-container">
