@@ -20,11 +20,7 @@ h2 {
 button {
   width: 300px;
   height: 80px;
-<<<<<<< HEAD
   background-color: rgb(98, 122, 238);
-=======
-  background-color: #4554A3;
->>>>>>> 2d0e5f43d9ba22eb3ddbd62c1c55c9f7689134e7
   border: none;
   font-size: 22px;
   text-align: center;
@@ -41,8 +37,8 @@ button:hover {
 }
 
 button:active {
-  background-color: #696969;
-  box-shadow: 0 5px #666;
+  background-color: rgb(38, 51, 116);
+  box-shadow: 0 5px rgb(20, 27, 59);
   transform: translate(0px, 4px);
 }
 

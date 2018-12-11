@@ -68,13 +68,13 @@ td.board-item:hover {
 }
 
 td.board-itemE:hover {
-    background-color: #8B0000;
+    background-color: rgb(83, 14, 14);
     cursor: pointer;
 
 }
 
 .boat {
-    background-color: gray;
+    background-color: #817FB2;
     transform: translateY(-450px);
 }
 
@@ -136,11 +136,11 @@ h4 {
 }
 
 #hit{
-    background-color: #990000;
+    background-color: rgb(83, 14, 14);
 }
 
 .destroyed{
-    background-color: #990000;
+    background-color: rgb(83, 14, 14);
 }
 
 .missed{
@@ -152,43 +152,53 @@ h4 {
 }
 
 .fourBoat{
-    background-color: gray;
+    background-color: #817FB2;
+    border: none;
 }
 
 .threeBoat1{
-    background-color: gray;
+    background-color: #817FB2;
+    border: none;
 }
 
 .threeBoat2{
-    background-color: gray;
+    background-color: #817FB2;
+    border: none;
 }
 
 .twoBoat1{
-    background-color: gray;
+    background-color: #817FB2;
+    border: none;
 }
 
 .twoBoat2{
-    background-color: gray;
+    background-color: #817FB2;
+    border: none;
 }
 
 .twoBoat3{
-    background-color: gray;
+    background-color: #817FB2;
+    border: none;
 }
 
 .oneBoat1{
-    background-color: gray;
+    background-color: #817FB2;
+    border: none;
 }
 
 .oneBoat2{
-    background-color: gray;
+    background-color: #817FB2;
+    border: none;
 }
 
 .oneBoat3{
-    background-color: gray;
+    background-color: #817FB2;
+    border: none;
 }
 
 .oneBoat4{
-    background-color: gray;
+    background-color: #817FB2;
+    border: none;
 }
 
 @media only screen and (max-width: 900px){
