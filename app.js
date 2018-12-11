@@ -217,7 +217,7 @@ wss.on("connection", function(ws){
                         current_game.playerA.send(JSON.stringify(message));
                         message.message = 3;
                         current_game.playerB.send(JSON.stringify(message));
-                        console.log("player B won");
+                        console.log("player: " + current_game.playerB.nickname + " won");
                     }
                     else if (client === current_game.playerB)
                     {
@@ -225,12 +225,11 @@ wss.on("connection", function(ws){
                         current_game.playerB.send(JSON.stringify(message));
                         message.message = 3;
                         current_game.playerA.send(JSON.stringify(message));
-                        console.log("player A won");
+                        console.log("player: " + current_game.playerA.nickname + " won");
                     }
                 }
-
                 /*if miss then other player can now shoot*/
-                if (client === current_game.playerA){
+                else if (client === current_game.playerA){
                     if (!data.data)
                     {
                         current_game.playerA.send(JSON.stringify(message));
@@ -245,6 +244,7 @@ wss.on("connection", function(ws){
                         current_game.playerA.send(JSON.stringify(message));
                     }
                 }
+                /*if miss then other player can now shoot*/
                 else if (client === current_game.playerB){
                     if (!data.data)
                     {
@@ -252,12 +252,33 @@ wss.on("connection", function(ws){
                         message.message = 2;
                         current_game.playerA.send(JSON.stringify(message));
                     }
+                    /*else tell player he can shoot again*/
                     else
                     {
                         current_game.playerA.send(JSON.stringify(message));
                         message.message = 2;
                         current_game.playerB.send(JSON.stringify(message));
                     }
+                }
+            }
+
+            /*Game time (for highscore)*/
+            else if(data.message === 4)
+            {
+                let time = data.data;
+                let datestring = "01/01/2000 00:";
+
+                if(time.length === 4){
+                    datestring += "0" + time;
+                }
+                else if (time.length === 5){
+                    datestring += time;
+                }
+
+                let current_date = new Date(datestring);
+
+                if (current_date < GameStats.highScore){
+                    GameStats.highScore = current_date;
                 }
             }
         }
@@ -271,8 +292,14 @@ wss.on("connection", function(ws){
             message:2
         };
 
+        GameStats.amountPlayers--;
         if (!current_game.hasOnePlayer()){
             current_game.resetPlayer(client);
+        }
+        else{
+            if (!(GameStats.amountGames === 0)){
+                GameStats.amountGames--;
+            }
         }
 
         if (current_game.playerA === client){
@@ -330,4 +357,5 @@ playerdata 0 : nickname
 playerdata 1 : array
 playerdata 2 : shoot coordinates
 playerdata 3 : hit or miss (true or false)
+playerdata 4 : gametime
 */

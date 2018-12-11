@@ -20,7 +20,11 @@ h2 {
 button {
   width: 300px;
   height: 80px;
+<<<<<<< HEAD
   background-color: rgb(98, 122, 238);
+=======
+  background-color: #4554A3;
+>>>>>>> 2d0e5f43d9ba22eb3ddbd62c1c55c9f7689134e7
   border: none;
   font-size: 22px;
   text-align: center;
@@ -50,22 +54,37 @@ button:active {
 
 .par1 {
   transform: translate(50px, -340px);
+<<<<<<< HEAD
   font-size: 25px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+=======
+  font-size: 30px;
+  font-family: Impact, Courier, monospace;
+>>>>>>> 2d0e5f43d9ba22eb3ddbd62c1c55c9f7689134e7
   color: black;
 }
 
 .par2 {
   transform: translate(50px, -280px);
+<<<<<<< HEAD
   font-size: 25px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+=======
+  font-size: 30px;
+  font-family: Impact, Courier, monospace;
+>>>>>>> 2d0e5f43d9ba22eb3ddbd62c1c55c9f7689134e7
   color: black;
 }
 
 .par3 {
   transform: translate(50px, -220px);
+<<<<<<< HEAD
   font-size: 25px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+=======
+  font-size: 30px;
+  font-family: Impact, Courier, monospace;
+>>>>>>> 2d0e5f43d9ba22eb3ddbd62c1c55c9f7689134e7
   color: black;
 }
 
@@ -87,6 +106,9 @@ button:active {
     overflow: visible;
   }
 }
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 2d0e5f43d9ba22eb3ddbd62c1c55c9f7689134e7
