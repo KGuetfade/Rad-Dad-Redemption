@@ -111,7 +111,6 @@ h4 {
     margin: -20px;
     font-family: 'Courier New', Courier, monospace;
     outline: 0;
-    position: relative;
   }
 
   #ready:hover {
