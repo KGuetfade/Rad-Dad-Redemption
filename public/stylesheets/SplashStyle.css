@@ -8,6 +8,7 @@ h1 {
   text-align: center;
   font-family: Impact, Charcoal, sans-serif;
   font-size: 60px;
+  animation: glow 1s ease-in-out infinite alternate;
 }
 
 h2 {
@@ -15,6 +16,7 @@ h2 {
   font-family: Impact, Charcoal, sans-serif;
   font-size: 36px;
   transform: translate(0%, -90%);
+  animation: glow 1s ease-in-out infinite alternate;
 }
 
 button {
@@ -85,5 +87,14 @@ button:active {
 
   body{
     overflow: visible;
+  }
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #382dd8, 0 0 40px #382dd8, 0 0 50px #382dd8, 0 0 60px #382dd8, 0 0 70px #382dd8;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #4d6eff, 0 0 40px #4d6eff, 0 0 50px #4d6eff, 0 0 60px #4d6eff, 0 0 70px #4d6eff, 0 0 80px #4d6eff;
   }
 }
