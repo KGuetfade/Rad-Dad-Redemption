@@ -272,8 +272,11 @@ wss.on("connection", function(ws){
                 }
 
                 let current_date = new Date(datestring);
-
-                if (current_date < GameStats.highScore){
+                if (GameStats.highScore.getTime() === (new Date("01/01/2000 00:00:00").getTime()))
+                {
+                    GameStats.highScore = current_date;
+                }
+                else if (current_date < GameStats.highScore){
                     GameStats.highScore = current_date;
                 }
             }
