@@ -4,7 +4,7 @@ const path = require("path");
 const websocket = require("ws");
 
 const app = express();
-const port = process.argv[2];
+const port = process.env.PORT || 3000;
 
 var indexRouter = require("./routes/index.js");
 var Game = require("./game.js");
